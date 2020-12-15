@@ -1,0 +1,56 @@
+/**
+ * Main board
+ */
+
+/* Global variables */
+// column/row size/scale
+var scl;
+// snake object
+var snake;
+// food object
+var food;
+
+// called once
+function setup() {
+  // create board/canvas
+  createCanvas(1350, 650);
+  // assign scale
+  scl = 10;
+  // assign/create new snake and food object with the same scale
+  snake = new Snake(scl);
+  food = new Food(scl);
+  // set framerate to 10
+  frameRate(12);
+}
+
+// draw loop
+function draw() {
+  // background color - black
+  background(0,0,0);
+
+
+  // update and draw snake and food object
+  snake.update();
+  // reset snake if it hits it self
+  snake.resolveSelfCollision();
+  food.draw();
+  snake.draw();
+  // if snake eats food
+  if (dist(snake.position.x,snake.position.y,food.position.x,food.position.y) < 20)
+  {
+    food.newPosition();
+    snake.grow();
+  }
+}
+
+// keyboard listener
+function keyPressed() {
+    switch(keyCode)
+    {
+      case UP_ARROW: if (snake.velocity.y != 1)  snake.changeVelocity(0,-1); break;
+      case DOWN_ARROW: if (snake.velocity.y != -1) snake.changeVelocity(0,1); break;
+      case LEFT_ARROW: if (snake.velocity.x != 1) snake.changeVelocity(-1,0); break;
+      case RIGHT_ARROW: if (snake.velocity.x != -1) snake.changeVelocity(1,0); break;
+    }
+}
+/* End of main board */
