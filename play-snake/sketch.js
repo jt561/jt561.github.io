@@ -43,6 +43,7 @@ function draw() {
     food.newPosition();
     snake.grow();
   }
+  updateScores();
 }
 
 // keyboard listener
@@ -54,5 +55,14 @@ function keyPressed() {
       case LEFT_ARROW: if (snake.velocity.x != 1) snake.changeVelocity(-1,0); break;
       case RIGHT_ARROW: if (snake.velocity.x != -1) snake.changeVelocity(1,0); break;
     }
+}
+
+// updates score
+function updateScores()
+{
+  let size = snake.size;
+  let biggestSize = snake.biggestSize;
+  $('#snake-size').text(size);
+  $('#biggest-snake-size').text(size);
 }
 /* End of main board */
