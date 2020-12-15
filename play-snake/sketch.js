@@ -14,7 +14,7 @@ var food;
 function setup() {
   // create board/canvas
   let width = window.screen.width-12;
-  let height = window.screen.height-140;
+  let height = window.screen.height-100;
   createCanvas(width, height);
   // assign scale
   scl = 10;
@@ -26,10 +26,10 @@ function setup() {
   // add buttons for mobile users
   if(window.matchMedia("(max-width: 767px)").matches)
   {
-    var upButton = $('<button>up</button>');
-    var downButton = $('<button>down</button>');
-    var leftButton = $('<button>left</button>');
-    var rightButton = $('<button>right</button>');
+    var upButton = $('<button id=up class=btn>up</button>');
+    var downButton = $('<button id=down class=btn>down</button>');
+    var leftButton = $('<button id=left class=btn>left</button>');
+    var rightButton = $('<button id=right class=btn>right</button>');
     upButton.click(function() {
       if (snake.velocity.y != 1) snake.changeVelocity(0,-1);
     });
@@ -42,8 +42,10 @@ function setup() {
     rightButton.click(function() {
       if (snake.velocity.x != -1) snake.changeVelocity(1,0);
     });
-    $('body').append('<div class="mobile-directional-btns"></div>');
-    $('.mobile-directional-btns').append(upButton, downButton, leftButton, rightButton);
+    $('body').append('<div class="mobile-directional-btns"><div class=row1></div><div class=row2></div><div class=row3></div></div>');
+    $('.mobile-directional-btns .row1').append(upButton);
+    $('.mobile-directional-btns .row2').append( leftButton, rightButton);
+    $('.mobile-directional-btns .row3').append(downButton);
   }
 }
 

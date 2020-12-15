@@ -14,12 +14,39 @@
     .details {
       display: flex;
       justify-content: space-between;
-      margin: 2px 2px 2px 2px;
+      margin: 0 auto;
     }
 
     .scores {
       display: flex;
       justify-content: space-between;
+    }
+
+    .mobile-directional-btns {
+    	position: fixed;
+    	bottom: 20px;
+    	right: 30px;
+    	z-index: 99;
+    	border: none;
+    	outline: none;
+    	background-color: #ff5d0d;
+    	color: white;
+    	cursor: pointer;
+    	padding: 10px;
+    	border-radius: 30px;
+    	font-size: 10px;
+    }
+
+    .mobile-directional-btns div {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .mobile-directional-btns button {
+      background: transparent;
+      outline: none;
+      border: 1px solid black;
+      border-radius: 15px;
     }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
