@@ -14,7 +14,7 @@ var food;
 function setup() {
   // create board/canvas
   let width = window.screen.width-12;
-  let height = window.screen.height-160;
+  let height = window.screen.height-140;
   createCanvas(width, height);
   // assign scale
   scl = 10;
@@ -61,7 +61,7 @@ function keyPressed() {
 function updateScores()
 {
   let size = snake.size;
-  let biggestSize = snake.biggestSize;
+  let biggestSize = (snake.size > snake.biggestSize) ? snake.size : snake.biggestSize;
   $('#snake-size').text(size);
   $('#biggest-snake-size').text(biggestSize);
 }
