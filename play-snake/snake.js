@@ -12,6 +12,7 @@ var Snake = function(scl)
   this.body.push(this.position); // first element in body is also head
   this.velocity = createVector(1,0);
   this.size = 1;
+  this.biggestSize = 1;
 
   /* render snake */
   this.draw = function()
@@ -95,6 +96,7 @@ var Snake = function(scl)
     }
     if(collided)
     {
+      this.biggestSize = this.size;
       this.clearBody();
     }
   }
@@ -107,6 +109,7 @@ var Snake = function(scl)
     {
       this.body.pop();
     }
+    this.size = 1;
   }
 }
 /* End of snake class */
