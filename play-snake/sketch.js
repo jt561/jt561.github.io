@@ -13,7 +13,9 @@ var food;
 // called once
 function setup() {
   // create board/canvas
-  createCanvas(1350, 650);
+  let width = window.screen.width-30;
+  let height = window.screen.height-160;
+  createCanvas(width, height);
   // assign scale
   scl = 10;
   // assign/create new snake and food object with the same scale
