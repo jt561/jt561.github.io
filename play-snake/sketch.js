@@ -13,7 +13,7 @@ var food;
 // called once
 function setup() {
   // create board/canvas
-  let width = window.screen.width-30;
+  let width = window.screen.width-12;
   let height = window.screen.height-160;
   createCanvas(width, height);
   // assign scale
