@@ -63,6 +63,6 @@ function updateScores()
   let size = snake.size;
   let biggestSize = snake.biggestSize;
   $('#snake-size').text(size);
-  $('#biggest-snake-size').text(size);
+  $('#biggest-snake-size').text(biggestSize);
 }
 /* End of main board */
