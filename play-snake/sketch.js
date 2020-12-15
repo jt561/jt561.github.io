@@ -23,6 +23,28 @@ function setup() {
   food = new Food(scl);
   // set framerate to 10
   frameRate(12);
+  // add buttons for mobile users
+  if(window.matchMedia("(max-width: 767px)").matches)
+  {
+    var upButton = $('<button>up</button>');
+    var downButton = $('<button>down</button>');
+    var leftButton = $('<button>left</button>');
+    var rightButton = $('<button>right</button>');
+    upButton.click(function() {
+      if (snake.velocity.y != 1) snake.changeVelocity(0,-1);
+    });
+    downButton.click(function() {
+      if (snake.velocity.y != -1) snake.changeVelocity(0,1);
+    });
+    leftButton.click(function() {
+      if (snake.velocity.x != 1) snake.changeVelocity(-1,0);
+    });
+    rightButton.click(function() {
+      if (snake.velocity.x != -1) snake.changeVelocity(1,0);
+    });
+    $('body').append('<div class="mobile-directional-btns"></div>');
+    $('.mobile-directional-btns').append(upButton, downButton, leftButton, rightButton);
+  }
 }
 
 // draw loop
