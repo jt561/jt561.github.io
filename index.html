@@ -71,6 +71,50 @@
 			background-color: white;
 			margin: 5px;
 			transition: all 0.3s ease;
+			margin: 2px auto;
+		}
+
+		/* whole/actual page*/
+		.content {
+			width: 80%;
+			margin: 0 auto;
+		}
+
+		/* each page*/
+		.section {
+			width: 80%;
+			margin: 0 auto;
+			background-color: white;
+			padding: 50px;
+			box-shadow: 10px 10px 30px 5px grey;
+		}
+
+		.section-header {
+			width: 30%;
+			margin: 0 auto;
+		}
+
+		/* resume */
+		.container-title {
+				display: flex;
+				align-items: center;
+		}
+
+		.title-icon-box {
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			background-color: blue;
+			vertical-align: middle;
+		}
+
+		/* footer */
+		.footer {
+			background-color: #ffffff;
+			min-height: 8vh;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 		/* end of default/desktop */
   </style>
@@ -144,8 +188,6 @@
 			display: flex;
 			transform: translateX(0%);
 		}
-
-
 
 		@keyframes navigationLinkFade {
 			from {
@@ -234,17 +276,48 @@
 				 </div>
     </div>
     <div class="container content">
-      <div id="about-me" class="container about-me">
+      <div id="about-me" class="container about-me section">
+				<div class="section-header">
+					<div class="container-title">
+						<div class="title-icon-box"></div>
+						<h1 id="resumeTitle" class="title">About</h1>
+					</div>
+				</div>
       </div>
-      <div id="resume" class="container resume">
+      <div id="resume" class="container resume section">
+				<div class="section-header">
+					<div class="container-title">
+						<div class="title-icon-box"></div>
+						<h1 id="resumeTitle" class="title">Resume</h1>
+					</div>
+				</div>
       </div>
-      <div id="projects" class="container projects">
-        <a href="./play-snake">Play Snake</a>
+      <div id="projects" class="container projects section">
+				<div class="section-header">
+					<div class="container-title">
+						<div class="title-icon-box"></div>
+						<h1 id="resumeTitle" class="title">Projects</h1>
+					</div>
+				</div>
+				<div>
+        	<a href="./play-snake">Play Snake</a>
+				</div>
       </div>
-      <div id="contact-me" class="container contact-me">
+      <div id="contact-me" class="container contact-me section">
+				<div class="section-header">
+					<div class="container-title">
+						<div class="title-icon-box"></div>
+						<h1 id="resumeTitle" class="title">Contant</h1>
+					</div>
+				</div>
       </div>
     </div>
 		<div class="container footer">
+			<div><p>© 2023 by Joshua Tetteh</p></div>
+			<div>
+				<div><span>Links:</span></div>
+				<div>L</div>
+			</div>
 		</div>
   </div>
 </body>
