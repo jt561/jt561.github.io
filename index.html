@@ -15,7 +15,7 @@
     }
 
     body {
-      background-color: #26f8ff7f;
+      background-color: #26f8ff1f;
 			overflow-x: hidden;
 			min-width: 350px;
     }
@@ -84,20 +84,15 @@
 		.section {
 			width: 80%;
 			margin: 0 auto;
-			background-color: white;
+			background: transparent;
 			padding: 50px;
-			box-shadow: 10px 10px 30px 5px grey;
+			border-bottom: 2px solid black;
+			/*box-shadow: 0px 0px 1px 1px grey;*/
 		}
 
 		.section-header {
 			width: 30%;
 			margin: 0 auto;
-		}
-
-		/* resume */
-		.container-title {
-				display: flex;
-				align-items: center;
 		}
 
 		.title-icon-box {
@@ -106,6 +101,13 @@
 			height: 16px;
 			background-color: blue;
 			vertical-align: middle;
+			margin-right: 3px;
+		}
+
+		/* resume */
+		.container-title {
+				display: flex;
+				align-items: center;
 		}
 
 		/* footer */
@@ -115,6 +117,26 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+		}
+
+		#backToTopButton {
+			position: fixed;
+			bottom: 8vh;
+			right: 1vw;
+			z-index: 99;
+			border: none;
+			outline: none;
+			background-color: #ff5d0d;
+			color: white;
+			cursor: pointer;
+			padding: 10px;
+			border-radius: 30px;
+			font-size: 10px;
+			transition: 0.25s;
+		}
+
+		#backToTopButton:hover {
+			 background-color: #b83d00;
 		}
 		/* end of default/desktop */
   </style>
@@ -247,6 +269,25 @@
 				// call to add effects of nav for mobile
 				navigationSlide();
 
+				// hide/display backToTopButton
+				window.onscroll = function() {
+					// check for safari or any other brower
+				  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10)
+				  {
+				    $('#backToTopButton').css("display","block");
+				  }
+				  else
+				  {
+				    $('#backToTopButton').css("display","none");
+				  }
+				};
+				// add handler to back to top button
+				$('#backToTopButton').click(function() {
+					// on safari
+					document.body.scrollTop = 0;
+					// on other browsers
+					document.documentElement.scrollTop = 0;
+				});
 		});
 	</script>
   <script src=""></script>
@@ -283,6 +324,9 @@
 						<h1 id="resumeTitle" class="title">About</h1>
 					</div>
 				</div>
+				<div class"section-content">
+        	COMING SOON
+				</div>
       </div>
       <div id="resume" class="container resume section">
 				<div class="section-header">
@@ -290,6 +334,9 @@
 						<div class="title-icon-box"></div>
 						<h1 id="resumeTitle" class="title">Resume</h1>
 					</div>
+				</div>
+				<div class"section-content">
+        	COMING SOON
 				</div>
       </div>
       <div id="projects" class="container projects section">
@@ -299,7 +346,10 @@
 						<h1 id="resumeTitle" class="title">Projects</h1>
 					</div>
 				</div>
-				<div>
+				<div class"section-content">
+        	COMING SOON
+				</div>
+				<div class"section-content">
         	<a href="./play-snake">Play Snake</a>
 				</div>
       </div>
@@ -310,9 +360,13 @@
 						<h1 id="resumeTitle" class="title">Contant</h1>
 					</div>
 				</div>
+				<div class"section-content">
+        	COMING SOON
+				</div>
       </div>
     </div>
 		<div class="container footer">
+			<button id="backToTopButton" title="Go to top">Top</button>
 			<div><p>© 2023 by Joshua Tetteh</p></div>
 			<div>
 				<div><span>Links:</span></div>
