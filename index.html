@@ -48,6 +48,7 @@
 			display: flex;
 			justify-content: space-around;
 			width: 40%;
+			display: flex;
 		}
 
 		.navigation-links li {
@@ -94,7 +95,7 @@
   <style>
     /* mobile devices */
     @media all and (max-width: 768px){
-			body {
+			.body {
 				overflow-x: hidden;
 			}
 
@@ -109,13 +110,19 @@
 			.navigation-links {
 				position: absolute;
 				right: 0px;
-				height: 92vh;
+				height: 60vh;
 				top: 8vh;
 				background-color: #02b4ba;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				width: 50%;
+				transform: translateX(100%);
+				transition: transform 0.5s ease-in;
+			}
+
+			.navigation-hidden {
+				display: none;
 				transform: translateX(100%);
 				transition: transform 0.5s ease-in;
 			}
@@ -134,8 +141,11 @@
 		/* defaults */
 		/* mobile  */
 		.navigation-active {
+			display: flex;
 			transform: translateX(0%);
 		}
+
+
 
 		@keyframes navigationLinkFade {
 			from {
@@ -171,6 +181,7 @@
 					// toggle nav
 					burger.addEventListener('click', function() {
 						navigation.classList.toggle('navigation-active');
+						navigation.classList.toggle('navigation-hidden');
 
 						// animate navigationLinks
 						navigationLinks.forEach(function(link, index) {
@@ -210,7 +221,7 @@
             <h3>Business Technology Information undergraduate</h3>
           </div>
         </div>
-         <ul class="container navigation-panel navigation-links">
+         <ul class="container navigation-panel navigation-links navigation-hidden">
               <li><a href="#about-me">About Me</a></li>
               <li><a href="#resume">Resume</a></li>
               <li><a href="#projects">Projects</a></li>
