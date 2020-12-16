@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joshua Tetteh - Portfolio</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
     /* mobile devices */
     * {
@@ -15,7 +16,13 @@
 
     body {
       background-color: #26f8ff7f;
+			overflow-x: hidden;
+			min-width: 350px;
     }
+
+		a {
+			text-decoration: none;
+		}
 
 		.header {
 			display: flex;
@@ -30,6 +37,11 @@
 			color: white;
 			text-transform: uppercase;
 			letter-spacing: 5px;
+			font-size: 10px;
+		}
+
+		.my-position {
+			font-size: 10px;
 		}
 
 		.navigation-links {
@@ -38,23 +50,132 @@
 			width: 30%;
 		}
 
+		.navigation-links li {
+			list-style-type: none;
+		}
+
 		.navigation-links a {
 			color: white;
-			text-decoration: none;
 			letter-spacing: 1px;
 			font-weight: bold;
 		}
+
+		.burger div{
+			width: 25px;
+			height: 3px;
+			background-color: white;
+			margin: 5px;
+			transition: all 0.3s ease;
+		}
+
+	/******/
+		.navigation-links {
+			position: absolute;
+			right: 0px;
+			height: 92vh;
+			top: 8vh;
+			background-color: #02b4ba;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 50%;
+			transform: translateX(100%);
+			transition: transform 0.5s ease-in;
+		}
+
+		.burger {
+			cursor: pointer;
+			display: block;
+		}
+
+		.navigation-active {
+			transform: translateX(0%);
+		}
+
+		.toggle.line1 {
+			transform: rotate(-45deg) translate(-5px, 6px);
+		}
+
+		.toggle.line2 {
+			opacity: 0;
+		}
+
+		.toggle.line3 {
+			transform: rotate(45deg) translate(-5px, -6px);
+		}
+
+		.hide-navigation {
+			display: none;
+			transition: transform 0.5s ease-in;
+		}
   </style>
+	<script>
+		$(document).ready(function() {
+
+				$('.burger').click(function() {
+
+					$('.burger div').each(function() {
+						$(this).toggleClass('toggle');
+					});
+
+				});
+
+		});
+	</script>
   <style>
     /* tablet devices */
     @media all and (min-width: 768px){
+			body {
+					min-width: 750px;
+			}
 
+			.my-name {
+				font-size: 12px;
+			}
+
+			.my-position {
+				font-size: 10px;
+			}
+
+			.burger {
+				display: none;
+			}
+
+			.navigation-links {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-around;
+				width: 50%;
+				position: initial;
+				height: initial;
+				background-color: #02b4ba;
+				transform: translateX(0%);
+				transition: transform 0.5s ease-in;
+			}
+
+			.navigation-links li{
+				opacity: 1;
+			}
     }
   </style>
   <style>
     /* desktop devices */
     @media all and (min-width: 1000px){
+			body {
+					min-width: 950px;
+			}
 
+			.my-name {
+				font-size: 17px;
+			}
+
+			.my-position {
+				font-size: 15px;
+			}
+
+			.navigation-links {
+				width: 40%;
+			}
     }
   </style>
   <script src=""></script>
@@ -68,7 +189,7 @@
             <h1>Joshua Tetteh</h1>
           </div>
           <div class="container my-position">
-            <h3>Business Information undergraduate</h3>
+            <h3>Business Technology Information undergraduate</h3>
           </div>
         </div>
          <ul class="container navigation-panel navigation-links">
@@ -77,6 +198,11 @@
               <li><a href="#projects">Projects</a></li>
               <li><a href="#contact-me">Contact Me</a></li>
          </ul>
+				 <div class="burger">
+							<div class="line1"></div>
+							<div class="line2"></div>
+						  <div class="line3"></div>
+				 </div>
     </div>
     <div class="container content">
       <div id="about-me" class="container about-me">
@@ -89,6 +215,8 @@
       <div id="contact-me" class="container contact-me">
       </div>
     </div>
+		<div class="container footer">
+		</div>
   </div>
 </body>
 
