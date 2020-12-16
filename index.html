@@ -7,6 +7,43 @@
   <title>Joshua Tetteh - Portfolio</title>
   <style>
     /* mobile devices */
+    * {
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #26f8ff7f;
+    }
+
+		.header {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+			min-height: 8vh;
+			background-color: #02b4ba;
+			font-family: sans-serif;
+		}
+
+		.my-name {
+			color: white;
+			text-transform: uppercase;
+			letter-spacing: 5px;
+		}
+
+		.navigation-links {
+			display: flex;
+			justify-content: space-around;
+			width: 30%;
+		}
+
+		.navigation-links a {
+			color: white;
+			text-decoration: none;
+			letter-spacing: 1px;
+			font-weight: bold;
+		}
   </style>
   <style>
     /* tablet devices */
@@ -34,14 +71,12 @@
             <h3>Business Information undergraduate</h3>
           </div>
         </div>
-        <div class="container navigation-panel">
-           <ul>
-                <li><a href="#about-me">About Me</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact-me">Contact Me</a></li>
-           </ul>
-        </div>
+         <ul class="container navigation-panel navigation-links">
+              <li><a href="#about-me">About Me</a></li>
+              <li><a href="#resume">Resume</a></li>
+              <li><a href="#projects">Projects</a></li>
+              <li><a href="#contact-me">Contact Me</a></li>
+         </ul>
     </div>
     <div class="container content">
       <div id="about-me" class="container about-me">
