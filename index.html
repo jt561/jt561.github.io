@@ -7,7 +7,7 @@
   <title>Joshua Tetteh - Portfolio</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
-    /* mobile devices */
+    /* default/desktop */
     * {
       margin: 0px;
       padding: 0px;
@@ -37,27 +37,31 @@
 			color: white;
 			text-transform: uppercase;
 			letter-spacing: 5px;
-			font-size: 10px;
+			font-size: 15px;
 		}
 
 		.my-position {
-			font-size: 10px;
+			font-size: 13px;
 		}
 
 		.navigation-links {
 			display: flex;
 			justify-content: space-around;
-			width: 30%;
+			width: 40%;
 		}
 
 		.navigation-links li {
-			list-style-type: none;
+			list-style: none;
 		}
 
 		.navigation-links a {
 			color: white;
 			letter-spacing: 1px;
 			font-weight: bold;
+		}
+
+		.burger {
+			display: none;
 		}
 
 		.burger div{
@@ -67,29 +71,81 @@
 			margin: 5px;
 			transition: all 0.3s ease;
 		}
+		/* end of default/desktop */
+  </style>
+  <style>
+    /* tablet devices */
+    @media all and (max-width: 1024px){
+			.navigation-links {
+				width: 50%;
+				font-size: 15px;
+			}
 
-	/******/
-		.navigation-links {
-			position: absolute;
-			right: 0px;
-			height: 92vh;
-			top: 8vh;
-			background-color: #02b4ba;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			width: 50%;
-			transform: translateX(100%);
-			transition: transform 0.5s ease-in;
-		}
+			.my-name {
+				font-size: 13px;
+			}
 
-		.burger {
-			cursor: pointer;
-			display: block;
-		}
+			.my-position {
+				font-size: 11px;
+			}
+    }
+		/* end of tablet devices */
+  </style>
+  <style>
+    /* mobile devices */
+    @media all and (max-width: 768px){
+			body {
+				overflow-x: hidden;
+			}
 
+			.my-name {
+				font-size: 12px;
+			}
+
+			.my-position {
+				font-size: 10px;
+			}
+
+			.navigation-links {
+				position: absolute;
+				right: 0px;
+				height: 92vh;
+				top: 8vh;
+				background-color: #02b4ba;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 50%;
+				transform: translateX(100%);
+				transition: transform 0.5s ease-in;
+			}
+
+			.navigation-links li {
+				opacity: 0;
+			}
+
+			.burger {
+				display: block;
+			}
+    }
+		/* end of mobile devices */
+  </style>
+	<style>
+		/* defaults */
+		/* mobile  */
 		.navigation-active {
 			transform: translateX(0%);
+		}
+
+		@keyframes navigationLinkFade {
+			from {
+				opacity: 0;
+				transform: translateX(50px);
+			}
+			to {
+				opacity: 1;
+				transform: translateX(0px);
+			}
 		}
 
 		.toggle.line1 {
@@ -103,81 +159,43 @@
 		.toggle.line3 {
 			transform: rotate(45deg) translate(-5px, -6px);
 		}
-
-		.hide-navigation {
-			display: none;
-			transition: transform 0.5s ease-in;
-		}
-  </style>
+	</style>
 	<script>
 		$(document).ready(function() {
 
-				$('.burger').click(function() {
+				const navigationSlide = function() {
+					const burger = document.querySelector('.burger');
+					const navigation = document.querySelector('.navigation-links');
+					const navigationLinks = document.querySelectorAll('.navigation-links li');
 
-					$('.burger div').each(function() {
-						$(this).toggleClass('toggle');
+					// toggle nav
+					burger.addEventListener('click', function() {
+						navigation.classList.toggle('navigation-active');
+
+						// animate navigationLinks
+						navigationLinks.forEach(function(link, index) {
+							if (link.style.animation)
+							{
+								link.style.animation = '';
+							}
+							else
+							{
+								link.style.animation = `navigationLinkFade 0.5s ease forwards ${index/7+0.3}s`;
+							}
+						});
+
+						// animate burger
+						document.querySelectorAll('.burger div').forEach(function(div) {
+							div.classList.toggle('toggle');
+						});
 					});
+				}
 
-				});
+				// call to add effects of nav for mobile
+				navigationSlide();
 
 		});
 	</script>
-  <style>
-    /* tablet devices */
-    @media all and (min-width: 768px){
-			body {
-					min-width: 750px;
-			}
-
-			.my-name {
-				font-size: 12px;
-			}
-
-			.my-position {
-				font-size: 10px;
-			}
-
-			.burger {
-				display: none;
-			}
-
-			.navigation-links {
-				display: flex;
-				flex-direction: row;
-				justify-content: space-around;
-				width: 50%;
-				position: initial;
-				height: initial;
-				background-color: #02b4ba;
-				transform: translateX(0%);
-				transition: transform 0.5s ease-in;
-			}
-
-			.navigation-links li{
-				opacity: 1;
-			}
-    }
-  </style>
-  <style>
-    /* desktop devices */
-    @media all and (min-width: 1000px){
-			body {
-					min-width: 950px;
-			}
-
-			.my-name {
-				font-size: 17px;
-			}
-
-			.my-position {
-				font-size: 15px;
-			}
-
-			.navigation-links {
-				width: 40%;
-			}
-    }
-  </style>
   <script src=""></script>
 </head>
 
