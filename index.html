@@ -15,13 +15,15 @@
     }
 
     body {
-      background-color: #26f8ff1f;
+      background-color: #262626; /*#26f8ff1f*/
 			overflow-x: hidden;
 			min-width: 350px;
+			color: white;
     }
 
 		a {
 			text-decoration: none;
+			color: white;
 		}
 
 		.header {
@@ -29,7 +31,7 @@
 			justify-content: space-around;
 			align-items: center;
 			min-height: 8vh;
-			background-color: #02b4ba;
+			background-color: #363636;/*#02b4ba*/
 			font-family: sans-serif;
 		}
 
@@ -112,31 +114,42 @@
 
 		/* footer */
 		.footer {
-			background-color: #ffffff;
+			background-color: #363636; /*#ffffff*/
 			min-height: 8vh;
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 			align-items: center;
 		}
 
 		#backToTopButton {
+			min-width: 3vw;
 			position: fixed;
-			bottom: 8vh;
+			bottom: 3vh;
 			right: 1vw;
 			z-index: 99;
 			border: none;
 			outline: none;
-			background-color: #ff5d0d;
-			color: white;
+			background-color: #ffffff;
+			color: #000000;
+			font-size: 30px;
+			font-weight: bold;
 			cursor: pointer;
 			padding: 10px;
 			border-radius: 30px;
 			font-size: 10px;
-			transition: 0.25s;
+			transition: 0.5s ease;
 		}
 
 		#backToTopButton:hover {
-			 background-color: #b83d00;
+			 background-color: #000000;
+			 color: #ffffff;
+			 border: 2px solid white;
+		}
+
+		.links {
+			display: flex;
+			justify-content: space-between;
+			min-width: 20vw;
 		}
 		/* end of default/desktop */
   </style>
@@ -178,7 +191,7 @@
 				right: 0px;
 				height: 60vh;
 				top: 8vh;
-				background-color: #02b4ba;
+				background-color: #363636; /*#02b4ba*/
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -223,7 +236,7 @@
 		}
 
 		.toggle.line1 {
-			transform: rotate(-45deg) translate(-5px, 6px);
+			transform: rotate(-45deg) translate(-5px, 3px);
 		}
 
 		.toggle.line2 {
@@ -231,7 +244,7 @@
 		}
 
 		.toggle.line3 {
-			transform: rotate(45deg) translate(-5px, -6px);
+			transform: rotate(45deg) translate(-5px, -3px);
 		}
 	</style>
 	<script>
@@ -366,11 +379,11 @@
       </div>
     </div>
 		<div class="container footer">
-			<button id="backToTopButton" title="Go to top">Top</button>
+			<button id="backToTopButton" title="Go to top">^</button>
 			<div><p>© 2023 by Joshua Tetteh</p></div>
-			<div>
+			<div class="container links">
 				<div><span>Links:</span></div>
-				<div>L</div>
+				<div><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/">LinkedIn</a></div>
 			</div>
 		</div>
   </div>
