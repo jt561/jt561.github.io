@@ -85,11 +85,11 @@
 		/* each page*/
 		.section {
 			width: 80%;
-			margin: 0 auto;
+			margin: 10vh auto;
 			background: transparent;
 			padding: 50px;
 			border-bottom: 2px solid black;
-			/*box-shadow: 0px 0px 1px 1px grey;*/
+			box-shadow: 0px 22px 30px 1px #888888;
 		}
 
 		.section-header {
@@ -99,9 +99,10 @@
 
 		.title-icon-box {
 			display: inline-block;
-			width: 16px;
+			min-width: 16px;
 			height: 16px;
-			background-color: blue;
+			background-color: black;
+			border: 2px solid white;
 			vertical-align: middle;
 			margin-right: 3px;
 		}
@@ -123,9 +124,10 @@
 
 		#backToTopButton {
 			min-width: 3vw;
+			min-height: 3vw;
 			position: fixed;
-			bottom: 3vh;
-			right: 1vw;
+			bottom: 3vw;
+			right: 3vw;
 			z-index: 99;
 			border: none;
 			outline: none;
@@ -167,6 +169,20 @@
 
 			.my-position {
 				font-size: 11px;
+			}
+
+			.section {
+				width: 90%;
+			}
+
+			.section-header {
+				width: 20%;
+				font-size: 14px;
+			}
+
+			.title-icon-box {
+				min-width: 12px;
+				height: 12px;
 			}
     }
 		/* end of tablet devices */
@@ -212,6 +228,20 @@
 
 			.burger {
 				display: block;
+			}
+
+			.section {
+				width: 100%;
+			}
+
+			.section-header {
+				width: 20%;
+				font-size: 12px;
+			}
+
+			.title-icon-box {
+				min-width: 10px;
+				height: 10px;
 			}
     }
 		/* end of mobile devices */
@@ -380,7 +410,7 @@
     </div>
 		<div class="container footer">
 			<button id="backToTopButton" title="Go to top">^</button>
-			<div><p>© 2023 by Joshua Tetteh</p></div>
+			<div><p>© 2020 by Joshua Tetteh</p></div>
 			<div class="container links">
 				<div><span>Links:</span></div>
 				<div><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/">LinkedIn</a></div>
