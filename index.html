@@ -43,6 +43,9 @@
 		}
 
 		.header {
+			position: -webkit-sticky;
+			position: sticky;
+			top: 0;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
@@ -550,6 +553,30 @@
               scrollTop: 0
           }, 1000);
 				});
+
+				/*// highlight navs when you scroll to them
+				window.onscroll = function() {
+					var elementToHighlight = "";
+					$(".navigation-links a").each(function() {
+						var sectionElementID = $(this).attr('name');
+						if ($(document).scrollTop() >= $(sectionElementID).offset().top)
+						{
+							elementToHighlight = $(this).attr('name');
+						}
+					});
+					if ($(document).scrollTop() <= $('#resume').offset().top) {elementToHighlight = "#about-me"}
+					$(".navigation-links a").each(function() {
+						if ($(this).attr('name') == elementToHighlight)
+						{
+							$(this).addClass('focused-nav');
+						}
+						else
+						{
+							$(this).removeClass('focused-nav');
+						}
+					});
+				}*/
+
 		});
 	</script>
   <script src=""></script>
@@ -567,7 +594,7 @@
           </div>
         </div>
          <ul class="container navigation-panel navigation-links navigation-hidden">
-              <li><a name="#about-me">About Me</a></li>
+              <li><a name="#about-me" class="focused-nav">About Me</a></li>
               <li><a name="#resume">Resume</a></li>
               <li><a name="#projects">Projects</a></li>
               <li><a name="#contact-me">Contact Me</a></li>
