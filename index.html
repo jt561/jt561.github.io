@@ -55,6 +55,15 @@
 			z-index: 99;
 		}
 
+		.pixels-covered {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			background-color: white;
+			min-height: 3px;
+			width: 0%;
+		}
+
 		.my-name {
 			color: white;
 			text-transform: uppercase;
@@ -538,7 +547,7 @@
 				// hide/display backToTopButton
 				window.onscroll = function() {
 					// check for safari or any other brower
-				  if (document.body.scrollTop > 10 || document.documentElement.scrollTop > 10)
+				  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150)
 				  {
 				    $('#backToTopButton').css("display","block");
 				  }
@@ -546,7 +555,16 @@
 				  {
 				    $('#backToTopButton').css("display","none");
 				  }
+
+					// percentage bar
+					var body = document.body,
+    			html = document.documentElement;
+
+					var height = html.clientHeight;
+					let percentage = $(document).scrollTop() / (height / 100);
+					$('.pixels-covered').css("width", percentage+"%");
 				};
+
 				// add handler to back to top button
 				$('#backToTopButton').click(function() {
 					$('html, body').animate({
@@ -604,6 +622,8 @@
 							<div class="line2"></div>
 						  <div class="line3"></div>
 				 </div>
+				 <div class="pixels-covered">
+			 	</div>
     </div>
     <div class="container content">
       <div id="about-me" class="container about-me section">
