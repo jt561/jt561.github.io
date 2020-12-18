@@ -26,6 +26,22 @@
 			color: white;
 		}
 
+		.btn {
+			outline: none;
+			border: 2px solid #ffffff;
+			background-color: #000000;
+			color: white;
+			padding: 5px;
+			border-radius: 10px;
+			transition: 0.5s ease;
+		}
+
+		.btn:hover {
+			border: 3px solid #000000;
+			background-color: #ffffff;
+			color: black;
+		}
+
 		.header {
 			display: flex;
 			justify-content: space-around;
@@ -33,12 +49,13 @@
 			min-height: 8vh;
 			background-color: #363636;/*#02b4ba*/
 			font-family: sans-serif;
+			z-index: 99;
 		}
 
 		.my-name {
 			color: white;
 			text-transform: uppercase;
-			letter-spacing: 5px;
+			letter-spacing: 10px;
 			font-size: 15px;
 		}
 
@@ -87,13 +104,24 @@
 			width: 80%;
 			margin: 10vh auto;
 			background: transparent;
-			padding: 50px;
+			padding: 50px 20px;
 			border-bottom: 2px solid black;
-			box-shadow: 0px 22px 30px 1px #888888;
+			box-shadow: 0px 22px 30px 0.1px #888888;
+			position: relative;
 		}
 
 		.section-header {
 			width: 30%;
+			margin: 0 auto;
+			text-align: center;
+		}
+
+		.container-title {
+			text-align: center;
+		}
+
+		.section-content {
+			width: 100%;
 			margin: 0 auto;
 		}
 
@@ -107,10 +135,110 @@
 			margin-right: 3px;
 		}
 
+		.title-icon-box#about-title-icon-box {
+			margin: 10px auto;
+		}
+
+		.about-background-left {
+			display: none;
+			z-index: -1;
+			position: absolute;
+			right: 0px;
+			top: 0px;
+			background-color: #ffffff;
+			margin: 5px;
+			width: 48%;
+			height: 98%;
+		}
+
+		.my-card-divider {
+			width: 30%;
+			height: 3px;
+			background-color: #ffffff;
+			margin: 0 auto;
+		}
+
+		.about-card {
+			display: flex;
+			justify-content: center;
+			width: 90%;
+			margin: 0 auto;
+		}
+
+		.about-left {
+			min-width: 50%;
+			min-height: 100%;
+			background-color: #363636;
+			text-align: center;
+			box-shadow: -10px 10px 10px 0.1px #888888;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.my-card {
+			padding: 10px;
+			margin-bottom: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			min-height: 90%;
+		}
+
+		#my-pfp {
+			width: 120px;
+			height: 120px;
+			border-radius: 100%;
+			margin: 10px auto;
+		}
+
+		.about-right {
+			min-height: 100%;
+			min-width: 50%;
+			padding: 10px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+
+		.hello {
+			font-size: 50px;
+		}
+
+		.who-I-am {
+			font-size: 20px;
+		}
+
+		.about-right div{
+			margin: 5px 0px;
+		}
+
+		.nav {
+			font-weight: bold;
+			padding-top: 4px;
+			display: flex;
+			align-items: center;
+		}
+
+		.nav div{
+			height: 100%;
+		}
+
+		.social-links {
+			background-color: #ffffff;
+		}
+
+		.social-links div img{
+			width: 30px;
+			height: 30px;
+			margin: 2px;
+		}
+
 		/* resume */
 		.container-title {
 				display: flex;
 				align-items: center;
+				text-align: center;
 		}
 
 		/* footer */
@@ -126,26 +254,26 @@
 			min-width: 3vw;
 			min-height: 3vw;
 			position: fixed;
-			bottom: 3vw;
-			right: 3vw;
+			bottom: 5vw;
+			right: 5vw;
 			z-index: 99;
 			border: none;
 			outline: none;
-			background-color: #ffffff;
-			color: #000000;
+			background-color: #000000;
+			color: #ffffff;
+			border: 2px solid white;
 			font-size: 30px;
 			font-weight: bold;
 			cursor: pointer;
 			padding: 10px;
-			border-radius: 30px;
+			border-radius: 50px;
 			font-size: 10px;
 			transition: 0.5s ease;
 		}
 
 		#backToTopButton:hover {
-			 background-color: #000000;
-			 color: #ffffff;
-			 border: 2px solid white;
+			background-color: #ffffff;
+ 			color: #000000;
 		}
 
 		.links {
@@ -165,6 +293,7 @@
 
 			.my-name {
 				font-size: 13px;
+				letter-spacing: 6px;
 			}
 
 			.my-position {
@@ -184,6 +313,11 @@
 				min-width: 12px;
 				height: 12px;
 			}
+
+			#backToTopButton {
+				min-width: 4.5vw;
+				min-height: 4.5vw;
+			}
     }
 		/* end of tablet devices */
   </style>
@@ -196,6 +330,7 @@
 
 			.my-name {
 				font-size: 12px;
+				letter-spacing: 2px;
 			}
 
 			.my-position {
@@ -211,7 +346,8 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				width: 50%;
+				min-width: 20vw;
+				max-width: 35vw;
 				transform: translateX(100%);
 				transition: transform 0.5s ease-in;
 			}
@@ -232,6 +368,7 @@
 
 			.section {
 				width: 100%;
+				padding: 2px;
 			}
 
 			.section-header {
@@ -243,6 +380,15 @@
 				min-width: 10px;
 				height: 10px;
 			}
+
+			.about-card {
+				flex-direction: column;
+			}
+
+			#backToTopButton {
+				min-width: 6vw;
+				min-height: 6vw;
+			}
     }
 		/* end of mobile devices */
   </style>
@@ -252,6 +398,7 @@
 		.navigation-active {
 			display: flex;
 			transform: translateX(0%);
+			z-index: 98;
 		}
 
 		@keyframes navigationLinkFade {
@@ -266,7 +413,7 @@
 		}
 
 		.toggle.line1 {
-			transform: rotate(-45deg) translate(-5px, 3px);
+			transform: rotate(-45deg) translate(-5px, 2px);
 		}
 
 		.toggle.line2 {
@@ -274,7 +421,7 @@
 		}
 
 		.toggle.line3 {
-			transform: rotate(45deg) translate(-5px, -3px);
+			transform: rotate(45deg) translate(-5px, -2px);
 		}
 	</style>
 	<script>
@@ -361,14 +508,51 @@
     </div>
     <div class="container content">
       <div id="about-me" class="container about-me section">
+				<div class="about-background-left">
+				</div>
 				<div class="section-header">
 					<div class="container-title">
-						<div class="title-icon-box"></div>
-						<h1 id="resumeTitle" class="title">About</h1>
+						<div class="title-icon-box" id="about-title-icon-box"></div>
 					</div>
 				</div>
 				<div class"section-content">
-        	COMING SOON
+        	<div class="about-card">
+						<div class="about-left about-top">
+							<div class="my-card">
+								<div class="profile-picture">
+									<img src="./assets/pfp.png" alt="I'M AM" id="my-pfp"/>
+								</div>
+								<div class="my-name-2">
+									<h1>Joshua Tetteh</h1>
+								</div>
+								<div class="my-card-divider">
+								</div>
+								<div class="position-or-navs">
+									<h3>IT undergraduate</h3>
+								</div>
+							</div>
+							<div class="social-links">
+								<div><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/" target="_blank"><img src="./assets/linkedin icon.png" alt="L"/></a></div>
+							</div>
+						</div>
+						<div class="about-right about-bottom">
+							<div class="hello">
+								<p>Hello</p>
+							</div>
+							<div class="who-I-am">
+								<p>I'm Joshua Tetteh and I am currently  a student</p>
+							</div>
+							<div class="nav">
+								<div><a href="#resume" class="btn">resume</a></div><div><a href="#projects" class="btn">projects</a></div>
+							</div>
+							<div class="description-1">
+								<p>Aspiring Software Engineer. I am currently studying Business Information Technology. My course focuses on business, computing and information technology. </p>
+							</div>
+							<div class="description-2">
+								<p>The key skills I have been equiped with so far include, Leadership skills, communication skills, programming skills in Java, SQL, PHP, JavaScript, HTML and CSS. This website should hopefully provide you with more information about me</p>
+							</div>
+						</div>
+					</div>
 				</div>
       </div>
       <div id="resume" class="container resume section">
@@ -412,8 +596,8 @@
 			<button id="backToTopButton" title="Go to top">^</button>
 			<div><p>© 2020 by Joshua Tetteh</p></div>
 			<div class="container links">
-				<div><span>Links:</span></div>
-				<div><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/">LinkedIn</a></div>
+				<div><span>Links:&nbsp;</span></div>
+				<div><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/" target="_blank">LinkedIn</a></div>
 			</div>
 		</div>
   </div>
