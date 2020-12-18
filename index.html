@@ -66,7 +66,7 @@
 		.navigation-links {
 			display: flex;
 			justify-content: space-around;
-			width: 40%;
+			width: 50vw;
 			display: flex;
 		}
 
@@ -78,6 +78,22 @@
 			color: white;
 			letter-spacing: 1px;
 			font-weight: bold;
+			transition: 0.3s ease;
+		}
+
+		.navigation-links a:hover {
+			border-radius: 50px;
+			padding: 2px;
+			background-color: white;
+			color: black;
+		}
+
+		.navigation-links a:active {
+			letter-spacing: 3px;
+		}
+
+		.focused-nav  {
+			text-decoration: underline;
 		}
 
 		.burger {
@@ -137,18 +153,18 @@
 
 		.title-icon-box#about-title-icon-box {
 			margin: 10px auto;
+			background-color: white;
+			border: 2px solid black;
 		}
 
 		.about-background-left {
-			display: none;
-			z-index: -1;
+			z-index: -99999;
 			position: absolute;
 			right: 0px;
 			top: 0px;
 			background-color: #ffffff;
-			margin: 5px;
-			width: 48%;
-			height: 98%;
+			width: 70%;
+			height: 100%;
 		}
 
 		.my-card-divider {
@@ -186,8 +202,8 @@
 		}
 
 		#my-pfp {
-			width: 120px;
-			height: 120px;
+			width: 100px;
+			height: 100px;
 			border-radius: 100%;
 			margin: 10px auto;
 		}
@@ -199,6 +215,19 @@
 			display: flex;
 			flex-direction: column;
 			justify-content: space-around;
+			color: black;
+		}
+
+		.about-right .btn {
+			border: 2px solid #000000;
+			background-color: #ffffff;
+			color: black;
+		}
+
+		.about-right .btn:hover {
+			border: 2px solid #fffff;
+			background-color: #000000;
+			color: white;
 		}
 
 		.hello {
@@ -340,14 +369,14 @@
 			.navigation-links {
 				position: absolute;
 				right: 0px;
-				height: 60vh;
+				height: 80vh;
 				top: 8vh;
 				background-color: #363636; /*#02b4ba*/
 				display: flex;
 				flex-direction: column;
 				align-items: center;
 				min-width: 20vw;
-				max-width: 35vw;
+				max-width: 45vw;
 				transform: translateX(100%);
 				transition: transform 0.5s ease-in;
 			}
@@ -376,6 +405,20 @@
 				font-size: 12px;
 			}
 
+			.about-background-left {
+				left: 0px;
+				width: 100%;
+				height: 30%;
+			}
+
+			.about-left {
+				min-height: 50vh;
+			}
+
+			.my-card {
+				min-height: 40vh;
+			}
+
 			.title-icon-box {
 				min-width: 10px;
 				height: 10px;
@@ -383,6 +426,23 @@
 
 			.about-card {
 				flex-direction: column;
+			}
+
+			.about-right {
+				color: white;
+			}
+
+			.about-right .btn {
+				border: 2px solid #fffff;
+				background-color: #000000;
+				border: 2px solid white;
+				color: white;
+			}
+
+			.about-right .btn:hover {
+				border: 2px solid #000000;
+				background-color: #ffffff;
+				color: black;
 			}
 
 			#backToTopButton {
@@ -426,6 +486,19 @@
 	</style>
 	<script>
 		$(document).ready(function() {
+
+			// add scroll effects to the navigation button
+			$(".navigation-links a").click(function (){
+				// add underline effect to current nav
+				$(".navigation-links a").each(function() {
+					$(this).removeClass('focused-nav');
+				});
+				$(this).addClass('focused-nav');
+				var sectionElementID = $(this).attr('name');
+          $('html, body').animate({
+              scrollTop: $(sectionElementID).offset().top
+          }, 1000);
+      });
 
 				const navigationSlide = function() {
 					const burger = document.querySelector('.burger');
@@ -473,10 +546,9 @@
 				};
 				// add handler to back to top button
 				$('#backToTopButton').click(function() {
-					// on safari
-					document.body.scrollTop = 0;
-					// on other browsers
-					document.documentElement.scrollTop = 0;
+					$('html, body').animate({
+              scrollTop: 0
+          }, 1000);
 				});
 		});
 	</script>
@@ -495,10 +567,10 @@
           </div>
         </div>
          <ul class="container navigation-panel navigation-links navigation-hidden">
-              <li><a href="#about-me">About Me</a></li>
-              <li><a href="#resume">Resume</a></li>
-              <li><a href="#projects">Projects</a></li>
-              <li><a href="#contact-me">Contact Me</a></li>
+              <li><a name="#about-me">About Me</a></li>
+              <li><a name="#resume">Resume</a></li>
+              <li><a name="#projects">Projects</a></li>
+              <li><a name="#contact-me">Contact Me</a></li>
          </ul>
 				 <div class="burger">
 							<div class="line1"></div>
