@@ -7,26 +7,32 @@
   <title>Snake game</title>
   <style>
     /* mobile devices */
-    body {
-      padding: 0;
-      margin: 0;
-    }
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
 
-    .details {
-      display: flex;
-      justify-content: space-between;
-      margin: 0 auto;
-    }
+		body {
+			max-height: 100vh;
+			max-width: 100vw;
+		}
 
-    .scores {
-      display: flex;
-      justify-content: space-between;
-    }
+		.name, .instructions {
+			text-align: center;
+		}
+
+		.scores {
+			display: flex;
+			justify-content: space-around;
+		}
 
     .mobile-directional-btns {
     	position: fixed;
     	bottom: 20px;
     	right: 30px;
+			width: 20vw;
+			height: 20vw;
     	z-index: 99;
     	border: none;
     	outline: none;
@@ -74,26 +80,22 @@
   <main>
   </main>
   <div class="details">
-    <div class="description">
-      <h1>Snake</h1>
-    </div>
-    <div class="instructions">
-      <p>Use your arrows keys to chnage direction. If you are on mobile, use the directional buttons provided. Please play in full screen mode</p>
-    </div>
-    <div class="scores">
-      <div>
-        <h6>Size</h6>
-      </div>
-      <div>
-        <h5 id="snake-size"></h5>
-      </div>
-      <div>
-        <h6>Biggest Size</h6>
-      </div>
-      <div>
-        <h5 id="biggest-snake-size"></h5>
-      </div>
-    </div>
+    <div class="name">
+			<h1>Snake</h1>
+		</div>
+		<div class="instructions">
+			<p>Use the arrow keys to move, eat as much green food as posible</p>
+		</div>
+		<div class="scores">
+			<div class="current-size">
+				<h2>Current Size:</h2>
+				<h2 id="snake-size">1</h2>
+			</div>
+			<div class="biggest-size">
+				<h2>Biggest Size:</h2>
+				<h2 id="biggest-snake-size">1</h2>
+			</div>
+		</div>
   </div>
 </body>
 

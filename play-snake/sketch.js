@@ -26,7 +26,7 @@ function setup() {
   // set framerate to 10
   frameRate(12);
   // add buttons for mobile users
-  if(window.matchMedia("(max-width: 767px)").matches)
+  if(window.matchMedia("(max-width: 768px)").matches)
   {
     var upButton = $('<button id=up class=btn>up</button>');
     var downButton = $('<button id=down class=btn>down</button>');
