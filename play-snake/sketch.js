@@ -13,11 +13,11 @@ var food;
 // called once
 function setup() {
   // create board/canvas
-  let deviceWidth = window.screen.width-12;
-  let deviceHeight = window.screen.height-230;
+  let deviceWidth = window.screen.width;
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:300);
   let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
-  createCanvas(documentWidth, documentHeight);
+  createCanvas(deviceWidth, deviceHeight);
   // assign scale
   scl = 10;
   // assign/create new snake and food object with the same scale
