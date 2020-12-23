@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snake game</title>
+  <title>Visualize Bubble Sort</title>
   <style>
-    /* desktop */
+    /* desktop devices */
 		* {
 			padding: 0;
 			margin: 0;
@@ -14,118 +14,51 @@
 		}
 
 		body {
-			height: 100vh;
-			width: 100vw;
-			max-height: 100vh;
-			max-width: 100vw;
 			background-color: #101010;
-			color: #ffffff;
-			text-align: center;
 		}
 
-		main {
-
+		#defaultCanvas0 {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
 		}
-
-		.details {
-
-		}
-
-		.name, .instructions {
-			text-align: center;
-		}
-
-		.scores {
-			display: flex;
-			justify-content: space-around;
-		}
-
-		.mobile-directional-btns {
-			/*display: none;*/
-		}
-		/* end of desktop */
-
-		/* tablet */
-    /* end of tablet */
-
-		/* mobile */
-		/*@media all and (max-width: 768px;) {*/
-			.mobile-directional-btns {
-				position: fixed;
-				bottom: 10px;
-				left: 40%;
-				z-index: 99;
-				border: none;
-				outline: none;
-				background-color: #202020;
-				color: white;
-				cursor: pointer;
-				padding: 10px;
-				border-radius: 30px;
-				font-size: 30px;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-around;
-			}
-
-			.mobile-directional-btns div {
-				margin: 0 auto;
-				text-align: center;
-			}
-
-			.mobile-directional-btns button {
-				color: white;
-				background: transparent;
-				outline: none;
-				border: 1px solid white;
-				border-radius: 100%;
-				padding: 10px;
-			}
-		/*}*/
-		/* end of mobile */
-
   </style>
   <style>
     /* tablet devices */
-    @media all and (min-width: 768px){
+    @media all and (max-width: 1024px){
 
     }
   </style>
   <style>
-    /* desktop devices */
-    @media all and (min-width: 1000px){
+    /* mobile devices */
+    @media all and (max-width: 768px){
 
     }
   </style>
+	<style>
+    /* other defaults */
+
+  </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./p5.js"></script>
-  <script src="./addons/p5.sound.min.js"></script>
+  <!--<script src="./addons/p5.sound.js"></script>-->
   <script src="./sketch.js"></script>
-  <script src="./snake.js"></script>
-  <script src="./food.js"></script>
+	<script src="./bubble-sort.js"></script>
+	<!--<script>
+		$("<div class='inputs'>Testtt</div>").insertAfter($('main'));
+		for (let i = 0; i < 10; i++)
+		{
+			$('.inputs').append("<div><input type='number'/></div>");
+		}
+		//console.log("done");
+	</script>-->
+
 </head>
 
 <body>
   <main>
   </main>
-  <div class="details">
-    <div class="name">
-			<h1>Snake</h1>
-		</div>
-		<div class="instructions">
-			<p>Use the arrow keys to move, eat as much green food as posible, click f11 to play in full screen</p>
-		</div>
-		<div class="scores">
-			<div class="current-size">
-				<h2>Current Size:</h2>
-				<h2 id="snake-size">1</h2>
-			</div>
-			<div class="biggest-size">
-				<h2>Biggest Size:</h2>
-				<h2 id="biggest-snake-size">1</h2>
-			</div>
-		</div>
-  </div>
 </body>
 
 </html>
