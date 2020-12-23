@@ -27,7 +27,7 @@
 			left: 50%;
 			top: 40%;
 			transform: translate(-50%, -50%);*/
-			width: 70%;
+			width: 75%;
 			margin: 0 auto;
 		}
 
@@ -39,10 +39,10 @@
 			background-color: black;
 			color: white;
 			text-align: center;
-			min-width: 8vh;
+			min-width: 10vh;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-around;
+			justify-content: space-between;
 		}
 
 		.Btn {
@@ -52,6 +52,7 @@
 			color: white;
 			padding: 5px;
 			border-radius: 10px;
+			cursor: pointer;
 			transition: 0.5s ease;
 		}
 
@@ -60,17 +61,66 @@
 			background-color: #ffffff;
 			color: black;
 		}
+
+		#newValue {
+			outline: none;
+			border: none;
+			background: transparent;
+			color: white;
+			border-bottom: 2px solid white;
+		}
+
+		.values {
+			padding-bottom: 5px;
+			background-color: #151515;
+		}
+
+		.values table {
+			width: 90%;
+			margin: 0 auto;
+			border-collapse: collapse;
+		}
+
+		.values table button{
+			padding: 5px;
+			border: none;
+			outline: none;
+			background-color: red;
+			color: white;
+			border-radius: 0px;
+		}
+
+		.inputs {
+			padding-bottom: 5px;
+			background-color: #101010;
+		}
+
+		.sorts {
+			padding-bottom: 5px;
+			background-color: #151515;
+		}
+
+		.start {
+			padding-bottom: 5px;
+			background-color: #101010;
+		}
   </style>
   <style>
     /* tablet devices */
     @media all and (max-width: 1024px){
-
+			.main {
+				width: 95%;
+				margin: 0 auto;
+			}
     }
   </style>
   <style>
     /* mobile devices */
     @media all and (max-width: 768px){
-
+			.main {
+				width: 100%;
+				margin: 0 auto;
+			}
     }
   </style>
 	<style>
@@ -83,12 +133,16 @@
   <script src="./sketch.js"></script>
 	<script type="text/javascript" src="./listeners.js"></script>
 	<script src="./bubble-sort.js"></script>
+	<script src="./selection-sort.js"></script>
+	<script src="./insertion-sort.js"></script>
+	<script src="./merge-sort.js"></script>
+	<script src="./quick-sort.js"></script>
 
 </head>
 
 <body>
 	<div class="title">
-		<h1>Sorting Algorithimgs - Visualized</h1>
+		<h2>Sorting Algorithims - Visualized</h2>
 	</div>
 	<div class="main">
   <main>
@@ -97,7 +151,7 @@
 	<div class="control-center">
 		<div class="values">
 			<p>Current Values</p>
-			<span class="value"></span>
+			<table><tr><td class="value"></td></tr></table>
 			<button id="resetBtn" type="button" name="reset" class="Btn">Reset</button>
 			<button id="randomizeBtn" type="button" name="randomize" class="Btn">Randomize</button>
 		</div>

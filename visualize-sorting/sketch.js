@@ -16,8 +16,9 @@ let ready = false;
 // called once
 function setup() {
   // create board/canvas
-  let deviceWidth = window.screen.width - 500;
-  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:350);
+  let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 50:350);
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 300:350);
+	console.log(window.matchMedia("(max-width: 768px)").matches);
   let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
   createCanvas(deviceWidth, deviceHeight);
@@ -52,7 +53,7 @@ function draw() {
 					sorts[0] = new SelectionSort(scl, values);
 					break;
 				case "insertion":
-					sorts[0] = new insertionSort(scl, values);
+					sorts[0] = new InsertionSort(scl, values);
 					break;
 				case "merge":
 					sorts[0] = new MergeSort(scl, values);
@@ -109,11 +110,10 @@ function printArrayAll(arr, j, j1, done)
 //
 function showValuesAsText()
 {
-	var text = "";
+	$('.value button').remove();
 	for (let i = 0; i < values.length; i++)
 	{
-		text += values[i] + ((i == values.length-1) ? "" : ",");
+		$('.value').append('<button>' + values[i] + '</button>');
 	}
-	$('.value').text(text);
 }
 /* End of main board */
