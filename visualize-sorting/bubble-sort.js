@@ -28,14 +28,8 @@ var BubbleSort = function(scl, arr)
 		// whilst theres element to sort
 		if (this.i < arr.length - 1)
 		{
-			// check if we are done with the current iteration
-			if (this.j == arr.length-1-this.i)
-			{
-				this.j = 0;
-				this.i++;
-			}
 			// during one iteration, swap the largest element to the back
-			if (arr[this.j] > arr[this.j+1])
+			if (arr[this.j] >= arr[this.j+1])
 			{
 				//swap
 				let temp = arr[this.j];
@@ -44,6 +38,12 @@ var BubbleSort = function(scl, arr)
 			}
 			// move on to the next element
 			this.j++;
+			// check if we are done with the current iteration
+			if (this.j >= arr.length-1-this.i)
+			{
+				this.j = 0;
+				this.i++;
+			}
 		}
 		else
 		{
