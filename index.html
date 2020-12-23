@@ -19,6 +19,7 @@
 			overflow-x: hidden;
 			min-width: 350px;
 			color: white;
+			font-family: 'Courier New', monospace;
     }
 
 		#my-name-svg {
@@ -131,7 +132,7 @@
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
-			min-height: 8vh;
+			min-height: 10vh;
 			background-color: #363636;/*#02b4ba*/
 			font-family: sans-serif;
 			z-index: 99;
@@ -172,6 +173,7 @@
 			color: white;
 			letter-spacing: 1px;
 			font-weight: bold;
+			/*font-family: 'Brush Script MT', cursive;*/
 			transition: 0.3s ease;
 		}
 
@@ -313,16 +315,29 @@
 			color: black;
 		}
 
-		.about-right .btn {
-			border: 2px solid #000000;
+		.internal-redirecter.one {
+			border: 2px solid black;
 			background-color: #ffffff;
 			color: black;
+			margin-right: 3px;
 		}
 
-		.about-right .btn:hover {
-			border: 2px solid #fffff;
+		.internal-redirecter.one:hover {
+			border: 2px solid black;
 			background-color: #000000;
 			color: white;
+		}
+
+		.internal-redirecter.two {
+			border: 2px solid black;
+			background-color: #000000;
+			color: white;
+		}
+
+		.internal-redirecter.two:hover {
+			border: 2px solid black;
+			background-color: #ffffff;
+			color: black;
 		}
 
 		.hello {
@@ -480,7 +495,7 @@
 				position: absolute;
 				right: 0px;
 				height: 80vh;
-				top: 8vh;
+				top: 10vh;
 				background-color: #363636; /*#02b4ba*/
 				display: flex;
 				flex-direction: column;
@@ -543,15 +558,27 @@
 				color: white;
 			}
 
-			.about-right .btn {
-				border: 2px solid #fffff;
-				background-color: #000000;
+			.internal-redirecter.two {
 				border: 2px solid white;
+				background-color: #ffffff;
+				color: black;
+				margin-right: 3px;
+			}
+
+			.internal-redirecter.two:hover {
+				border: 2px solid black;
+				background-color: #000000;
 				color: white;
 			}
 
-			.about-right .btn:hover {
-				border: 2px solid #000000;
+			.internal-redirecter.one {
+				border: 2px solid black;
+				background-color: #000000;
+				color: white;
+			}
+
+			.internal-redirecter.one:hover {
+				border: 2px solid white;
 				background-color: #ffffff;
 				color: black;
 			}
@@ -601,10 +628,11 @@
 			// add scroll effects to the navigation button
 			$(".navigation-links a").click(function (){
 				// add underline effect to current nav
-				$(".navigation-links a").each(function() {
+
+				/*$(".navigation-links a").each(function() {
 					$(this).removeClass('focused-nav');
 				});
-				$(this).addClass('focused-nav');
+				$(this).addClass('focused-nav');*/
 				var sectionElementID = $(this).attr('name');
           $('html, body').animate({
               scrollTop: $(sectionElementID).offset().top
@@ -744,7 +772,7 @@
           </div>
         </div>
          <ul class="container navigation-panel navigation-links navigation-hidden">
-              <li><a name="#about-me" class="focused-nav">About Me</a></li>
+              <li><a name="#about-me">About Me</a></li>
               <li><a name="#resume">Resume</a></li>
               <li><a name="#projects">Projects</a></li>
               <li><a name="#contact-me">Contact Me</a></li>
@@ -794,7 +822,7 @@
 								<p>I'm Joshua Tetteh and I am currently  a student</p>
 							</div>
 							<div class="nav">
-								<div><a name="#resume" class="btn internal-redirecter">resume</a></div><div><a name="#projects" class="btn internal-redirecter">projects</a></div>
+								<div><a name="#resume" class="btn internal-redirecter one">resume</a></div><div><a name="#projects" class="btn internal-redirecter two">projects</a></div>
 							</div>
 							<div class="description-1">
 								<p>Aspiring Software Engineer. I am currently studying Business Information Technology. My course focuses on business, computing and information technology. </p>
