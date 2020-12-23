@@ -17,7 +17,7 @@ let ready = false;
 function setup() {
   // create board/canvas
   let deviceWidth = window.screen.width - 500;
-  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:300);
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:350);
   let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
   createCanvas(deviceWidth, deviceHeight);

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visualize Bubble Sort - JT</title>
+  <title>Visualize Sorting - JT</title>
   <style>
     /* desktop devices */
 		* {
@@ -15,6 +15,11 @@
 
 		body {
 			background-color: #303030;
+		}
+
+		.title {
+			text-align: center;
+			color: white;
 		}
 
 		.main {
@@ -31,8 +36,29 @@
 			left: 50%;
 			top: 80%;
 			transform: translate(-50%, -50%);*/
-			background-color: white;
+			background-color: black;
+			color: white;
 			text-align: center;
+			min-width: 8vh;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+		}
+
+		.Btn {
+			outline: none;
+			border: 3px solid #ffffff;
+			background-color: #000000;
+			color: white;
+			padding: 5px;
+			border-radius: 10px;
+			transition: 0.5s ease;
+		}
+
+		.Btn:hover {
+			border: 3px solid #000000;
+			background-color: #ffffff;
+			color: black;
 		}
   </style>
   <style>
@@ -61,6 +87,9 @@
 </head>
 
 <body>
+	<div class="title">
+		<h1>Sorting Algorithimgs - Visualized</h1>
+	</div>
 	<div class="main">
   <main>
   </main>
@@ -69,13 +98,13 @@
 		<div class="values">
 			<p>Current Values</p>
 			<span class="value"></span>
-			<button id="resetBtn" type="button" name="reset">Reset</button>
-			<button id="randomizeBtn" type="button" name="randomize">Randomize</button>
+			<button id="resetBtn" type="button" name="reset" class="Btn">Reset</button>
+			<button id="randomizeBtn" type="button" name="randomize" class="Btn">Randomize</button>
 		</div>
 		<div class="inputs">
 			<p>Insert a value into the list</p>
 			<input id="newValue" type="number" name="value" value="0" required/>
-			<button id="insertBtn" type="button" name="insert">Insert</button>
+			<button id="insertBtn" type="button" name="insert" class="Btn">Insert</button>
 		</div>
 		<div class="sorts">
 			<p>Select your prefered sorting method</p>
@@ -86,8 +115,8 @@
 			<input type="radio" id="quick" name="sortType" value="quick"><label for="quick">Quick Sort</label>
 		</div>
 		<div class="start">
-			<button id="startBtn" type="button" name="startBtn">Start</button>
-			<button id="stopBtn" type="button" name="stoBtn">Stop</button>
+			<button id="startBtn" type="button" name="startBtn" class="Btn">Start</button>
+			<button id="stopBtn" type="button" name="stoBtn" class="Btn">Stop</button>
 		</div>
 	</div>
 </body>

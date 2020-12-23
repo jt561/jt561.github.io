@@ -12,7 +12,7 @@ var BubbleSort = function(scl, arr)
 	this.done = false;
 
 	// print a the array
-	this.printArrayB = function(arr,scl)
+	/*this.printArrayB = function(arr,scl)
 	{
 		fill(255, 0, 0);
 		stroke(255, 255, 255);
@@ -20,7 +20,7 @@ var BubbleSort = function(scl, arr)
 		{
 			rect(k*scl, height, scl, arr[k]/1);
 		}
-	}
+	}*/
 
 	// actual sort
 	this.sort = function()
