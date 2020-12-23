@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joshua Tetteh - Portfolio</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-xBuQ/xzmlsLoJpyjoggmTEz8OWUFM0/RC5BsqQBDX2v5cMvDHcMakNTNrHIW2I5f" crossorigin="anonymous"></script>
+  <script src="./libs/jquery.keyframes.min.js"></script>
   <style>
     /* default/desktop */
     * {
@@ -25,10 +27,10 @@
 		#my-name-svg {
 			width: 90%;
 			height: 100%;
-			animation: fill-name-white 0.5s ease forwards 10s;
+			animation: 0.5s ease 5s 1 normal forwards running fill-name-white;
 		}
 
-		#my-name-svg path:nth-child(1){
+		/*#my-name-svg path:nth-child(1){
 			stroke-dasharray: 104.29911041259766px;
 			stroke-dashoffset: 104.29911041259766px;
 			animation: text-line-animate 2s ease forwards;
@@ -102,6 +104,20 @@
 				fill: white;
 			}
 		}
+
+		@keyframes text-line-animate-reversed {
+			to {
+				stroke-dashoffset: 255px;
+			}
+		}
+		@keyframes fill-name-white-reversed {
+			from {
+				fill: white;
+			}
+			to {
+				fill: transparent;
+			}
+		}*/
 
 		a {
 			text-decoration: none;
@@ -195,9 +211,10 @@
 
 		.burger {
 			display: none;
+			/*8verflow-x: hidden;*/
 		}
 
-		.burger div{
+		.burger div {
 			width: 25px;
 			height: 3px;
 			background-color: white;
@@ -206,9 +223,16 @@
 			margin: 2px auto;
 		}
 
+		/*.burger div:first-child {
+			transform: translateX(-20%);
+		}
+		.burger div:last-child {
+			transform: translateX(20%);
+		}*/
+
 		/* whole/actual page*/
 		.content {
-			width: 80%;
+			max-width: 80%;
 			margin: 0 auto;
 		}
 
@@ -624,6 +648,51 @@
 	</style>
 	<script>
 		$(document).ready(function() {
+
+			// continous name animation
+			// infinite loop
+			$("#my-name-svg").css("animation", `text-fill-animate1 3s linear 2s infinite alternate`);
+			$("#my-name-svg path").each(function(index) {
+				$(this).css("stroke-dasharray", `${$(this).get(0).getTotalLength()}`);
+				$(this).css("animation", `text-line-animate${index} 3s linear ${index/5*index}s infinite alternate`);
+				var css = `@keyframes text-line-animate${index} { 0% {stroke-dashoffset: ${$(this).get(0).getTotalLength()}} 100% {stroke-dashoffset: 0} }`,
+				head = document.head || document.getElementsByTagName('head')[0],
+				styleObj = document.querySelectorAll('style')[0];
+				if (index === 1) css += ` @keyframes text-fill-animate1 { 0% {fill: transparent} 100% {fill: white} }`;
+				//console.log(styleObj);
+				if (styleObj.styleSheet){
+				  // This is required for IE8 and below.
+				  styleObj.styleSheet.cssText = css;
+				} else {
+				  styleObj.appendChild(document.createTextNode(css));
+				}
+			});
+			/*setTimeout(animateName,6000);
+			function animateName()
+			{
+				if ($("#my-name-svg").css("animation-direction") === "normal")
+				{
+					$("#my-name-svg").css("animation-direction", "alternate");
+					$("#my-name-svg path").each(function() {
+						$(this).css("animation-direction", "alternate");
+					});
+					//loop
+					setTimeout(()=> {
+						animateName();
+					}, 1);
+				}
+				else
+				{
+				  $("#my-name-svg path").each(function() {
+						$(this).css("animation-direction", "normal");
+					});
+					$("#my-name-svg").css("animation-direction", "normal");
+					//loop
+					setTimeout(()=> {
+						animateName();
+					}, 6000);
+				}
+			}*/
 
 			// add scroll effects to the navigation button
 			$(".navigation-links a").click(function (){
