@@ -651,14 +651,14 @@
 
 			// continous name animation
 			// infinite loop
-			$("#my-name-svg").css("animation", `text-fill-animate1 3s linear 2s infinite alternate`);
+			$("#my-name-svg").css("animation", `text-fill-animate1 4s linear 15s infinite alternate`);
 			$("#my-name-svg path").each(function(index) {
 				$(this).css("stroke-dasharray", `${$(this).get(0).getTotalLength()}`);
-				$(this).css("animation", `text-line-animate${index} 3s linear ${index/5*index}s infinite alternate`);
-				var css = `@keyframes text-line-animate${index} { 0% {stroke-dashoffset: ${$(this).get(0).getTotalLength()}} 100% {stroke-dashoffset: 0} }`,
+				$(this).css("animation", `text-line-animate${index} 3s linear ${index}s infinite alternate`);
+				var css = `@keyframes text-line-animate${index} { 0% {stroke-dashoffset: ${$(this).get(0).getTotalLength()}} 50% {stroke-dashoffset: 0} 100% {stroke-dashoffset: 0} }`,
 				head = document.head || document.getElementsByTagName('head')[0],
 				styleObj = document.querySelectorAll('style')[0];
-				if (index === 1) css += ` @keyframes text-fill-animate1 { 0% {fill: transparent} 100% {fill: white} }`;
+				if (index === 1) css += ` @keyframes text-fill-animate1 { 0% {fill: transparent} 25% {fill: transparent} 50% {fill: white} 100% {fill: transparent} }`;
 				//console.log(styleObj);
 				if (styleObj.styleSheet){
 				  // This is required for IE8 and below.
