@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visualize Bubble Sort</title>
+  <title>Visualize Bubble Sort - JT</title>
   <style>
     /* desktop devices */
 		* {
@@ -14,14 +14,25 @@
 		}
 
 		body {
-			background-color: #101010;
+			background-color: #303030;
 		}
 
-		#defaultCanvas0 {
-			position: absolute;
+		.main {
+			/*position: absolute;
 			left: 50%;
-			top: 50%;
-			transform: translate(-50%, -50%);
+			top: 40%;
+			transform: translate(-50%, -50%);*/
+			width: 70%;
+			margin: 0 auto;
+		}
+
+		.control-center {
+			/*position: absolute;
+			left: 50%;
+			top: 80%;
+			transform: translate(-50%, -50%);*/
+			background-color: white;
+			text-align: center;
 		}
   </style>
   <style>
@@ -44,21 +55,41 @@
   <script src="./p5.js"></script>
   <!--<script src="./addons/p5.sound.js"></script>-->
   <script src="./sketch.js"></script>
+	<script type="text/javascript" src="./listeners.js"></script>
 	<script src="./bubble-sort.js"></script>
-	<!--<script>
-		$("<div class='inputs'>Testtt</div>").insertAfter($('main'));
-		for (let i = 0; i < 10; i++)
-		{
-			$('.inputs').append("<div><input type='number'/></div>");
-		}
-		//console.log("done");
-	</script>-->
 
 </head>
 
 <body>
+	<div class="main">
   <main>
   </main>
+	</div>
+	<div class="control-center">
+		<div class="values">
+			<p>Current Values</p>
+			<span class="value"></span>
+			<button id="resetBtn" type="button" name="reset">Reset</button>
+			<button id="randomizeBtn" type="button" name="randomize">Randomize</button>
+		</div>
+		<div class="inputs">
+			<p>Insert a value into the list</p>
+			<input id="newValue" type="number" name="value" value="0" required/>
+			<button id="insertBtn" type="button" name="insert">Insert</button>
+		</div>
+		<div class="sorts">
+			<p>Select your prefered sorting method</p>
+			<input type="radio" id="bubble" name="sortType" value="bubble" checked="checked"><label for="bubble">Bubble Sort</label>
+			<input type="radio" id="selection" name="sortType" value="selection"><label for="selection">Selection Sort</label>
+			<input type="radio" id="insertion" name="sortType" value="insertion"><label for="insertion">Insertion Sort</label>
+			<input type="radio" id="merge" name="sortType" value="merge"><label for="merge">Merge Sort</label>
+			<input type="radio" id="quick" name="sortType" value="quick"><label for="quick">Quick Sort</label>
+		</div>
+		<div class="start">
+			<button id="startBtn" type="button" name="startBtn">Start</button>
+			<button id="stopBtn" type="button" name="stoBtn">Stop</button>
+		</div>
+	</div>
 </body>
 
 </html>
