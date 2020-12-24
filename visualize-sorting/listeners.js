@@ -1,11 +1,11 @@
 $(document).ready(function() {
 
-	$('#resetBtn').click(function() {
+	$('#resetBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
 		values.splice(0, values.length);
 	});
-	$('#randomizeBtn').click(function() {
+	$('#randomizeBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
 		values.splice(0, values.length);
@@ -15,21 +15,21 @@ $(document).ready(function() {
 			values.push(Math.floor(Math.random() * 31));
 		}
 	});
-	$('#insertBtn').click(function() {
+	$('#insertBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
 		values.push($('#newValue').val());
 	});
-	$('#startBtn').click(function() {
+	$('#startBtn').on('click touchstart', function() {
 		paused = false;
 		sortType = $('input[name="sortType"]:checked').val();;
 	});
-	$('#stopBtn').click(function() {
+	$('#stopBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
 	});
 
-	$('input[type="radio"]').click(function() {
+	$('input[type="radio"]').on('click touchstart', function() {
 		sortType = $(this).val();
 		console.log(sortType);
 		$('#stopBtn').click();
