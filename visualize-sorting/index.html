@@ -104,6 +104,12 @@
 			padding-bottom: 5px;
 			background-color: #101010;
 		}
+
+		.warning {
+			display: none;
+			color: yellow;
+			font-size: 13px;
+		}
   </style>
   <style>
     /* tablet devices */
@@ -111,6 +117,10 @@
 			.main {
 				width: 95%;
 				margin: 0 auto;
+			}
+
+			.warning {
+				display: inline-block;
 			}
     }
   </style>
@@ -150,7 +160,7 @@
 	</div>
 	<div class="control-center">
 		<div class="values">
-			<p>Current Values</p>
+			<p>Current Values<span class="warning">If you are on mobile, you might need to click every button twice for it to respond, I'm not sure why, sorry.</span></p>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="resetBtn" type="button" name="reset" class="Btn">Reset</button>
 			<button id="randomizeBtn" type="button" name="randomize" class="Btn">Randomize</button>

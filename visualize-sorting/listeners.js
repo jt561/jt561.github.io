@@ -30,6 +30,8 @@ $(document).ready(function() {
 	});
 
 	$('input[type="radio"]').click(function() {
+		sortType = $(this).val();
+		console.log(sortType);
 		$('#stopBtn').click();
 	});
 
