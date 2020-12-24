@@ -14,7 +14,7 @@ var food;
 function setup() {
   // create board/canvas
   let deviceWidth = window.screen.width;
-  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:300);
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:(window.matchMedia("(max-width: 1024px)").matches) ? 500:300);
   let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
   createCanvas(deviceWidth, deviceHeight);
@@ -25,32 +25,7 @@ function setup() {
   food = new Food(scl);
   // set framerate to 10
   frameRate(12);
-  // add buttons for mobile users
-  if(window.matchMedia("(max-width: 768px)").matches)
-  {
-    var upButton = $('<button id=up class=btn>up</button>');
-    var downButton = $('<button id=down class=btn>down</button>');
-    var leftButton = $('<button id=left class=btn>left</button>');
-    var rightButton = $('<button id=right class=btn>right</button>');
-    upButton.click(function() {
-      if (snake.velocity.y != 1) snake.changeVelocity(0,-1);
-    });
-    downButton.click(function() {
-      if (snake.velocity.y != -1) snake.changeVelocity(0,1);
-    });
-    leftButton.click(function() {
-      if (snake.velocity.x != 1) snake.changeVelocity(-1,0);
-    });
-    rightButton.click(function() {
-      if (snake.velocity.x != -1) snake.changeVelocity(1,0);
-    });
-    $('body').append('<div class="mobile-directional-btns"><div class=row1></div><div class=row2></div><div class=row3></div></div>');
-    $('.mobile-directional-btns .row1').append(upButton);
-    $('.mobile-directional-btns .row2').append( leftButton, rightButton);
-    $('.mobile-directional-btns .row3').append(downButton);
-  }
 }
-
 // draw loop
 function draw() {
   // background color - black

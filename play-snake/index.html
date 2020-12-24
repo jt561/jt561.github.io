@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snake game</title>
   <style>
-    /* desktop */
+    /* desktop devices */
 		* {
 			padding: 0;
 			margin: 0;
@@ -41,20 +41,19 @@
 		}
 
 		.mobile-directional-btns {
-			/*display: none;*/
+			display: none;
 		}
-		/* end of desktop */
+		/* end of desktop devices */
+  </style>
+  <style>
+    /* tablet devices */
+    @media all and (max-width: 1024px){
+			body {
+				font-size: 20px;
+			}
 
-		/* tablet */
-    /* end of tablet */
-
-		/* mobile */
-		/*@media all and (max-width: 768px;) {*/
 			.mobile-directional-btns {
-				position: fixed;
-				bottom: 10px;
-				left: 40%;
-				z-index: 99;
+				display: inline-block;
 				border: none;
 				outline: none;
 				background-color: #202020;
@@ -62,7 +61,7 @@
 				cursor: pointer;
 				padding: 10px;
 				border-radius: 30px;
-				font-size: 30px;
+				font-size: 50px;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-around;
@@ -81,25 +80,25 @@
 				border-radius: 100%;
 				padding: 10px;
 			}
-		/*}*/
-		/* end of mobile */
-
+    }
+		/* end of tablet devices */
   </style>
   <style>
-    /* tablet devices */
-    @media all and (min-width: 768px){
+    /* mobile devices */
+    @media all and (max-width: 768px){
+			body {
+				font-size: 15px;
+			}
 
+			.mobile-directional-btns {
+				font-size: 30px;
+			}
     }
-  </style>
-  <style>
-    /* desktop devices */
-    @media all and (min-width: 1000px){
-
-    }
+		/* end of mobile devices */
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="./p5.js"></script>
-  <script src="./addons/p5.sound.min.js"></script>
+	<script src="../libs/p5/lib/p5.js"></script>
+	<script src="./listeners.js"></script>
   <script src="./sketch.js"></script>
   <script src="./snake.js"></script>
   <script src="./food.js"></script>
@@ -108,6 +107,18 @@
 <body>
   <main>
   </main>
+	<div class="mobile-directional-btns">
+		<div class=row1>
+			<button id="up" class=btn>up</button>
+		</div>
+		<div class=row2>
+			<button id="left" class=btn>left</button>
+			<button id="right" class=btn>right</button>
+		</div>
+		<div class=row3>
+			<button id="down" class=btn>down</button>
+		</div>
+	</div>
   <div class="details">
     <div class="name">
 			<h1>Snake</h1>
