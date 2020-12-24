@@ -238,7 +238,7 @@
 		/* each page*/
 		.section {
 			width: 80%;
-			margin: 10vh auto;
+			margin: 12vh auto;
 			background: transparent;
 			padding: 50px 20px;
 			border-bottom: 2px solid black;
@@ -424,27 +424,42 @@
 			display: flex;
 			justify-content: space-around;
 			border-radius: 3px;
-			box-shadow: 0px 2px 5px 5px #404040;
+			box-shadow: -4px 4px 3px 3px #404040;
 		}
 
 		.card .left{
-			min-width: 35%;
+			width: 30%;
 		}
 
 		.card .right{
-			min-width: 65%;
+			width: 60%;
 		}
 
 		.one-sided {
 			display: block;
 		}
 
+		.title-wrapper {
+			word-wrap: break-word;
+		}
+
+		.random-projects ul {
+			list-style-type: none;
+		}
+
 		.skill-set-box-icon {
 			display: inline-block;
-			width: 16px;
+			min-width: 16px;
 			height: 16px;
-			background-color: blue;
 			vertical-align: middle;
+			margin-right: 3px;
+			margin: 10px auto;
+			background-color: white;
+			border: 2px solid black;
+		}
+
+		.projects-description {
+			text-align: center;
 		}
 
 		/* footer */
@@ -494,7 +509,7 @@
 			border: 2px solid black;
 			background-color: #ffffff;
 			color: black;
-			margin-right: 3px;
+			width: 100%;
 		}
 
 		.semi-important-link:hover {
@@ -664,6 +679,20 @@
 				color: black;
 			}
 
+			/* resume */
+			.card {
+				flex-direction: column;
+			}
+
+			.card .left{
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			.card .right{
+				width: 100%;
+			}
+
 			#backToTopButton {
 				min-width: 6vw;
 				min-height: 6vw;
@@ -761,8 +790,8 @@
 				$(this).addClass('focused-nav');*/
 				var sectionElementID = $(this).attr('name');
           $('html, body').animate({
-              scrollTop: $(sectionElementID).offset().top
-          }, 1000);
+              scrollTop: $(sectionElementID).offset().top-20
+          }, 2000);
       });
 
 			$('.internal-redirecter').click(function (){
@@ -1108,7 +1137,7 @@
 								<div class="skill-set-card-right bottom">
 									<h3>Languages</h3>
 									<div>
-										<div style="display: inline-block; width: 16px; height: 16px; background-color: blue; vertical-align: middle;"></div>
+										<div class="skill-set-box-icon"></div>
 										<p style="display: inline-block;">English (Native)</p>
 									</div>
 								</div>
@@ -1155,19 +1184,27 @@
 					</div>
 				</div>
 				<div class="section-content">
-					<p>Projects description</p>
+					<p class="projects-description">This page contains the various projects I have worked on or currently working on. This should provide an overview of the type of work I'm able to achieve and enjoy doing</p>
 					<div class="all-projects">
-						<div class="a-project">
-							<h5>Random work</h5>
-							<a href="./play-snake" class="semi-important-link" target="_blank">Play Snake</a>
-							<a href="./visualize-sorting" class="semi-important-link" target="_blank">Visualize Sorting Algorithms</a>
-						</div>
-						<div class="a-project">
-							<div class="a-project-left">
-
+						<div class="projects-cards-wrapper">
+							<div class="project-card card one-sided">
+								<div class="random-projects">
+									<h3>Random work</h3>
+									<ul>
+										<li><a href="./play-snake" class="semi-important-link" target="_blank">Play Snake</a></li>
+										<li><a href="./visualize-sorting" class="semi-important-link" target="_blank">Visualize Sorting Algorithms</a></li>
+									</ul>
+								</div>
 							</div>
-							<div class="a-project-right">
-
+							<div class="project-card card">
+								<div class="project-card-left left">
+									<p>Coming soon</p>
+								</div>
+								<div class="project-card-right right">
+								<h3 class="project-title">Coming soon</h3>
+								 <p class="project-role"><b>Coming soon</b></p>
+								 <p class="project-details">Coming soon</p>
+								</div>
 							</div>
 						</div>
 					</div>
