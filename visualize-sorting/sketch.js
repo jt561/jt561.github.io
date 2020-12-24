@@ -9,7 +9,7 @@ let heightscl;
 // set values to be sorted
 let values = [0, 1, 2, 3, 5, 6, 7, 2, 4, 8, 25, 1, 2, 4, 5, 6, 20, 2, 4, 8];
 let sorts = [];
-let sortType;
+let sortType = "";
 
 let ready = false;
 
