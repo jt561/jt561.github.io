@@ -10,7 +10,7 @@ var Snake = function(scl)
   this.width = this.scl;
   this.position = createVector(width/2,height/2);
   this.body.push(this.position); // first element in body is also head
-  this.velocity = createVector(1,0);
+  this.vector = createVector(1,0);
   this.size = 1;
   this.biggestSize = 1;
 
@@ -46,26 +46,26 @@ var Snake = function(scl)
     }
 
     // get heads new position
-    let scaledVelocity = createVector(this.velocity.x*this.scl, this.velocity.y*this.scl);
-    this.position.add(scaledVelocity);
+    let scaledVector = createVector(this.vector.x*this.scl, this.vector.y*this.scl);
+    this.position.add(scaledVector);
 
     // constraint at edges
-    if (this.velocity.x === -1)
+    if (this.vector.x === -1)
     {
       // if going left, reset to the right when it hits left edge
       if(this.position.x < 0) this.position.x = width-this.scl;
     }
-    else if (this.velocity.x === 1)
+    else if (this.vector.x === 1)
     {
       // if going right, reset to the left when it hits right edge
       if(this.position.x > width) this.position.x = 0;
     }
-    else if (this.velocity.y === - 1)
+    else if (this.vector.y === - 1)
     {
       // if going up, reset to the bottom when it hits up edge
       if(this.position.y < 0) this.position.y = height-this.scl;
     }
-    else if (this.velocity.y === 1)
+    else if (this.vector.y === 1)
     {
       // if going down, reset to the top when it hits bottom edge
       if(this.position.y > height) this.position.y = 0;
@@ -77,9 +77,9 @@ var Snake = function(scl)
   }
 
   /* chnages snakes direction */
-  this.changeVelocity = function(xVelocity, yVelocity)
+  this.changeVector = function(xVector, yVector)
   {
-    this.velocity = createVector(xVelocity, yVelocity);
+    this.vector = createVector(xVector, yVector);
   }
 
   /* checks to see if snake has hit it self, and deltes its body */
@@ -96,7 +96,7 @@ var Snake = function(scl)
     }
     if(collided)
     {
-      this.biggestSize = this.size;
+      if (this.size > this.biggestSize) this.biggestSize = this.size;
       this.clearBody();
     }
   }

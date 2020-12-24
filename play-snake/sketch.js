@@ -36,25 +36,26 @@ function draw() {
   snake.update();
   // reset snake if it hits it self
   snake.resolveSelfCollision();
-  food.draw();
-  snake.draw();
-  // if snake eats food
+	// if snake eats food
   if (dist(snake.position.x,snake.position.y,food.position.x,food.position.y) < 20)
   {
     food.newPosition();
     snake.grow();
   }
   updateScores();
+	
+  food.draw();
+  snake.draw();
 }
 
 // keyboard listener
 function keyPressed() {
     switch(keyCode)
     {
-      case UP_ARROW: if (snake.velocity.y != 1)  snake.changeVelocity(0,-1); break;
-      case DOWN_ARROW: if (snake.velocity.y != -1) snake.changeVelocity(0,1); break;
-      case LEFT_ARROW: if (snake.velocity.x != 1) snake.changeVelocity(-1,0); break;
-      case RIGHT_ARROW: if (snake.velocity.x != -1) snake.changeVelocity(1,0); break;
+      case UP_ARROW: if (snake.vector.y != 1)  snake.changeVector(0,-1); break;
+      case DOWN_ARROW: if (snake.vector.y != -1) snake.changeVector(0,1); break;
+      case LEFT_ARROW: if (snake.vector.x != 1) snake.changeVector(-1,0); break;
+      case RIGHT_ARROW: if (snake.vector.x != -1) snake.changeVector(1,0); break;
     }
 }
 
@@ -62,7 +63,7 @@ function keyPressed() {
 function updateScores()
 {
   let size = snake.size;
-  let biggestSize = (snake.size > snake.biggestSize) ? snake.size : snake.biggestSize;
+  let biggestSize = (snake.size > snake.biggestSize) ? snake.size:snake.biggestSize;
   $('#snake-size').text(size);
   $('#biggest-snake-size').text(biggestSize);
 }
