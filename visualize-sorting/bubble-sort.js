@@ -43,11 +43,11 @@ var BubbleSort = function(scl, arr)
 				this.j = 0;
 				this.i++;
 				// if no swaps were made, array is sorted
-				if (this.swaps <= 0) this.i = values.length;
+				if (this.swaps <= 0) this.i = arr.length;
 				this.swaps = 0;
 			}
 		}
-		// if array is "sorted" after al iteration
+		// if array is "sorted" after all iteration
 		else
 		{
 				this.done = true;
