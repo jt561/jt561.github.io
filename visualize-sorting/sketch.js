@@ -35,7 +35,6 @@ function draw() {
 		// assign scale
 		scl = width/values.length;
 		heightscl = height/Math.max(...values)/1.1;
-		//console.log(heightscl, height, Math.max(...values));
 		printArrayAll(values, values.length, values.length, false);
 	}
 	else
@@ -68,13 +67,9 @@ function draw() {
 		{
 			// call appropriate sort
 			sorts[0].sort();
-			// print array
-			//printArray(values);
 		}
 	}
 	showValuesAsText();
-	//console.log(sortType);
-	//console.log(paused, ready);
 }
 
 // print array

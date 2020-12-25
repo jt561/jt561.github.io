@@ -12,17 +12,6 @@ var BubbleSort = function(scl, arr)
 	this.done = false;
 	this.swaps = 0;
 
-	// print a the array
-	/*this.printArrayB = function(arr,scl)
-	{
-		fill(255, 0, 0);
-		stroke(255, 255, 255);
-		for (let k = 0; k < arr.length; k++)
-		{
-			rect(k*scl, height, scl, arr[k]/1);
-		}
-	}*/
-
 	// actual sort
 	this.sort = function()
 	{
@@ -31,11 +20,12 @@ var BubbleSort = function(scl, arr)
 		{
 			if (this.j < arr.length - 1 - this.i)
 			{
+				// current element and next element
 				let c = this.j;
 				let n = this.j+1;
 				let left = parseInt(arr[c]);
 				let right = parseInt(arr[n]);
-				//console.log(`${arr[c]}>${arr[n]} = ${(arr[c]>arr[n])}`);
+
 				if (left > right)
 				{
 					//swap
@@ -44,16 +34,20 @@ var BubbleSort = function(scl, arr)
 					arr[n] = temp;
 					this.swaps++;
 				}
+				// move to next element
 				this.j++;
 			}
 			else
 			{
+				// if we are done with one inner iteration
 				this.j = 0;
 				this.i++;
+				// if no swaps were made, array is sorted
 				if (this.swaps <= 0) this.i = values.length;
 				this.swaps = 0;
 			}
 		}
+		// if array is "sorted" after al iteration
 		else
 		{
 				this.done = true;
