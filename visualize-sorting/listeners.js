@@ -48,12 +48,12 @@ $(document).ready(function() {
 		ready = false;
 	});
 
-	$('input[type="radio"]').on('click touchstart', function() {
+	/*$('input[type="radio"]').on('click', function() {
 		// display warning for unavailable sorts and hide it after
 		$('.all-sorts-not-available-warning').css("display", "block");
 		setTimeout(() => { $('.all-sorts-not-available-warning').css("display", "none"); },2000);
 		sortType = $(this).val();
 		$('#stopBtn').click();
-	});
+	});*/
 
 });
