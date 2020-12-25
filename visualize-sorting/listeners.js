@@ -6,11 +6,11 @@ $(document).ready(function() {
 	      this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
 	  }
 	};
-	jQuery.event.special.touchmove = {
+	/*jQuery.event.special.touchmove = {
     setup: function( _, ns, handle ) {
         this.addEventListener('touchmove', handle, { passive: !ns.includes('noPreventDefault') });
     }
-	};
+	};*/
 
 	$('#resetBtn').on('click touchstart', function() {
 		paused = true;
@@ -27,10 +27,27 @@ $(document).ready(function() {
 			values.push(Math.floor(Math.random() * 31));
 		}
 	});
+
+	// button to increment value that will be inserted;
+	$('.incAndDec').on('click touchstart', function() {
+		if($(this).attr('id') == 'increaseValBtn')
+		{
+			let inc = parseInt($('#newValue').val())+1;
+			if (inc > 100) inc = 100;
+			$('#newValue').val(inc);
+		}
+		else if($(this).attr('id') == 'decreaseValBtn')
+		{
+			let dec = parseInt($('#newValue').val())-1;
+			if (dec < 0) dec = 0;
+			$('#newValue').val(dec);
+		}
+	});
+
 	$('#insertBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
-		if ($('#newValue').val() == "")
+		if ($('#newValue').val() == "" || $('#newValue').val() < 0)
 		{
 			values.push(0);
 		}
@@ -39,21 +56,26 @@ $(document).ready(function() {
 			values.push($('#newValue').val());
 		}
 	});
+
+	$('#bubble').addClass('currentSort');
+	$('.radio1').on('click touchstart', function() {
+		// display warning for unavailable sorts and hide it after
+		$('.all-sorts-not-available-warning').css("display", "block");
+		setTimeout(() => { $('.all-sorts-not-available-warning').css("display", "none"); },2000);
+		$('.radio1').each(function() {
+			$(this).removeClass('currentSort');
+		});
+		$(this).addClass('currentSort');
+		sortType = $(this).attr('id');
+		$('#stopBtn').click();
+	});
+
 	$('#startBtn').on('click touchstart', function() {
 		paused = false;
-		sortType = $('input[name="sortType"]:checked').val();;
 	});
 	$('#stopBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
 	});
-
-	/*$('input[type="radio"]').on('click', function() {
-		// display warning for unavailable sorts and hide it after
-		$('.all-sorts-not-available-warning').css("display", "block");
-		setTimeout(() => { $('.all-sorts-not-available-warning').css("display", "none"); },2000);
-		sortType = $(this).val();
-		$('#stopBtn').click();
-	});*/
 
 });

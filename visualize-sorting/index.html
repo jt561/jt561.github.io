@@ -52,7 +52,7 @@
 			background-color: #000000;
 			color: white;
 			padding: 5px;
-			border-radius: 10px;
+			border-radius: 5px;
 			cursor: pointer;
 			transition: 0.5s ease;
 		}
@@ -104,6 +104,21 @@
 			background-color: #151515;
 		}
 
+		.sorts .radio1 {
+			padding: 5px;
+			border: none;
+			outline: none;
+			background-color: white;
+			color: black;
+			border-radius: 0px;
+		}
+
+		.sorts .radio1.currentSort {
+			border: 2px solid white;
+			background-color: black;
+			color: white;
+		}
+
 		.all-sorts-not-available-warning {
 			display: none;
 			color: yellow;
@@ -135,7 +150,7 @@
 
 			.control-center div {
 				width: 100%;
-				margin: 4px auto;
+				margin: 1px auto;
 			}
 
 			.values table button {
@@ -143,8 +158,22 @@
 			}
 
 			.control-center input {
-				margin: 5px;
+				margin: 3px;
 				padding: 2.5px;
+				-webkit-user-select: initial;
+			  -khtml-user-select: initial;
+			  -moz-user-select: initial;
+			  -ms-user-select: initial;
+			  user-select: initial;
+				/*z-index: 999999;*/
+			}
+
+			#newValue {
+				outline: initial;
+				border: 2px solid white;
+				background: transparent;
+				color: white;
+				min-width: 20%;
 			}
 
 			.warning {
@@ -160,12 +189,20 @@
 				margin: 0 auto;
 			}
 
+			.control-center {
+				font-size: 12px;
+			}
+
 			.title {
 				font-size: 12px;
 			}
 
 			.current-values-text-note {
 				font-size: 10px;
+			}
+
+			.sorts label {
+				font-size: 12px;
 			}
     }
   </style>
@@ -196,24 +233,26 @@
 	<div class="control-center">
 		<div class="values">
 			<p class="current-values-text-note">Current Values</p>
-			<span class="warning">If you are on mobile, you might need to click every button twice for it to respond.</span>
+			<span class="warning">If you are on mobile, you might need to click every input twice for it to respond.</span>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="resetBtn" type="button" name="reset" class="Btn">Reset</button>
 			<button id="randomizeBtn" type="button" name="randomize" class="Btn">Randomize</button>
 		</div>
 		<div class="inputs">
 			<p>Insert a value into the list</p>
-			<input id="newValue" type="number" name="value" value="1" min="0" required/>
+			<button id="decreaseValBtn" type="button" name="decrease" class="Btn incAndDec"><</button>
+			<input id="newValue" type="number" name="value" value="1" min="0" max="100" required/>
+			<button id="increaseValBtn" type="button" name="increase" class="Btn incAndDec">></button>
 			<button id="insertBtn" type="button" name="insert" class="Btn">Insert</button>
 		</div>
 		<div class="sorts">
 			<p>Select your prefered sorting method</p>
 			<p class="all-sorts-not-available-warning">only bubble sort is avaible now</p>
-			<input type="radio" id="bubble" name="sortType" value="bubble" checked="checked"><label for="bubble">Bubble Sort</label>
-			<input type="radio" id="selection" name="sortType" value="selection"><label for="selection">Selection Sort</label>
-			<input type="radio" id="insertion" name="sortType" value="insertion"><label for="insertion">Insertion Sort</label>
-			<input type="radio" id="merge" name="sortType" value="merge"><label for="merge">Merge Sort</label>
-			<input type="radio" id="quick" name="sortType" value="quick"><label for="quick">Quick Sort</label>
+			<button type="button" class="radio1" id="bubble" name="sortType" value="bubble">Bubble Sort</button>
+			<button type="button" class="radio1" id="selection" name="sortType" value="selection">Selection Sort</button>
+			<button type="button" class="radio1" id="insertion" name="sortType" value="insertion">Insertion Sort</button>
+			<button type="button" class="radio1" id="merge" name="sortType" value="merge">Merge Sort</button>
+			<button type="button" class="radio1" id="quick" name="sortType" value="quick">Quick Sort</button>
 		</div>
 		<div class="start">
 			<button id="startBtn" type="button" name="startBtn" class="Btn">Start</button>
