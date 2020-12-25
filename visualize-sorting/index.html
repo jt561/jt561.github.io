@@ -46,6 +46,7 @@
 		}
 
 		.Btn {
+			display: in-block;
 			outline: none;
 			border: 3px solid #ffffff;
 			background-color: #000000;
@@ -128,12 +129,27 @@
 				margin: 0 auto;
 			}
 
-			.warning {
-				display: block;
+			.control-center {
+				justify-content: space-between;
 			}
 
-			input[type="radio"] {
-				z-index: 100;
+			.control-center div {
+				width: 100%;
+				margin: 5px auto;
+			}
+
+			.values table button {
+				padding: 2px;
+			}
+
+			.control-center input {
+				margin: 10px;
+				padding: 5px;
+				z-index: auto;
+			}
+
+			.warning {
+				display: block;
 			}
     }
   </style>
@@ -143,6 +159,14 @@
 			.main {
 				width: 100%;
 				margin: 0 auto;
+			}
+
+			.title {
+				font-size: 12px;
+			}
+
+			.current-values-text-note {
+				font-size: 10px;
 			}
     }
   </style>
@@ -172,7 +196,7 @@
 	</div>
 	<div class="control-center">
 		<div class="values">
-			<p>Current Values</p>
+			<p class="current-values-text-note">Current Values</p>
 			<span class="warning">If you are on mobile, you might need to click every button twice for it to respond.</span>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="resetBtn" type="button" name="reset" class="Btn">Reset</button>

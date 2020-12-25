@@ -30,7 +30,14 @@ $(document).ready(function() {
 	$('#insertBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
-		values.push($('#newValue').val());
+		if ($('#newValue').val() == "")
+		{
+			values.push(0);
+		}
+		else
+		{
+			values.push($('#newValue').val());
+		}
 	});
 	$('#startBtn').on('click touchstart', function() {
 		paused = false;
