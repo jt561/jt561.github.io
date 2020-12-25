@@ -130,7 +130,7 @@
 			background-color: #000000;
 			color: white;
 			padding: 5px;
-			border-radius: 10px;
+			border-radius: 5px;
 			transition: 0.5s ease;
 		}
 
@@ -198,6 +198,7 @@
 			background-color: white;
 			color: black;
 			text-decoration: none;
+			border-radius: 2px;
 		}
 
 		.navigation-links a:active {
@@ -488,7 +489,7 @@
 			font-weight: bold;
 			cursor: pointer;
 			padding: 10px;
-			border-radius: 50px;
+			border-radius: 10px;
 			font-size: 10px;
 			transition: 0.5s ease;
 		}
@@ -596,8 +597,7 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				min-width: 20vw;
-				max-width: 50vw;
+				min-width: 70vw;
 				transform: translateX(100%);
 				transition: transform 0.5s ease-in;
 			}
@@ -790,15 +790,15 @@
 				$(this).addClass('focused-nav');*/
 				var sectionElementID = $(this).attr('name');
           $('html, body').animate({
-              scrollTop: $(sectionElementID).offset().top-20
-          }, 2000);
+              scrollTop: $(sectionElementID).offset().top-140
+          }, 300);
       });
 
 			$('.internal-redirecter').click(function (){
 				var sectionElementID = $(this).attr('name');
           $('html, body').animate({
-              scrollTop: $(sectionElementID).offset().top
-          }, 1000);
+              scrollTop: $(sectionElementID).offset().top-140
+          }, 3500);
       });
 
 				const navigationSlide = function() {
@@ -1010,8 +1010,8 @@
 									<p class="locationText">Medway Building, Central Ave, Gillingham, Chatham ME4 4AG, United Kingdom</p>
 								</div>
 								<div class="education-card-right right">
-									<p>Subject: BSc Business Information Technology with a Year in Industry</p>
-									<p>Grade(Expected): 2:1</p>
+									<p><b>Subject:</b> BSc Business Information Technology with a Year in Industry</p>
+									<p><b>Grade(Expected):</b> 2:1</p>
 									<p>This course focuses on computing and business modules, helping me understand the importance of information systems in businesses and equiped me with skills such as leadership and management skills, communication skills and programming skills.</p>
 								</div>
 							</div>
@@ -1023,8 +1023,8 @@
 									<p class="locationText">Belmont Grove, Lewisham, London SE13 5GE, United Kingdom</p>
 								</div>
 								<div class="education-card-right right">
-									<p>Subject: BTEC Extended Diploma in Business</p>
-									<p>Grade(Achieved): Distinction*, Distinction, Distinction</p>
+									<p><b>Subject:</b> BTEC Extended Diploma in Business</p>
+									<p><b>Grade(Achieved):</b> Distinction*, Distinction, Distinction</p>
 									<p>This course gave me indepth knowledge about business marketing, finance, recruitment, customer service, research, globolisation, management, training and development and finaly business law.</p>
 								</div>
 							</div>
@@ -1036,8 +1036,8 @@
 									<p class="locationText">112 Peckham Rd, Peckham, London SE15 5DZ, United Kingdom</p>
 								</div>
 								<div class="education-card-right right">
-									<p>Subjects: (GCSE's) Maths, Science, Additional Science, ICT, English Language, English Literature, Art</p>
-									<p>Grades(Achieved): A, B, B, B, C, C, C</p>
+									<p><b>Subjects:</b> (GCSE's) Maths, Science, Additional Science, ICT, English Language, English Literature, Art</p>
+									<p><b>Grades(Achieved):</b> A, B, B, B, C, C, C</p>
 									<p>I acquired a lot of fundemental and essential knowledge from my GCSE subject swhich have made me the man I am today</p>
 								</div>
 							</div>
