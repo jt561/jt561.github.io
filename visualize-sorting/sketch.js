@@ -43,7 +43,6 @@ function draw() {
 		// set up the type of sort, create the right sort object to use
 		if (!ready)
 		{
-			console.log(sortType);
 			switch (sortType)
 			{
 				case "bubble":
