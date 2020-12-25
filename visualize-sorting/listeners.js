@@ -7,10 +7,15 @@ $(document).ready(function() {
 	  }
 	};
 
-	$('#resetBtn').on('click touchstart', function() {
+	$('#clearBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
 		values.splice(0, values.length);
+	});
+	$('#resetBtn').on('click touchstart', function() {
+		paused = true;
+		ready = false;
+		values = [...valuesCopy];
 	});
 	$('#randomizeBtn').on('click touchstart', function() {
 		paused = true;
@@ -21,21 +26,36 @@ $(document).ready(function() {
 		{
 			values.push(Math.floor(Math.random() * 31));
 		}
+		valuesCopy = [...values];
 	});
 
 	// button to increment value that will be inserted;
 	$('.incAndDec').on('click touchstart', function() {
 		if($(this).attr('id') == 'increaseValBtn')
 		{
-			let inc = parseInt($('#newValue').val())+1;
-			if (inc > 100) inc = 100;
-			$('#newValue').val(inc);
+			if ($('#newValue').val() == "")
+			{
+				$('#newValue').val(1);
+			}
+			else
+			{
+				let inc = parseInt($('#newValue').val())+1;
+				if (inc > 100) inc = 100;
+				$('#newValue').val(inc);
+			}
 		}
 		else if($(this).attr('id') == 'decreaseValBtn')
 		{
-			let dec = parseInt($('#newValue').val())-1;
-			if (dec < 0) dec = 0;
-			$('#newValue').val(dec);
+			if ($('#newValue').val() == "")
+			{
+				$('#newValue').val(0);
+			}
+			else
+			{
+				let dec = parseInt($('#newValue').val())-1;
+				if (dec < 0) dec = 0;
+				$('#newValue').val(dec);
+			}
 		}
 	});
 
@@ -50,6 +70,13 @@ $(document).ready(function() {
 		{
 			values.push($('#newValue').val());
 		}
+		valuesCopy = [...values];
+	});
+	$('#removeBtn').on('click touchstart', function() {
+		paused = true;
+		ready = false;
+		values.pop();
+		valuesCopy = [...values];
 	});
 
 	$('#bubble').addClass('currentSort');
@@ -66,6 +93,7 @@ $(document).ready(function() {
 	});
 
 	$('#startBtn').on('click touchstart', function() {
+		valuesCopy = [...values];
 		paused = false;
 	});
 	$('#stopBtn').on('click touchstart', function() {
