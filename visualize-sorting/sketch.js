@@ -23,12 +23,14 @@ let ready = false;
 // called once
 function setup() {
   // create board/canvas
+	// full width for mobile, less for tablet and desktop
   let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 50:350);
   let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 400:380);
-  let documentWidth = $(document).width() - 5;
+	// not using these for now
+	let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
   createCanvas(deviceWidth, deviceHeight);
-  // set framerate to 10
+  // set a framerate/loop speed
   frameRate(20);
 }
 
@@ -37,17 +39,21 @@ function draw() {
   // background color - black
   background(0,0,0);
 
+	// before sorting
 	if (paused)
 	{
+		// the end time hasnt been set
 		timeSet = false;
-		// assign scale
+		// assign scale/ size of the bars/values
 		scl = width/values.length;
 		heightscl = height/Math.max(...values)/1.1;
+		// draw the bars for the values
 		printArrayAll(values, values.length, values.length, false);
 	}
 	else
 	{
 		// set up the type of sort, create the right sort object to use
+		// should only run once
 		if (!ready)
 		{
 			switch (sortType)
@@ -73,10 +79,11 @@ function draw() {
 		}
 		else
 		{
-			// call appropriate sort
+			// call appropriate sort, start soring
 			sorts[0].sort();
 		}
 	}
+	// display the raw values, in underneath the graph
 	showValuesAsText();
 }
 
@@ -84,10 +91,14 @@ function draw() {
 function printArrayAll(arr, j, j1, done)
 {
 	stroke(255, 255, 255);
+	// for each value
 	for (let i = 0; i < arr.length; i++)
 	{
+		// if done sorting
 		if (done)
 		{
+			// set end time
+			// should only run once
 			if (!timeSet)
 			{
 				// stop timer
@@ -96,13 +107,16 @@ function printArrayAll(arr, j, j1, done)
 				timeTaken = endTime - startTime;
 				timeSet = true;
 			}
+			// display time taken for sorting to finish
 			fill(255, 255, 255);
 			textSize(30);
 			text((timeTaken/1000)+"s",width/2,height/2);
 			fill(0, 255, 0);
 		}
+		// whilst still sorting
 		else
 		{
+			// highligh the 2 given values as red and blue
 			if (i == j)
 			{
 				fill(0, 255, 0);
@@ -111,11 +125,13 @@ function printArrayAll(arr, j, j1, done)
 			{
 				fill(0, 0, 255);
 			}
+			// highlight all values as red
 			else
 			{
 				fill(255, 0, 0);
 			}
 		}
+		// draw/colour all values
 		rect(i*scl, height, scl, -arr[i]*heightscl);
 	}
 }
@@ -123,7 +139,9 @@ function printArrayAll(arr, j, j1, done)
 // shows array values as text under the canvas, they are placed in buttons inside a table.
 function showValuesAsText()
 {
+	// remove all values shown
 	$('.value button').remove();
+	// refresh the row with the values in array
 	for (let i = 0; i < values.length; i++)
 	{
 		$('.value').append('<button>' + values[i] + '</button>');
@@ -131,13 +149,19 @@ function showValuesAsText()
 }
 
 // used to create and display timer on page
+// it displays a count,in a button tag
 function updateTimer()
 {
+	// exit condition
+	// if it should be running
 	if (timerActive)
 	{
+		// set a 1milli dealay and increment count,
+		// uses recursion
 		setTimeout(() => {
 			let currentTime = $('#timer1 .v').text();
 			currentTime = parseInt(currentTime);
+			// add one to current time
 			$('#timer1 .v').text(currentTime +  1);
 			updateTimer();
 		},1);

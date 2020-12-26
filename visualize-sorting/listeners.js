@@ -16,43 +16,55 @@ $(document).ready(function() {
 		}
 	});
 
+	// add event listeners to all buttons on the page
 	$('#clearBtn').on('click touchstart', function() {
+		// "pauses" the sorting loop
 		paused = true;
 		ready = false;
+		// clears array
 		values.splice(0, values.length);
 	});
 	$('#resetBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
+		// keeps copy of array for resseting purposed
 		values = [...valuesCopy];
 	});
 	$('#randomizeBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
+		// clear array
 		values.splice(0, values.length);
+		// fill it up with new values between 0-30,
+		// with max array length also being between 0-30
 		let limit = Math.floor(Math.random() * 31);
 		for (let i = 0; i < limit; i++)
 		{
 			values.push(Math.floor(Math.random() * 31));
 		}
+		// store copy of new array
 		valuesCopy = [...values];
 	});
 
-	// button to increment value that will be inserted;
+	// button to increment and decrement value that will be inserted;
 	$('.incAndDec').on('click touchstart', function() {
+		// increase button
 		if($(this).attr('id') == 'increaseValBtn')
 		{
+			// default is 1
 			if ($('#newValue').val() == "")
 			{
 				$('#newValue').val(1);
 			}
 			else
 			{
+				// increase until it reaches max of 100
 				let inc = parseInt($('#newValue').val())+1;
 				if (inc > 100) inc = 100;
 				$('#newValue').val(inc);
 			}
 		}
+		// decrement button
 		else if($(this).attr('id') == 'decreaseValBtn')
 		{
 			if ($('#newValue').val() == "")
@@ -61,6 +73,7 @@ $(document).ready(function() {
 			}
 			else
 			{
+				// decrease until it reaches 0
 				let dec = parseInt($('#newValue').val())-1;
 				if (dec < 0) dec = 0;
 				$('#newValue').val(dec);
@@ -68,9 +81,11 @@ $(document).ready(function() {
 		}
 	});
 
+	// add value in input field to end of array
 	$('#insertBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
+		// default and minimum to add is 0
 		if ($('#newValue').val() == "" || $('#newValue').val() < 0)
 		{
 			values.push(0);
@@ -79,8 +94,10 @@ $(document).ready(function() {
 		{
 			values.push($('#newValue').val());
 		}
+		// store copy of new array for resseting purporses
 		valuesCopy = [...values];
 	});
+	// removes values from end of array
 	$('#removeBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
@@ -88,24 +105,31 @@ $(document).ready(function() {
 		valuesCopy = [...values];
 	});
 
+	// select bubble sort by default at start
 	$('#bubble').addClass('currentSort');
+	// add litenrs to all sorting method buttons
+	// so it can be highlighred and used
 	$('.radio1').on('click touchstart', function() {
 		$('.radio1').each(function() {
 			$(this).removeClass('currentSort');
 		});
 		$(this).addClass('currentSort');
 		sortType = $(this).attr('id');
+		// stop sorting when we change sorts
 		$('#stopBtn').click();
 	});
 
+	// starts the sorting algorithms
 	$('#startBtn').on('click touchstart', function() {
 		// store values for reset
 		valuesCopy = [...values];
+		// unpause
 		paused = false;
 		// keep track of time it takes to finish sorting
 		startTime = new Date().getTime();
 		// start timer
 		// if only it has been started after it was stopped
+		// so if we are not paused, but havent started sorting
 		if (!paused && !ready)
 		{
 			$('#timer1 .v').text(0);
@@ -113,6 +137,8 @@ $(document).ready(function() {
 			updateTimer();
 		}
 	});
+
+	// stops sorting and also, the timer
 	$('#stopBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
