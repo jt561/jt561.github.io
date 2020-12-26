@@ -51,6 +51,7 @@
 			color: black;
 		}
 
+		/* navigation panel at the top */
 		.header {
 			position: -webkit-sticky;
 			position: sticky;
@@ -64,6 +65,7 @@
 			z-index: 99;
 		}
 
+		/* the page scroll bar in the header */
 		.pixels-covered {
 			position: absolute;
 			bottom: 0;
@@ -73,6 +75,7 @@
 			width: 0%;
 		}
 
+		/* h1 tag with my name in header */
 		.my-name {
 			color: white;
 			text-transform: uppercase;
@@ -84,6 +87,8 @@
 			font-size: 13px;
 		}
 
+
+		/* navigation container */
 		.navigation-links {
 			display: flex;
 			justify-content: space-around;
@@ -119,6 +124,7 @@
 			text-decoration: underline;
 		}
 
+		/* button to open navigation */
 		.burger {
 			display: none;
 		}
@@ -164,6 +170,7 @@
 			margin: 0 auto;
 		}
 
+		/* small square boxes infront of texts */
 		.title-icon-box {
 			display: inline-block;
 			min-width: 16px;
@@ -241,6 +248,7 @@
 			color: black;
 		}
 
+		/* anchor tags with local href */
 		.internal-redirecter.one {
 			border: 2px solid black;
 			background-color: #ffffff;
@@ -278,6 +286,7 @@
 			margin: 5px 0px;
 		}
 
+		/* anchor tags in first section */
 		.nav {
 			font-weight: bold;
 			padding-top: 4px;
@@ -289,6 +298,7 @@
 			height: 100%;
 		}
 
+		/* small bar under first card */
 		.social-links {
 			background-color: #ffffff;
 		}
@@ -407,6 +417,7 @@
 			min-width: 20vw;
 		}
 
+		/* projects links */
 		.semi-important-link {
 			margin-top: 5px;
 			border: 2px solid black;
@@ -619,6 +630,7 @@
 			}
 		}
 
+		/* bars for navigation button */
 		.toggle.line1 {
 			transform: rotate(-45deg) translate(-5px, 2px);
 		}
@@ -638,12 +650,16 @@
 			// infinite loop
 			$("#my-name-svg").css("animation", `text-fill-animate1 4s linear 15s infinite alternate`);
 			$("#my-name-svg path").each(function(index) {
+				/* set max offset for svg */
 				$(this).css("stroke-dasharray", `${$(this).get(0).getTotalLength()}`);
+				/* add animation to texts lines */
 				$(this).css("animation", `text-line-animate${index} 3s linear ${index}s infinite alternate`);
+				/* create animation for each text */
 				var css = `@keyframes text-line-animate${index} { 0% {stroke-dashoffset: ${$(this).get(0).getTotalLength()}} 50% {stroke-dashoffset: 0} 100% {stroke-dashoffset: 0} }`,
-				head = document.head || document.getElementsByTagName('head')[0],
-				styleObj = document.querySelectorAll('style')[0];
+				head = document.head || document.getElementsByTagName('head')[0], /* get head tag  */
+				styleObj = document.querySelectorAll('style')[0];/* get first style tag  */
 				if (index === 1) css += ` @keyframes text-fill-animate1 { 0% {fill: transparent} 25% {fill: transparent} 50% {fill: white} 100% {fill: transparent} }`;
+				/* append new css in style tag */
 				if (styleObj.styleSheet){
 				  // This is required for IE8 and below.
 				  styleObj.styleSheet.cssText = css;
@@ -667,63 +683,65 @@
           }, 3500);
       });
 
-				const navigationSlide = function() {
-					const burger = document.querySelector('.burger');
-					const navigation = document.querySelector('.navigation-links');
-					const navigationLinks = document.querySelectorAll('.navigation-links li');
+			// create function to add listener to navigation button
+			// get nav button, nav container and each anchor tag
+			const navigationSlide = function() {
+				const burger = document.querySelector('.burger');
+				const navigation = document.querySelector('.navigation-links');
+				const navigationLinks = document.querySelectorAll('.navigation-links li');
 
-					// toggle nav
-					burger.addEventListener('click', function() {
-						navigation.classList.toggle('navigation-active');
-						navigation.classList.toggle('navigation-hidden');
+				// toggle nav
+				burger.addEventListener('click', function() {
+					navigation.classList.toggle('navigation-active');
+					navigation.classList.toggle('navigation-hidden');
 
-						// animate navigationLinks
-						navigationLinks.forEach(function(link, index) {
-							if (link.style.animation)
-							{
-								link.style.animation = '';
-							}
-							else
-							{
-								link.style.animation = `navigationLinkFade 0.5s ease forwards ${index/7+0.3}s`;
-							}
-						});
-
-						// animate burger
-						document.querySelectorAll('.burger div').forEach(function(div) {
-							div.classList.toggle('toggle');
-						});
+					// animate navigationLinks
+					navigationLinks.forEach(function(link, index) {
+						if (link.style.animation)
+						{
+							link.style.animation = '';
+						}
+						else
+						{
+							link.style.animation = `navigationLinkFade 0.5s ease forwards ${index/7+0.3}s`;
+						}
 					});
-				}
 
-				// call to add effects of nav for mobile
-				navigationSlide();
-
-				// hide/display backToTopButton
-				window.onscroll = function() {
-					// check for safari or any other brower
-				  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150)
-				  {
-				    $('#backToTopButton').css("display","block");
-				  }
-				  else
-				  {
-				    $('#backToTopButton').css("display","none");
-				  }
-
-					// percentage bar
-					var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-				  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-				  var scrolled = (winScroll / height) * 100;
-					$('.pixels-covered').css("width", scrolled + "%");
-				};
-
-				// add handler to back to top button
-				$('#backToTopButton').click(function() {
-					$('html, body').animate({
-              scrollTop: 0
-          }, 1000);
+					// animate burger
+					document.querySelectorAll('.burger div').forEach(function(div) {
+						div.classList.toggle('toggle');
+					});
 				});
+			}
+
+			// call to add effects of nav, for mobile
+			navigationSlide();
+
+			// hide/display backToTopButton
+			window.onscroll = function() {
+				// check for safari or any other brower
+			  if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150)
+			  {
+			    $('#backToTopButton').css("display","block");
+			  }
+			  else
+			  {
+			    $('#backToTopButton').css("display","none");
+			  }
+
+				// percentage bar/ page scroll progress bar
+				var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+			  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+			  var scrolled = (winScroll / height) * 100;
+				$('.pixels-covered').css("width", scrolled + "%");
+			};
+
+			// add handler to back to top button
+			$('#backToTopButton').click(function() {
+				$('html, body').animate({
+            scrollTop: 0
+        }, 1000);
+			});
 
 		});
 	</script>
