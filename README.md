@@ -1,5 +1,5 @@
-This repository was created to be a portfolio with some persoanl details and projects.
-Please view it respectively.
+**This repository was created to be a portfolio with some personal details and projects.
+Please view it respectively.**
 
 [LICENSE](./LICENSE)
 ## Welcome to GitHub Pages
