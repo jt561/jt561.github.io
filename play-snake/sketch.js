@@ -13,12 +13,15 @@ var food;
 // called once
 function setup() {
   // create board/canvas
+	// full width of screen
   let deviceWidth = window.screen.width;
+	// try to get only 50% of screen on mobile, but higher percentage on tablet and desktop
   let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 280:(window.matchMedia("(max-width: 1024px)").matches) ? 500:300);
-  let documentWidth = $(document).width() - 5;
+	// not using document size now
+	let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
   createCanvas(deviceWidth, deviceHeight);
-  // assign scale
+  // assign scale/size of a square
   scl = 10;
   // assign/create new snake and food object with the same scale
   snake = new Snake(scl);
@@ -43,7 +46,7 @@ function draw() {
     snake.grow();
   }
   updateScores();
-	
+
   food.draw();
   snake.draw();
 }
