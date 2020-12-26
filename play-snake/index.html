@@ -75,7 +75,7 @@
 				outline: none;
 				border: 1px solid white;
 				border-radius: 100%;
-				padding: 10px;
+				padding: 15px 10px;
 			}
     }
 		/* end of tablet devices */
@@ -84,6 +84,7 @@
     /* mobile devices */
     @media all and (max-width: 768px){
 			body {
+				max-height: 80vh;
 				font-size: 15px;
 			}
 
@@ -91,9 +92,26 @@
 			.mobile-directional-btns {
 				font-size: 30px;
 			}
+
+			.current-size {
+				font-size: 10px;
+				position: fixed;
+				left: 10px;
+				bottom: 25vh;
+			}
+
+			.biggest-size {
+				font-size: 10px;
+				position: fixed;
+				right: 10px;
+				bottom: 25vh;
+			}
     }
 		/* end of mobile devices */
   </style>
+	<style>
+		/* other defaults */
+	</style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="../libs/p5/lib/p5.js"></script>
 	<script src="./listeners.js"></script>
@@ -107,14 +125,14 @@
   </main>
 	<div class="mobile-directional-btns">
 		<div class=row1>
-			<button id="up" class=btn>up</button>
+			<button id="up" class=btn>&nbsp&nbsp&nbsp&nbsp&nbspup&nbsp&nbsp&nbsp&nbsp&nbsp</button>
 		</div>
 		<div class=row2>
-			<button id="left" class=btn>left</button>
-			<button id="right" class=btn>right</button>
+			<button id="left" class=btn>&nbsp&nbsp&nbsp&nbspleft&nbsp&nbsp&nbsp&nbsp</button>
+			<button id="right" class=btn>&nbsp&nbsp&nbsp&nbspright&nbsp&nbsp&nbsp&nbsp</button>
 		</div>
 		<div class=row3>
-			<button id="down" class=btn>down</button>
+			<button id="down" class=btn>&nbsp&nbsp&nbspdown&nbsp&nbsp&nbsp</button>
 		</div>
 	</div>
   <div class="details">
