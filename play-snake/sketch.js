@@ -51,6 +51,19 @@ function draw() {
   snake.draw();
 }
 
+// responsive canvas when the window size changes
+function windowResized() {
+	// only on desktop
+	if ((window.matchMedia("(min-width: 1024px)").matches))
+	{
+		// full width of screen
+	  let deviceWidth = windowWidth;
+		// try to get only 50% of screen on mobile, but higher percentage on tablet and desktop
+	  let deviceHeight = windowHeight - 300;
+	  resizeCanvas(deviceWidth, deviceHeight);
+	}
+}
+
 // keyboard listener
 function keyPressed() {
     switch(keyCode)
