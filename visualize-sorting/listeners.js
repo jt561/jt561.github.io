@@ -7,13 +7,14 @@ $(document).ready(function() {
 	  }
 	};
 
-	// add listener to the "?"/pop up button
+	// add listenr to first/page/? alert button
+	$('#pageAlertBtn').on('click touchstart', function() {
+		alert("Welcome to my sorting algorithms visualization tool.\nThis site should provide you with visuals for different sorting algorithms on any list of your choice. \nThis site was created by Joshua Tetteh.");
+	});
+
+	// add listener to second/ the "?"/pop up button
 	$('.popup').on('click touchstart', function() {
 		$('#myPopup').toggleClass('show');
-		if ($('#myPopup').hasClass('show'))
-		{
-			alert("Welcome to my sorting algorithms visualization tool.\nThis site should provide you with visuals for different sorting algorithms on any list of your choice. \nThis site was created by Joshua Tetteh.");
-		}
 	});
 
 	// add event listeners to all buttons on the page
