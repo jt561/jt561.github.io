@@ -1,3 +1,7 @@
+This repository was created to be a portfolio with some persoanl details and projects.
+Please view it respectively.
+
+[LICENSE](./LICENSE)
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/jt561/jt561.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
