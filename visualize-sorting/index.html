@@ -58,6 +58,67 @@
 			}
 		}
 
+		.current-values-text-note {
+			display: inline-block;
+		}
+
+		/* Popup container - can be anything you want */
+		.popup {
+		  position: relative;
+		  display: inline;
+		  cursor: pointer;
+		  -webkit-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		/* The actual popup */
+		.popup .popuptext {
+		  visibility: hidden;
+		  width: 160px;
+		  background-color: #555;
+		  color: #fff;
+		  text-align: center;
+		  border-radius: 6px;
+		  padding: 8px 0;
+		  position: absolute;
+		  z-index: 1;
+		  bottom: 125%;
+		  left: 50%;
+		  margin-left: -80px;
+		}
+
+		/* Popup arrow */
+		.popup .popuptext::after {
+		  content: "";
+		  position: absolute;
+		  top: 100%;
+		  left: 50%;
+		  margin-left: -5px;
+		  border-width: 5px;
+		  border-style: solid;
+		  border-color: #555 transparent transparent transparent;
+		}
+
+		/* Toggle this class - hide and show the popup */
+		.popup .show {
+		  visibility: visible;
+		  -webkit-animation: fadeIn 1s;
+		  animation: fadeIn 1s;
+		}
+
+		/* Add animation (fade in the popup) */
+		@-webkit-keyframes fadeIn {
+		  from {opacity: 0;}
+		  to {opacity: 1;}
+		}
+
+		@keyframes fadeIn {
+		  from {opacity: 0;}
+		  to {opacity:1 ;}
+		}
+
 		#newValue {
 			outline: none;
 			border: none;
@@ -112,21 +173,9 @@
 			color: white;
 		}
 
-		.all-sorts-not-available-warning {
-			display: none;
-			color: yellow;
-			font-size: 15px;
-		}
-
 		.start {
 			padding-bottom: 5px;
 			background-color: #101010;
-		}
-
-		.warning {
-			display: none;
-			color: yellow;
-			font-size: 13px;
 		}
   </style>
   <style>
@@ -166,15 +215,6 @@
 			.current-values-text-note {
 				font-size: 20px;
 			}
-
-			.all-sorts-not-available-warning {
-				font-size: 12px;
-			}
-
-			.warning {
-				font-size: 15px;
-				display: block;
-			}
     }
   </style>
   <style>
@@ -195,14 +235,6 @@
 
 			.current-values-text-note {
 				font-size: 15px;
-			}
-
-			.all-sorts-not-available-warning {
-				font-size: 10px;
-			}
-
-			.warning {
-				font-size: 10px;
 			}
 
 			.sorts label {
@@ -237,7 +269,9 @@
 	<div class="control-center">
 		<div class="values">
 			<p class="current-values-text-note">Current Values</p>
-			<span class="warning">If you are on mobile, you might need to click every input twice for it to respond.</span>
+			<div class="popup"><button class="Btn">?</button>
+			  <span class="popuptext" id="myPopup">-This site should allow you to Visualize sorting algorithms with any list of your choice.Please note, the time it takes is based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.- -If you are on mobile, you might need to click every input twice for it to respond.- -Only bubble & selection sort is currently available.--click the question mark again to hide this pop-up.-</span>
+			</div>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="timer1" type="button" name="timer" class="Btn">Timer:<i class="v">0</i>&nbspcount</button>
 			<button id="clearBtn" type="button" name="clear" class="Btn">Clear</button>
@@ -254,7 +288,6 @@
 		</div>
 		<div class="sorts">
 			<p>Select your prefered sorting method</p>
-			<p class="all-sorts-not-available-warning">only bubble & selection sort is avaible now</p>
 			<button type="button" class="radio1" id="bubble" name="sortType" value="bubble">Bubble Sort</button>
 			<button type="button" class="radio1" id="selection" name="sortType" value="selection">Selection Sort</button>
 			<button type="button" class="radio1" id="insertion" name="sortType" value="insertion">Insertion Sort</button>

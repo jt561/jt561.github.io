@@ -7,6 +7,15 @@ $(document).ready(function() {
 	  }
 	};
 
+	// add listener to the "?"/pop up button
+	$('.popup').on('click touchstart', function() {
+		$('#myPopup').toggleClass('show');
+		if ($('#myPopup').hasClass('show'))
+		{
+			alert("Welcome to my sorting algorithms visualization tool.\nThis site should provide you with visuals for different sorting algorithms on any list of your choice. \nThis site was created by Joshua Tetteh.");
+		}
+	});
+
 	$('#clearBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
@@ -81,9 +90,6 @@ $(document).ready(function() {
 
 	$('#bubble').addClass('currentSort');
 	$('.radio1').on('click touchstart', function() {
-		// display warning for unavailable sorts and hide it after
-		$('.all-sorts-not-available-warning').css("display", "block");
-		setTimeout(() => { $('.all-sorts-not-available-warning').css("display", "none"); },2000);
 		$('.radio1').each(function() {
 			$(this).removeClass('currentSort');
 		});
