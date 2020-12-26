@@ -11,6 +11,12 @@ let values = [0, 1, 2, 3, 5, 6, 7, 2, 4, 8, 25, 1, 2, 4, 5, 6, 20, 2, 4, 8];
 let valuesCopy = [...values];
 let sorts = [];
 let sortType = "bubble";
+let timerActive = false;
+let startTime = 0;
+let endTime = 0;
+let timeSet = false;
+// time taken in milliseconds
+let timeTaken = 0;
 
 let ready = false;
 
@@ -33,6 +39,7 @@ function draw() {
 
 	if (paused)
 	{
+		timeSet = false;
 		// assign scale
 		scl = width/values.length;
 		heightscl = height/Math.max(...values)/1.1;
@@ -81,6 +88,17 @@ function printArrayAll(arr, j, j1, done)
 	{
 		if (done)
 		{
+			if (!timeSet)
+			{
+				// stop timer
+				timerActive = false;
+				endTime = new Date().getTime();
+				timeTaken = endTime - startTime;
+				timeSet = true;
+			}
+			fill(255, 255, 255);
+			textSize(30);
+			text((timeTaken/1000)+"s",width/2,height/2);
 			fill(0, 255, 0);
 		}
 		else
@@ -102,13 +120,27 @@ function printArrayAll(arr, j, j1, done)
 	}
 }
 
-//
+// shows array values as text under the canvas, they are placed in buttons inside a table.
 function showValuesAsText()
 {
 	$('.value button').remove();
 	for (let i = 0; i < values.length; i++)
 	{
 		$('.value').append('<button>' + values[i] + '</button>');
+	}
+}
+
+// used to create and display timer on page
+function updateTimer()
+{
+	if (timerActive)
+	{
+		setTimeout(() => {
+			let currentTime = $('#timer1 .v').text();
+			currentTime = parseInt(currentTime);
+			$('#timer1 .v').text(currentTime +  1);
+			updateTimer();
+		},1);
 	}
 }
 /* End of main board */

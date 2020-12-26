@@ -93,12 +93,25 @@ $(document).ready(function() {
 	});
 
 	$('#startBtn').on('click touchstart', function() {
+		// store values for reset
 		valuesCopy = [...values];
 		paused = false;
+		// keep track of time it takes to finish sorting
+		startTime = new Date().getTime();
+		// start timer
+		// if only it has been started after it was stopped
+		if (!paused && !ready)
+		{
+			$('#timer1 .v').text(0);
+			timerActive = true;
+			updateTimer();
+		}
 	});
 	$('#stopBtn').on('click touchstart', function() {
 		paused = true;
 		ready = false;
+		// stop timer
+		timerActive = false;
 	});
 
 });
