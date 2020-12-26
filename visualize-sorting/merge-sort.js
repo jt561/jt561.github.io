@@ -14,7 +14,7 @@ var MergeSort = function(scl, arr)
 	// actual sort
 	this.sort = function()
 	{
-		printArrayAll(arr, this.j, this.j+1, this.done);
+		printArrayAll(arr, this.j, this.j+1, this.j, this.done);
 	}
 }
 /* End of merge sort algorithm */

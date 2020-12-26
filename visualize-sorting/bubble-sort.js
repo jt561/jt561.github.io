@@ -52,7 +52,7 @@ var BubbleSort = function(scl, arr)
 		{
 				this.done = true;
 		}
-		printArrayAll(arr, this.j, this.j+1, this.done);
+		printArrayAll(arr, this.j, this.j+1, this.j+1, this.done);
 	}
 }
 /* End of bubble sort algorithm */

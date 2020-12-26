@@ -64,7 +64,7 @@ var SelectionSort = function(scl, arr)
 		{
 				this.done = true;
 		}
-		printArrayAll(arr, this.i, this.j, this.done);
+		printArrayAll(arr, this.i, this.j, this.currentMinIndex, this.done);
 	}
 }
 /* End of selection sort algorithm */

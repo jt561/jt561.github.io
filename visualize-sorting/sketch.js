@@ -7,20 +7,25 @@ let paused = true;
 let scl;
 let heightscl;
 // set values to be sorted
-let values = [0, 1, 2, 3, 5, 6, 7, 2, 4, 8, 25, 1, 2, 4, 5, 6, 20, 2, 4, 8];
+let values = [25, 1, 8, 20, 5, 6, 7, 2, 4, 8, 0, 1, 2, 4, 5, 6, 3, 2, 2, 4];
 let valuesCopy = [...values];
+// sorting algorithm objects
 let sorts = [];
+// default sorting algorithm
 let sortType = "bubble";
+// whether it should be running a counter
 let timerActive = false;
+// start time, end time, and timeset which keeps track of whether time taken
+// has been set
 let startTime = 0;
 let endTime = 0;
 let timeSet = false;
 // time taken in milliseconds
 let timeTaken = 0;
-
+// ready to sort
 let ready = false;
 
-// called once
+// called once at start
 function setup() {
   // create board/canvas
 	// full width for mobile, less for tablet and desktop
@@ -48,7 +53,7 @@ function draw() {
 		scl = width/values.length;
 		heightscl = height/Math.max(...values)/1.1;
 		// draw the bars for the values
-		printArrayAll(values, values.length, values.length, false);
+		printArrayAll(values, values.length, values.length, values.length, false);
 	}
 	else
 	{
@@ -76,6 +81,8 @@ function draw() {
 			}
 			// start using the sort object
 			ready = true;
+			// dont run on an empty array
+			if (values.length < 1) { ready = false; paused = true; }
 		}
 		else
 		{
@@ -88,7 +95,7 @@ function draw() {
 }
 
 // print array
-function printArrayAll(arr, j, j1, done)
+function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 {
 	stroke(255, 255, 255);
 	// for each value
@@ -107,23 +114,25 @@ function printArrayAll(arr, j, j1, done)
 				timeTaken = endTime - startTime;
 				timeSet = true;
 			}
-			// display time taken for sorting to finish
-			fill(255, 255, 255);
-			textSize(30);
-			text((timeTaken/1000)+"s",width/2,height/2);
-			fill(0, 255, 0);
 		}
 		// whilst still sorting
 		else
 		{
-			// highligh the 2 given values as red and blue
-			if (i == j)
+			// highlight the value to be swapped as green
+			if (i == toSwap)
 			{
 				fill(0, 255, 0);
 			}
-			else if (i == j1)
+			// highlight the current value being evaluated as blue
+			else if (i == cIndex)
 			{
 				fill(0, 0, 255);
+			}
+			// highlight the value that is about to be swapped with the first
+			// value that will be swapped, as yellow
+			else if (i == toSwap2)
+			{
+				fill(255, 255, 0);
 			}
 			// highlight all values as red
 			else
@@ -133,6 +142,22 @@ function printArrayAll(arr, j, j1, done)
 		}
 		// draw/colour all values
 		rect(i*scl, height, scl, -arr[i]*heightscl);
+	}
+
+	if (done)
+	{
+		// display time taken for sorting to finish
+		stroke(0, 0, 0);
+		fill(255, 255, 255);
+		textSize(30);
+		// convert millis to second, center text
+		textFont('Georgia');
+		textAlign(CENTER, CENTER);
+		text((timeTaken/1000)+" s", width/2, height/2);
+		// text((timeTaken/1000)+"s", width/2 - (width/100*5), height/2 - (height/100*5));
+		// reset stroke and fill to white and green
+		stroke(255, 255, 255);
+		fill(0, 255, 0);
 	}
 }
 
@@ -162,9 +187,9 @@ function updateTimer()
 			let currentTime = $('#timer1 .v').text();
 			currentTime = parseInt(currentTime);
 			// add one to current time
-			$('#timer1 .v').text(currentTime +  1);
+			$('#timer1 .v').text(currentTime +  2);
 			updateTimer();
-		},1);
+		},0);
 	}
 }
 /* End of main board */
