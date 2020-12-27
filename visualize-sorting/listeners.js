@@ -19,21 +19,20 @@ $(document).ready(function() {
 
 	// add event listeners to all buttons on the page
 	$('#clearBtn').on('click touchstart', function() {
-		// "pauses" the sorting loop
-		paused = true;
-		ready = false;
+		// stop current sort
+		$('#stopBtn').click();
 		// clears array
 		values.splice(0, values.length);
 	});
 	$('#resetBtn').on('click touchstart', function() {
-		paused = true;
-		ready = false;
+		// stop current sort
+		$('#stopBtn').click();
 		// keeps copy of array for resseting purposed
 		values = [...valuesCopy];
 	});
 	$('#randomizeBtn').on('click touchstart', function() {
-		paused = true;
-		ready = false;
+		// stop current sort
+		$('#stopBtn').click();
 		// clear array
 		values.splice(0, values.length);
 		// fill it up with new values between 0-30,
@@ -84,8 +83,8 @@ $(document).ready(function() {
 
 	// add value in input field to end of array
 	$('#insertBtn').on('click touchstart', function() {
-		paused = true;
-		ready = false;
+		// stop current sort
+		$('#stopBtn').click();
 		// default and minimum to add is 0
 		if ($('#newValue').val() == "" || $('#newValue').val() < 0)
 		{
@@ -100,8 +99,8 @@ $(document).ready(function() {
 	});
 	// removes values from end of array
 	$('#removeBtn').on('click touchstart', function() {
-		paused = true;
-		ready = false;
+		// stop current sort
+		$('#stopBtn').click();
 		values.pop();
 		valuesCopy = [...values];
 	});
@@ -122,6 +121,11 @@ $(document).ready(function() {
 
 	// starts the sorting algorithms
 	$('#startBtn').on('click touchstart', function() {
+		// only work on valid arrays
+		if (values.length < 1)
+		{
+			return;
+		}
 		// store values for reset
 		valuesCopy = [...values];
 		// unpause
