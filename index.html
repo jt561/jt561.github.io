@@ -94,6 +94,7 @@
 			justify-content: space-around;
 			width: 50vw;
 			display: flex;
+			border-bottom-left-radius: 125px;
 		}
 
 		.navigation-links li {
@@ -337,7 +338,7 @@
 			display: flex;
 			justify-content: space-around;
 			border-radius: 3px;
-			box-shadow: -4px 4px 3px 3px #404040;
+			box-shadow: -6px 6px 2px 2px #404040;
 		}
 
 		.card .left{
@@ -365,14 +366,24 @@
 			min-width: 16px;
 			height: 16px;
 			vertical-align: middle;
-			margin-right: 3px;
-			margin: 10px auto;
+			margin: 5px auto;
+			margin-right: 1px;
 			background-color: white;
 			border: 2px solid black;
 		}
 
+		.skill {
+			display: inline-block;
+			margin-left: 1px;
+			min-width: 80%;
+		}
+
 		.projects-description {
 			text-align: center;
+		}
+
+		.skill-set-card-top-bottom {
+			display: flex;
 		}
 
 		/* footer */
@@ -419,11 +430,12 @@
 
 		/* projects links */
 		.semi-important-link {
-			margin-top: 5px;
+			display: inline-block;
+			margin-top: -2px;
 			border: 2px solid black;
 			background-color: #ffffff;
 			color: black;
-			width: 100%;
+			min-width: 50%;
 		}
 
 		.semi-important-link:hover {
@@ -601,6 +613,14 @@
 
 			.card .right{
 				width: 100%;
+			}
+
+			.skill-set-card-top-bottom {
+				flex-direction: column;
+			}
+
+			.semi-important-link {
+				font-size: 15px;
 			}
 
 			#backToTopButton {
@@ -924,67 +944,45 @@
 						</div>
 						<div class="skill-set-cards-wrapper">
 							<div class="skill-set-card card one-sided">
-								<div class="skill-set-card-left top">
-									<h3>Technical skills</h3>
-									<div>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Java (Programming)</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">SQL (Programming)</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">PHP (Programming)</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">JavaScript (Programming)</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">HTML (Programming)</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">CSS (Programming)</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Project management</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Web development</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Accounting</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">MS Office</p>
+								<div class="skill-set-card-top-bottom">
+									<div class="skill-set-card-left top">
+										<h3>Technical skills</h3>
+										<div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Java (Programming)</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>SQL (Programming)</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>PHP (Programming)</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>JavaScript (Programming)</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>HTML (Programming)</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>CSS (Programming)</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p >Project management</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Web development</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Accounting</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>MS Office</p></div>
+										</div>
 									</div>
-								</div>
-								<div class="skill-set-card-right middle">
-									<h3>Soft skills</h3>
-									<div>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Leadership</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Communication</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Teamwork</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Time management</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Organisational skills</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Interpersonal skills</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Adaptability</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Attention to detail</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Creativity</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Problem solving</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Work Ethic</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Active listening</p>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">Negotiation</p>
+									<div class="skill-set-card-right middle">
+										<h3>Soft skills</h3>
+										<div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Leadership</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Communication</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Teamwork</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Time management</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Organisational skills</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Interpersonal skills</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Adaptability</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Attention to detail</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Creativity</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Problem solving</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Work Ethic</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Active listening</p></div>
+											<div class="skill"><div class="skill-set-box-icon"></div><p>Negotiation</p></div>
+										</div>
 									</div>
 								</div>
 								<div class="skill-set-card-right bottom">
 									<h3>Languages</h3>
 									<div>
-										<div class="skill-set-box-icon"></div>
-										<p style="display: inline-block;">English (Native)</p>
+										<div class="skill"><div class="skill-set-box-icon"></div><p>English (Native)</p></div>
 									</div>
 								</div>
 							</div>
