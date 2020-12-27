@@ -80,18 +80,26 @@
 
 		/* The actual popup */
 		.popup .popuptext {
-		  visibility: hidden;
+			display: none;
 		  width: 70vw;
-		  background-color: #555;
+		  background-color: #333;
 		  color: #fff;
 		  text-align: center;
 		  border-radius: 6px;
 		  padding: 8px 2px;
-		  position: absolute;
-		  z-index: 1;
-		  bottom: 170%;
-		  left: -25vw;
-		  margin-left: -80px;
+			position: fixed;
+			top: 50vh;
+			left: 50vw;
+			transform: translate(-35vw, -25vh);
+			z-index: 1;
+			font-size: 20px;
+		}
+
+		.popuptext div:nth-child(even) {
+			margin: 2px;
+			padding: 2px;
+			background-color: #222;
+			font-family: Arial, Helvetica, sans-serif;
 		}
 
 		/* Popup arrow */
@@ -108,9 +116,9 @@
 
 		/* Toggle this class - hide and show the popup */
 		.popup .show {
-		  visibility: visible;
+			display: block;
 		  -webkit-animation: fadeIn 1s;
-		  animation: fadeIn 1s;
+		  animation: fadeIn 1.01s;
 		}
 
 		/* Add animation (fade in the popup) */
@@ -166,6 +174,7 @@
 			padding: 5px;
 			border-radius: 2px;
 			cursor: pointer;
+			border: 3px solid #ffffff;
 			transition: 0.5s ease;
 		}
 
@@ -184,7 +193,7 @@
 		}
 
 		.sorts .radio1.currentSort {
-			outline: 2px solid pink;
+			outline: 3px solid pink;
 			border: 1px solid white;
 			background-color: black;
 			color: white;
@@ -210,6 +219,10 @@
 			.control-center div {
 				width: 100%;
 				margin: 1px auto;
+			}
+
+			.popup .popuptext {
+				font-size: 13px;
 			}
 
 			.values table button {
@@ -295,7 +308,14 @@
 			<p class="current-values-text-note">Current Values</p>
 			<button id="pageAlertBtn" class="Btn">?</button>
 			<div class="popup"><button class="Btn">?</button>
-			  <span class="popuptext" id="myPopup">-This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.-|-If you are on mobile, you might need to click every input twice for it to respond.- -Merge and quick sort is currently unvailable.-|-click on this pop up or the question mark again to hide this pop-up.-</span>
+			  <div class="popuptext" id="myPopup">
+					<div>Note!</div>
+					<div>The red bar is an unsorted value, the green bar is a value being sorted, the yellow bar is the other value being evaluated against the green bar and the blue bar is the current index.</div>
+					<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
+					<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
+					<div>Merge and quick sort is currently unvailable.</div>
+					<div>Click on this pop up or the question mark again to hide this pop-up.</div>
+			</div>
 			</div>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i></button>
