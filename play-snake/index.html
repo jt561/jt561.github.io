@@ -28,9 +28,12 @@
 			text-align: center;
 		}
 
-		.scores {
-			display: flex;
-			justify-content: space-around;
+		.current-size {
+			display: inline;
+		}
+
+		.biggest-size {
+			display: inline;
 		}
 
 		/* hide buttons container on desktop */
@@ -44,6 +47,23 @@
     @media all and (max-width: 1024px){
 			body {
 				font-size: 20px;
+			}
+
+			.controlAndSize {
+				display: flex;
+				text-align: center;
+				margin: 0 auto;
+				width: 100%;
+			}
+
+			.controlAndSize .mobile-directional-btns {
+				width: 60%;
+			}
+
+			.controlAndSize .current-size, .controlAndSize .biggest-size {
+				display: inline-block;
+				margin: 0 auto;
+				font-size: 10px;
 			}
 
 			/* buttons container for touch devices */
@@ -92,20 +112,6 @@
 			.mobile-directional-btns {
 				font-size: 30px;
 			}
-
-			.current-size {
-				font-size: 10px;
-				position: fixed;
-				left: 10px;
-				bottom: 25vh;
-			}
-
-			.biggest-size {
-				font-size: 10px;
-				position: fixed;
-				right: 10px;
-				bottom: 25vh;
-			}
     }
 		/* end of mobile devices */
   </style>
@@ -123,16 +129,26 @@
 <body>
   <main>
   </main>
-	<div class="mobile-directional-btns">
-		<div class=row1>
-			<button id="up" class=btn>&nbsp&nbsp&nbsp&nbsp&nbspup&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+	<div class="controlAndSize">
+		<div class="current-size">
+			<h2>Current Size:</h2>
+			<h2 id="snake-size">1</h2>
 		</div>
-		<div class=row2>
-			<button id="left" class=btn>&nbsp&nbsp&nbsp&nbspleft&nbsp&nbsp&nbsp&nbsp</button>
-			<button id="right" class=btn>&nbsp&nbsp&nbsp&nbspright&nbsp&nbsp&nbsp&nbsp</button>
+		<div class="mobile-directional-btns">
+			<div class=row1>
+				<button id="up" class=btn>&nbsp&nbsp&nbsp&nbsp&nbspup&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+			</div>
+			<div class=row2>
+				<button id="left" class=btn>&nbsp&nbsp&nbsp&nbspleft&nbsp&nbsp&nbsp&nbsp</button>
+				<button id="right" class=btn>&nbsp&nbsp&nbsp&nbspright&nbsp&nbsp&nbsp&nbsp</button>
+			</div>
+			<div class=row3>
+				<button id="down" class=btn>&nbsp&nbsp&nbspdown&nbsp&nbsp&nbsp</button>
+			</div>
 		</div>
-		<div class=row3>
-			<button id="down" class=btn>&nbsp&nbsp&nbspdown&nbsp&nbsp&nbsp</button>
+		<div class="biggest-size">
+			<h2>Biggest Size:</h2>
+			<h2 id="biggest-snake-size">1</h2>
 		</div>
 	</div>
   <div class="details">
@@ -141,16 +157,6 @@
 		</div>
 		<div class="instructions">
 			<p>Use the arrow keys to move, eat as much green food as posible, click f11 to play in full screen</p>
-		</div>
-		<div class="scores">
-			<div class="current-size">
-				<h2>Current Size:</h2>
-				<h2 id="snake-size">1</h2>
-			</div>
-			<div class="biggest-size">
-				<h2>Biggest Size:</h2>
-				<h2 id="biggest-snake-size">1</h2>
-			</div>
 		</div>
   </div>
 </body>
