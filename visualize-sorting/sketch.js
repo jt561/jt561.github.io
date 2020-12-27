@@ -10,7 +10,7 @@ let heightscl;
 let values = [25, 1, 8, 20, 5, 6, 7, 2, 4, 8, 0, 1, 2, 4, 5, 6, 3, 2, 2, 4];
 let valuesCopy = [...values];
 // sorting algorithm objects
-let sorts = [];
+let sorter;
 // default sorting algorithm
 let sortType = "bubble";
 // whether it should be running a counter
@@ -25,6 +25,16 @@ let timeTaken = 0;
 // ready to sort
 let ready = false;
 
+// stores the different frame rates used
+let frameRates = [];
+frameRates["ultraLow"] = 1;
+frameRates["low"] = 10;
+frameRates["medium"] = 25;
+frameRates["high"] = 40;
+frameRates["ultraHigh"] = 60;
+// stores a value for playback which is used as the frame rate
+let playbackSpeed = "medium";
+
 // called once at start
 function setup() {
   // create board/canvas
@@ -36,7 +46,7 @@ function setup() {
   let documentHeight = $(document).height() - 100;
   createCanvas(deviceWidth, deviceHeight);
   // set a framerate/loop speed
-  frameRate(20);
+  frameRate(frameRates[playbackSpeed]);
 }
 
 // draw loop
@@ -64,30 +74,32 @@ function draw() {
 			switch (sortType)
 			{
 				case "bubble":
-					sorts[0] = new BubbleSort(scl, values);
+					sorter = new BubbleSort(scl, values);
 					break;
 				case "selection":
-					sorts[0] = new SelectionSort(scl, values);
+					sorter = new SelectionSort(scl, values);
 					break;
 				case "insertion":
-					sorts[0] = new InsertionSort(scl, values);
+					sorter = new InsertionSort(scl, values);
 					break;
 				case "merge":
-					sorts[0] = new MergeSort(scl, values);
+					sorter = new MergeSort(scl, values);
 					break;
 				case "quick":
-					sorts[0] = new QuickSort(scl, values);
+					sorter = new QuickSort(scl, values);
 					break;
 			}
 			// start using the sort object
 			ready = true;
 			// dont run on an empty array
-			if (values.length < 1) { ready = false; paused = true; }
+			if (values.length < 1) { $('#stopBtn').click() }
+			// set playback speed/framerate/sort Speed
+			frameRate(frameRates[playbackSpeed]);
 		}
 		else
 		{
 			// call appropriate sort, start soring
-			sorts[0].sort();
+			sorter.sort();
 		}
 	}
 	// display the raw values, in underneath the graph
@@ -118,15 +130,16 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 		// whilst still sorting
 		else
 		{
-			// highlight the value to be swapped as green
-			if (i == toSwap)
-			{
-				fill(0, 255, 0);
-			}
+			// color scheme, toSwap=green, cIndex=blue, toSwap2=yellow
 			// highlight the current value being evaluated as blue
-			else if (i == cIndex)
+			if (i == cIndex)
 			{
 				fill(0, 0, 255);
+			}
+			// highlight the value to be swapped as green
+			else if (i == toSwap)
+			{
+				fill(0, 255, 0);
 			}
 			// highlight the value that is about to be swapped with the first
 			// value that will be swapped, as yellow

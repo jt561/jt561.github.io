@@ -43,7 +43,7 @@ var InsertionSort = function(scl, arr)
 		{
 				this.done = true;
 		}
-		printArrayAll(arr, this.j, this.j-1, this.i, this.done);
+		printArrayAll(arr, this.j+1, this.i, this.j, this.done);
 	}
 }
 /* End of insertion sort algorithm */

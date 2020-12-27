@@ -3,7 +3,7 @@ $(document).ready(function() {
 	// specify if the event listener is passive for better scroll experience. got help from stackoverflow
 	jQuery.event.special.touchstart = {
 	  setup: function( _, ns, handle ) {
-	      this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+	      this.addEventListener("touchstart", handle, { passive: ns.includes("noPreventDefault") });
 	  }
 	};
 
@@ -141,6 +141,8 @@ $(document).ready(function() {
 			timerActive = true;
 			updateTimer();
 		}
+		// set fps/playback speed
+		playbackSpeed = $('#playback-speed').val();
 	});
 
 	// stops sorting and also, the timer
