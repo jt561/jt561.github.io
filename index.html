@@ -149,11 +149,13 @@
 		.section {
 			width: 80%;
 			margin: 12vh auto;
-			background: transparent;
-			padding: 50px 20px;
+			background: #0f0f0f;
+			padding: 50px 50px;
 			border-bottom: 2px solid black;
 			box-shadow: 0px 20px 20px 0.1px #202020;
 			position: relative;
+			z-index: 0;
+			border-radius: 10px;
 		}
 
 		.section-header {
@@ -189,7 +191,7 @@
 		}
 
 		.about-background-left {
-			z-index: -99999;
+			z-index: -1;
 			position: absolute;
 			right: 0px;
 			top: 0px;
@@ -346,6 +348,11 @@
 			box-shadow: -6px 6px 2px 2px #404040;
 		}
 
+		/* gaps for all cards with text */
+		.education .card *, .experience .card *, .extracurricular  .card * {
+			margin-top: 15px;
+		}
+
 		.card .left{
 			width: 30%;
 		}
@@ -385,6 +392,8 @@
 
 		.projects-description {
 			text-align: center;
+			font-size: 15px;
+			margin: 8px auto;
 		}
 
 		.skill-set-card-top-bottom {
@@ -474,11 +483,18 @@
 
 			.section {
 				width: 90%;
+				font-size: 15px;
 			}
 
 			.section-header {
 				width: 20%;
+				margin: 0 auto;
 				font-size: 14px;
+				transform: translateX(-50%);
+			}
+
+			.resume h2.title {
+				font-size: 5vw;
 			}
 
 			.title-icon-box {
@@ -543,9 +559,13 @@
 				display: block;
 			}
 
+			.content {
+				width: 100%;
+			}
+
 			.section {
 				width: 100%;
-				padding: 2px;
+				padding: 10px;
 			}
 
 			.section-header {
@@ -626,6 +646,10 @@
 
 			.semi-important-link {
 				font-size: 15px;
+			}
+
+			.projects-description {
+				font-size: 12px;
 			}
 
 			#backToTopButton {
@@ -909,7 +933,7 @@
 								<div class="education-card-right right">
 									<p><b>Subjects:</b> (GCSE's) Maths, Science, Additional Science, ICT, English Language, English Literature, Art</p>
 									<p><b>Grades(Achieved):</b> A, B, B, B, C, C, C</p>
-									<p>I acquired a lot of fundemental and essential knowledge from my GCSE subject swhich have made me the man I am today</p>
+									<p>I acquired a lot of fundemental and essential knowledge from my GCSE subjects which have made me the man I am today</p>
 								</div>
 							</div>
 						</div>
