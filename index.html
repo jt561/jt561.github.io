@@ -267,12 +267,17 @@
 			border: 2px solid black;
 			background-color: #000000;
 			color: white;
+			animation: link-blink 0.5s linear 0s infinite alternate;
 		}
 
 		.internal-redirecter.two:hover {
 			border: 2px solid black;
 			background-color: #ffffff;
 			color: black;
+		}
+		@keyframes link-blink {
+			0% { border: 2px solid black; background-color: #ffffff; color: black; }
+			100% { border: 2px solid black; background-color: #000000; color: white; }
 		}
 
 		.hello {
