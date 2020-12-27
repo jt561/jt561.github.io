@@ -24,23 +24,25 @@ $(document).ready(function() {
 		// clears array
 		values.splice(0, values.length);
 	});
+	// resets array list to its previous values before it was sorted
 	$('#resetBtn').on('click touchstart', function() {
 		// stop current sort
 		$('#stopBtn').click();
 		// keeps copy of array for resseting purposed
 		values = [...valuesCopy];
 	});
+	// provides new and random values for array list
 	$('#randomizeBtn').on('click touchstart', function() {
 		// stop current sort
 		$('#stopBtn').click();
 		// clear array
 		values.splice(0, values.length);
-		// fill it up with new values between 0-30,
-		// with max array length also being between 0-30
-		let limit = Math.floor(Math.random() * 31);
+		// fill it up with new values between 0-100,
+		// with max array length also being between 0-100
+		let limit = Math.floor(Math.random() * 101);
 		for (let i = 0; i < limit; i++)
 		{
-			values.push(Math.floor(Math.random() * 31));
+			values.push(Math.floor(Math.random() * 101));
 		}
 		// store copy of new array
 		valuesCopy = [...values];

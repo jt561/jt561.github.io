@@ -40,7 +40,7 @@ function setup() {
   // create board/canvas
 	// full width for mobile, less for tablet and desktop
   let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 50:350);
-  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 400:380);
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 400:390);
 	// not using these for now
 	let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
@@ -61,7 +61,11 @@ function draw() {
 		timeSet = false;
 		// assign scale/ size of the bars/values
 		scl = width/values.length;
-		heightscl = height/Math.max(...values)/1.1;
+		// height should only cover 95 of the page, so we minus 0.95 from 2,
+		// we then get 1.05, and divide it by the final scale of 1,(we can also
+		// multiply the final scale 0.95), which we get
+		// from dividing the canvas height by the largest value in the array
+		heightscl = height/Math.max(...values)/1.05;
 		// draw the bars for the values
 		printArrayAll(values, values.length, values.length, values.length, false);
 	}
@@ -154,6 +158,7 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 			}
 		}
 		// draw/colour all values
+		// invert the heigh as positive takes you down and negative takes you up.
 		rect(i*scl, height, scl, -arr[i]*heightscl);
 	}
 
