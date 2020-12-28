@@ -26,6 +26,44 @@ $(document).ready(function() {
 		$('#myPopup').removeClass('show');
 	});
 
+	// add listner to display "more stats container"
+	$('#moreStatsBtn').on('click touchstart', function() {
+		// toggle more stats display
+		if ($('.more-stats').css('display') == 'block')
+		{
+			$('.more-stats').css("display", "none");
+		}
+	  else
+		{
+	 		$('.more-stats').css("display", "block");
+		}
+	});
+
+	// add listener to x/close button for "more stats container"
+	$('.close-more-stats').on('click touchstart', function() {
+		// hide more stats
+		$('.more-stats').css("display", "none");
+	});
+
+	// add listner to display "more extended control contaiener"
+	$('#extendedControlCenterBtn').on('click touchstart', function() {
+		// toggle extended control center
+		if ($('.extended-control-center').css('display') == 'block')
+		{
+			$('.extended-control-center').css("display", "none");
+			// hide extra details for extended control
+			$('.extended-control-artifacts').css("display", "none");
+			// change text of it
+			$('#extendedControlCenterBtn').text('Open extended control panel');
+		}
+	  else
+		{
+	 		$('.extended-control-center').css("display", "block");
+			$('.extended-control-artifacts').css("display", "block");
+			$('#extendedControlCenterBtn').text('Close extended control panel');
+	 	}
+	});
+
 	// add event listeners to all buttons on the page
 	$('#clearBtn').on('click touchstart', function() {
 		// stop current sort

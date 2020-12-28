@@ -43,7 +43,7 @@ function setup() {
   // create board/canvas
 	// full width for mobile, less for tablet and desktop
   let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 50:350);
-  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 400:390);
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 420:420);
 	// not using these for now
 	let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
