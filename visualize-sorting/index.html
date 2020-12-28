@@ -41,6 +41,11 @@
 			justify-content: space-between;
 		}
 
+		.control-center > div {
+			padding-bottom: 5px;
+			border: #777;
+		}
+
 		.Btn {
 			display: in-block;
 			outline: none;
@@ -67,7 +72,7 @@
 		}
 
 		/* Popup container - can be anything you want */
-		.popup {
+		.popup, .popuptext {
 		  position: relative;
 		  display: inline;
 		  cursor: pointer;
@@ -79,31 +84,37 @@
 		}
 
 		/* The actual popup */
-		.popup .popuptext {
+		.popuptext {
 			display: none;
-		  width: 70vw;
+		  width: 90%;
 		  background-color: #333;
 		  color: #fff;
 		  text-align: center;
 		  border-radius: 6px;
 		  padding: 8px 2px;
 			position: fixed;
-			top: 50vh;
-			left: 50vw;
-			transform: translate(-35vw, -25vh);
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 			z-index: 1;
-			font-size: 20px;
+			font-size: 17px;
 		}
 
-		.popuptext div:nth-child(even) {
+		.close-popup {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+		}
+
+		.popuptext div {
 			margin: 2px;
 			padding: 2px;
-			background-color: #222;
+			border-bottom: 2px solid #222;
 			font-family: Arial, Helvetica, sans-serif;
 		}
 
 		/* Popup arrow */
-		.popup .popuptext::after {
+		.popuptext::after {
 		  content: "";
 		  position: absolute;
 		  top: 100%;
@@ -115,7 +126,7 @@
 		}
 
 		/* Toggle this class - hide and show the popup */
-		.popup .show {
+		.show {
 			display: block;
 		  -webkit-animation: fadeIn 1s;
 		  animation: fadeIn 1.01s;
@@ -140,29 +151,19 @@
 			border-bottom: 2px solid white;
 		}
 
-		.values {
-			padding-bottom: 5px;
-			background-color: #151515;
-		}
-
 		.values table {
 			width: 90%;
 			margin: 0 auto;
 			border-collapse: collapse;
 		}
 
-		.values table button{
+		.values table button {
 			padding: 5px;
 			border: none;
 			outline: none;
 			background-color: red;
 			color: white;
 			border-radius: 0px;
-		}
-
-		.inputs {
-			padding-bottom: 5px;
-			background-color: #101010;
 		}
 
 		.playback-speed {
@@ -176,11 +177,6 @@
 			cursor: pointer;
 			border: 3px solid #ffffff;
 			transition: 0.5s ease;
-		}
-
-		.sorts {
-			padding-bottom: 5px;
-			background-color: #151515;
 		}
 
 		.sorts .radio1 {
@@ -197,11 +193,6 @@
 			border: 1px solid white;
 			background-color: black;
 			color: white;
-		}
-
-		.start {
-			padding-bottom: 5px;
-			background-color: #101010;
 		}
   </style>
   <style>
@@ -221,7 +212,7 @@
 				margin: 1px auto;
 			}
 
-			.popup .popuptext {
+			.popuptext {
 				font-size: 13px;
 			}
 
@@ -303,20 +294,20 @@
   <main>
   </main>
 	</div>
+	<div class="popuptext" id="myPopup">
+		<button class="close-popup Btn">X</button>
+		<div>Note!</div>
+		<div>The red bar is an unsorted value, the green bar is a value being sorted, the yellow bar is the other value being evaluated against the green bar and the blue bar is the current index.</div>
+		<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
+		<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
+		<div>Merge and quick sort is currently unvailable.</div>
+		<div>Click on this pop up or the question mark again to hide this pop-up.</div>
+	</div>
 	<div class="control-center">
 		<div class="values">
 			<p class="current-values-text-note">Current Values</p>
 			<button id="pageAlertBtn" class="Btn">?</button>
-			<div class="popup"><button class="Btn">?</button>
-			  <div class="popuptext" id="myPopup">
-					<div>Note!</div>
-					<div>The red bar is an unsorted value, the green bar is a value being sorted, the yellow bar is the other value being evaluated against the green bar and the blue bar is the current index.</div>
-					<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
-					<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
-					<div>Merge and quick sort is currently unvailable.</div>
-					<div>Click on this pop up or the question mark again to hide this pop-up.</div>
-			</div>
-			</div>
+			<div class="popup"><button class="Btn">?</button></div>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i></button>
 			<button id="clearBtn" type="button" name="clear" class="Btn">Clear List</button>

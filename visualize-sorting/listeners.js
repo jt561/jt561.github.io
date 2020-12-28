@@ -21,6 +21,10 @@ $(document).ready(function() {
 	$('.popup').on('click touchstart', function() {
 		$('#myPopup').toggleClass('show');
 	});
+	// add listener to x/close button in the pop up text
+	$('.close-popup').on('click touchstart', function() {
+		$('#myPopup').removeClass('show');
+	});
 
 	// add event listeners to all buttons on the page
 	$('#clearBtn').on('click touchstart', function() {
