@@ -156,6 +156,13 @@
 			border-collapse: collapse;
 		}
 
+		.value {
+			display: block;
+			max-height: 40px;
+			overflow-y: scroll;
+			border: 1px solid #777;
+		}
+
 		.values table button {
 			padding: 7px;
 			border: none;
@@ -307,6 +314,8 @@
 			<p class="current-values-text-note">Current Values</p>
 			<button id="pageAlertBtn" class="Btn">?</button>
 			<div class="popup"><button class="Btn">?</button></div>
+			<button class="Btn">More stats</button>
+			<button class="Btn">Extended control</button>
 			<table><tr><td class="value"></td></tr></table>
 			<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i></button>
 			<button id="clearBtn" type="button" name="clear" class="Btn">Clear List</button>
