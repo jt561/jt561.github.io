@@ -60,6 +60,8 @@ $(document).ready(function() {
 		{
 	 		$('.extended-control-center').css("display", "block");
 			$('.extended-control-artifacts').css("display", "block");
+			// special cases that need to be inline
+			$('.extended-control-artifacts.inline').css("display", "inline-block");
 			$('#extendedControlCenterBtn').text('Close extended control panel');
 	 	}
 	});
@@ -71,6 +73,7 @@ $(document).ready(function() {
 		// clears array
 		values.splice(0, values.length);
 	});
+
 	// resets array list to its previous values before it was sorted
 	$('#resetBtn').on('click touchstart', function() {
 		// stop current sort
@@ -78,6 +81,7 @@ $(document).ready(function() {
 		// keeps copy of array for resseting purposed
 		values = [...valuesCopy];
 	});
+
 	// provides new and random values for array list
 	$('#randomizeBtn').on('click touchstart', function() {
 		// stop current sort
@@ -131,26 +135,52 @@ $(document).ready(function() {
 	});
 
 	// add value in input field to end of array
-	$('#insertBtn').on('click touchstart', function() {
+	$('#insertBtn, #insertBtnF').on('click touchstart', function() {
 		// stop current sort
 		$('#stopBtn').click();
 		// default and minimum to add is 0
 		if ($('#newValue').val() == "" || $('#newValue').val() < 0)
 		{
-			values.push(0);
+			if ($(this).attr('id') == 'insertBtnF')
+			{
+				values.unshift(0);
+			}
+			// insert to end
+			else
+			{
+				values.push(0);
+			}
 		}
 		else
 		{
-			values.push($('#newValue').val());
+			if ($(this).attr('id') == 'insertBtnF')
+			{
+				values.unshift($('#newValue').val());
+			}
+			// insert to end
+			else
+			{
+				values.push($('#newValue').val());
+			}
 		}
 		// store copy of new array for resseting purporses
 		valuesCopy = [...values];
 	});
-	// removes values from end of array
-	$('#removeBtn').on('click touchstart', function() {
+
+	// removes values from end/start of array
+	$('#removeBtn, #removeBtnF').on('click touchstart', function() {
 		// stop current sort
 		$('#stopBtn').click();
-		values.pop();
+		// remove from front
+		if ($(this).attr('id') == 'removeBtnF')
+		{
+			values.shift();
+		}
+		// remove from end
+		else
+		{
+			values.pop();
+		}
 		valuesCopy = [...values];
 	});
 
