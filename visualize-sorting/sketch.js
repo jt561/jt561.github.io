@@ -37,6 +37,8 @@ frameRates["high"] = 40;
 frameRates["ultraHigh"] = 60;
 // stores a value for playback which is used as the frame rate
 let playbackSpeed = "medium";
+// array has been unsorted
+let finished = false;
 
 // called once at start
 function setup() {
@@ -60,6 +62,7 @@ function draw() {
 	// before sorting
 	if (paused)
 	{
+		finished = false;
 		// the end time hasnt been set
 		timeSet = false;
 		// assign scale/ size of the bars/values
@@ -99,7 +102,7 @@ function draw() {
 			// start using the sort object
 			ready = true;
 			// dont run on an empty array
-			if (values.length < 1) { $('#stopBtn').click() }
+			if (values.length < 1) { $('#stopBtn').click(); }
 			// set playback speed/framerate/sort Speed
 			frameRate(frameRates[playbackSpeed]);
 		}
@@ -123,10 +126,13 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 		// if done sorting
 		if (done)
 		{
+			/* green colour gets set at the bottom [if done statement] */
 			// set end time
 			// should only run once
 			if (!timeSet)
 			{
+				// store finished for bottom values
+				finished = true;
 				// stop timer
 				timerActive = false;
 				endTime = new Date().getTime();
@@ -175,7 +181,6 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 		textFont('Georgia');
 		textAlign(CENTER, CENTER);
 		text((timeTaken/1000)+" s", width/2, height/2);
-		// text((timeTaken/1000)+"s", width/2 - (width/100*5), height/2 - (height/100*5));
 		// reset stroke and fill to white and green
 		stroke(255, 255, 255);
 		fill(0, 255, 0);
@@ -190,7 +195,14 @@ function showValuesAsText()
 	// refresh the row with the values in array
 	for (let i = 0; i < values.length; i++)
 	{
-		$('.value').append('<button>' + values[i] + '</button>');
+		if (finished)
+		{
+			$('.value').append('<button class=done>' + values[i] + '</button>');
+		}
+		else
+		{
+			$('.value').append('<button class=not-done>' + values[i] + '</button>');
+		}
 	}
 }
 
