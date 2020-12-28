@@ -3,8 +3,11 @@
  */
 
 /* Global variables */
+// dont start sorting
 let paused = true;
+// scale/width of the bars
 let scl;
+// scale/height of a value
 let heightscl;
 // set values to be sorted
 let values = [25, 1, 8, 20, 5, 6, 7, 2, 4, 8, 0, 1, 2, 4, 5, 6, 3, 2, 2, 4];
