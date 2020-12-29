@@ -17,12 +17,11 @@ var MergeSort = function(scl, arr)
 	this.subArrLeftInd = 0;
 
 	// actual sort
-	// thanks to geeksforgeeks.org
 	this.sort = function()
 	{
 		// merge subarrays upawards. start from 1 to size 2, then merge subarrays
 		// of size 2 to create sorted subarrays of size 4....
-		if (this.subArrSize <= arr.length - 1)
+		if (this.subArrSize < arr.length)
 		{
 			if (this.subArrLeftInd < arr.length - 1)
 			{
@@ -33,7 +32,10 @@ var MergeSort = function(scl, arr)
 			}
 			else
 			{
+				// end of inner loop, increase outer loop
 				this.subArrSize = this.subArrSize * 2;
+				// reset inner loop
+				this.subArrLeftInd = 0;
 			}
 			console.log(this.subArrLeftInd, this.subArrSize);
 		}
