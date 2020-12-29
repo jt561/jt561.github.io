@@ -56,6 +56,7 @@
 			position: -webkit-sticky;
 			position: sticky;
 			top: 0;
+			left: 0;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
@@ -269,7 +270,7 @@
 			border: 2px solid black;
 			background-color: #000000;
 			color: white;
-			animation: link-blink 0.5s linear 0s infinite alternate;
+			animation: link-blink 1s linear 0s infinite alternate;
 		}
 
 		.internal-redirecter.two:hover {
@@ -278,8 +279,11 @@
 			color: black;
 		}
 		@keyframes link-blink {
-			0% { border: 2px solid black; background-color: #ffffff; color: black; }
-			100% { border: 2px solid black; background-color: #000000; color: white; }
+			0% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 1px; }
+			25% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 1px; }
+			50% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 1px; }
+			75% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 2px; }
+			100% { border: 2px solid black; background-color: #000; color: #fff; letter-spacing: 1px; }
 		}
 
 		.hello {
@@ -428,6 +432,7 @@
 			padding: 10px;
 			border-radius: 10px;
 			font-size: 10px;
+			opacity: 0.8;
 			transition: 0.5s ease;
 		}
 
@@ -463,6 +468,13 @@
 			display: block;
 			width: 100%;
 			height: 100%;
+		}
+
+		.email-note {
+			-moz-user-select: all;
+		  -webkit-user-select: all;
+		  -ms-user-select: all;
+		  user-select: all;
 		}
 		/* end of default/desktop */
   </style>
@@ -543,7 +555,7 @@
 				right: 0px;
 				height: 80vh;
 				top: 10vh;
-				background-color: #363636;
+				background-color: #363636f5;
 				display: flex;
 				flex-direction: column;
 				align-items: center;
@@ -1112,10 +1124,10 @@
 				</div>
 				<div class="section-content">
         	<div>
-						<p>Email: <span>joshua.tetteh113@gmail.com</span></p>
+						<p>Email: <span class="email-note">joshua.tetteh113@gmail.com</span></p>
 					</div>
 					<div>
-						<p>Connect with me: <span><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/" target="_blank">Message me on linked in</a></span></p>
+						<p>Connect with me: <span><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/" target="_blank">on LinkedIn</a></span></p>
 					</div>
 				</div>
       </div>
