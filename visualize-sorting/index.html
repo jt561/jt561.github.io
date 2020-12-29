@@ -244,6 +244,16 @@
 		.extended-control-center {
 			display: none;
 		}
+
+		.extended-control-center div {
+			margin: 10px 0px;
+		}
+
+		.extended-control-center .group {
+			display: flex;
+			justify-content: space-around;
+			margin: 5px 0px;
+		}
 		/* end of desktop devices */
   </style>
   <style>
@@ -405,29 +415,65 @@
 		</div>
 		<div class="extended-control-center">
 			<p>More controls</p>
-			<div>
-				<label for="playback-speed">Sort speed:&nbsp</label>
-				<select name="playback-speed" class="playback-speed drop-downs1" id="playback-speed">
-					<option value="ultraLow">Ultra low speed</option>
-					<option value="low">Low speed</option>
-					<option value="medium" selected>Medium Speed</option>
-					<option value="high">High speed</option>
-					<option value="ultraHigh">Ultra High speed</option>
-				</select>
-				<label for="sortDirection">Sort Direction:&nbsp</label>
-				<select name="sort-direction" class="sort-direction drop-downs1" id="sortDirection">
-					<option value="forward" selected>Forwards</option>
-					<option value="reverse">Reversed - Coming soon</option>
-				</select>
+			<div class="group">
+				<div class="">
+					<label for="playback-speed">Playback speed:&nbsp</label>
+					<select name="playback-speed" class="playback-speed drop-downs1" id="playback-speed">
+						<option value="ultraLow">Ultra low speed</option>
+						<option value="low">Low speed</option>
+						<option value="medium" selected>Medium Speed</option>
+						<option value="high">High speed</option>
+						<option value="ultraHigh">Ultra High speed</option>
+					</select>
+				</div>
+				<div class="">
+					<label for="sortDirection">Sort Direction:&nbsp</label>
+					<select name="sort-direction" class="sort-direction drop-downs1" id="sortDirection">
+						<option value="forward" selected>Forwards</option>
+						<option value="reverse">Reversed - Coming soon</option>
+					</select>
+				</div>
 			</div>
-			<div>
-				<button class="Btn">Randomizer smallest list size: Coming soon</button>
-				<button class="Btn">Randomizer biggest list size: Coming soon</button>
-				<button class="Btn">Randomizer smallest value: Coming soon</button>
-				<button class="Btn">Randomizer biggest value: Coming soon</button>
+			<div class="group">
+				<div class="">
+					<label for="displayType">Display Type:&nbsp</label>
+					<select name="display-type" class="display-type drop-downs1" id="displayType">
+						<option value="bar" selected>Bar graph - Coming soon</option>
+						<option value="pie">Pie chart - Coming soon</option>
+					</select>
+				</div>
+				<div class="">
+					<label for="allowNegatives">Allow negatives:&nbsp</label>
+					<select name="allow-negatives" class="allow-negatives drop-downs1" id="allowNegatives">
+						<option value="no" selected>No - Coming soon</option>
+						<option value="yes">Yes - Coming soon</option>
+					</select>
+				</div>
 			</div>
-			<div>
-				<button class="Btn">Coming soon</button>
+			<div class="group">
+				<div class="">
+					<label for="biggestListVal" class="">Randomizer biggest list size:</label>
+					<input id="biggestListVal" type="number" name="" value="100" class="Btn"/>
+				</div>
+				<div class="">
+					<label for="smallestListVal" class="">Randomizer smallest list size:</label>
+					<input id="smallestListVal" type="number" name="" value="0" class="Btn"/>
+				</div>
+			</div>
+			<div class="group">
+				<div class="">
+					<label for="biggestVal" class="">Randomizer biggest value:</label>
+					<input id="biggesttVal" type="number" name="" value="100" class="Btn"/>
+				</div>
+				<div class="">
+					<label for="smallestVal" class="">Randomizer smallest value:</label>
+					<input id="smallestVal" type="number" name="" value="0" class="Btn"/>
+				</div>
+			</div>
+			<div class="group">
+				<div class="">
+					<button class="Btn">Coming soon</button>
+				</div>
 			</div>
 		</div>
 	</div>

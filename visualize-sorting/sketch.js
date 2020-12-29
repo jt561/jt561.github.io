@@ -39,6 +39,14 @@ frameRates["ultraHigh"] = 60;
 let playbackSpeed = "medium";
 // array has been unsorted
 let finished = false;
+// stores extra stats/details
+let moreStats = [];
+moreStats['swaps'] = 0;
+moreStats['comparisons'] = 0;
+moreStats['auxiliaryWrites'] = 0;
+moreStats['listSize'] = 0;
+moreStats['largestNumber'] = 0;
+moreStats['smallestNumber'] = 0;
 
 // called once at start
 function setup() {
@@ -46,7 +54,7 @@ function setup() {
 	// full width for mobile, less for tablet and desktop
   let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 40:300);
 	// half of the device height for all device types
-	let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 420:(window.matchMedia("(max-width: 1024px)").matches) ? 420:420);
+	let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 430:(window.matchMedia("(max-width: 1024px)").matches) ? 430:430);
 	// not using these for now
 	let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
