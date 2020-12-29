@@ -47,14 +47,15 @@ $(document).ready(function() {
 
 	// add listner to display "more extended control contaiener"
 	$('#extendedControlCenterBtn').on('click touchstart', function() {
-		// toggle extended control center
+		// toggle extended control center off/on
 		if ($('.extended-control-center').css('display') == 'block')
 		{
 			$('.extended-control-center').css("display", "none");
 			// hide extra details for extended control
 			$('.extended-control-artifacts').css("display", "none");
-			// change text of it
+			// toggle button text and border
 			$('#extendedControlCenterBtn').text('Open extended control panel');
+			$('#extendedControlCenterBtn').css("border","");
 		}
 	  else
 		{
@@ -63,6 +64,7 @@ $(document).ready(function() {
 			// special cases that need to be inline
 			$('.extended-control-artifacts.inline').css("display", "inline-block");
 			$('#extendedControlCenterBtn').text('Close extended control panel');
+			$('#extendedControlCenterBtn').css("border","2px dotted #fff");
 	 	}
 	});
 

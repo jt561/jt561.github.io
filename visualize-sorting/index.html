@@ -52,7 +52,7 @@
 		}
 
 		.Btn {
-			display: in-block;
+			display: inline-block;
 			outline: none;
 			border: 2px solid #ffffff;
 			background-color: #000000;
@@ -182,6 +182,10 @@
 			color: #000;
 		}
 
+		.incAndDec {
+			display: none;
+		}
+
 		.drop-downs1 {
 			display: in-block;
 			outline: none;
@@ -246,7 +250,7 @@
 		}
 
 		.extended-control-center div {
-			margin: 10px 0px;
+			margin: 15px 0px;
 		}
 
 		.extended-control-center .group {
@@ -286,6 +290,10 @@
 				padding: 2.5px;
 			}
 
+			.incAndDec {
+				display: inline-block;
+			}
+
 			#newValue {
 				outline: initial;
 				border: 2px solid white;
@@ -296,6 +304,10 @@
 
 			.current-values-text-note {
 				font-size: 20px;
+			}
+
+			.extended-control-center div {
+				margin: 15px 0px;
 			}
 
 			.drop-downs1 {
@@ -361,7 +373,7 @@
 		<div>The red bar is an unsorted value, the green bar is a value being sorted, the yellow bar is the other value being evaluated against the green bar and the blue bar is the current index.</div>
 		<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
 		<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
-		<div>Merge and quick sort is currently unvailable.</div>
+		<div>Quick sort is currently unvailable.</div>
 		<div>Click on this pop up or the question mark again to hide this pop-up.</div>
 	</div>
 	<div class="control-center">
@@ -404,7 +416,7 @@
 			<button class="close-more-stats Btn">X</button>
 			<p>More sorting stats</p>
 			<div>
-				<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i></button>
+				<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i>ms</button>
 				<button id="swaps1" type="button" name="swaps" class="Btn">Swaps:&nbsp<i class="v">0</i></button>
 				<button id="comparisons1" type="button" name="comparisons" class="Btn">Comparisons:&nbsp<i class="v">0</i></button>
 				<button id="auxiliaryWrites1" type="button" name="auxiliary-writes" class="Btn">Auxiliary array writes:&nbsp<i class="v">0</i></button>
@@ -416,7 +428,7 @@
 		<div class="extended-control-center">
 			<p>More controls</p>
 			<div class="group">
-				<div class="">
+				<div class="o">
 					<label for="playback-speed">Playback speed:&nbsp</label>
 					<select name="playback-speed" class="playback-speed drop-downs1" id="playback-speed">
 						<option value="ultraLow">Ultra low speed</option>
@@ -426,7 +438,7 @@
 						<option value="ultraHigh">Ultra High speed</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="o">
 					<label for="sortDirection">Sort Direction:&nbsp</label>
 					<select name="sort-direction" class="sort-direction drop-downs1" id="sortDirection">
 						<option value="forward" selected>Forwards</option>
@@ -435,14 +447,14 @@
 				</div>
 			</div>
 			<div class="group">
-				<div class="">
+				<div class="o">
 					<label for="displayType">Display Type:&nbsp</label>
 					<select name="display-type" class="display-type drop-downs1" id="displayType">
 						<option value="bar" selected>Bar graph</option>
 						<option value="pie">Pie chart - Coming soon</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="o">
 					<label for="allowNegatives">Allow negatives:&nbsp</label>
 					<select name="allow-negatives" class="allow-negatives drop-downs1" id="allowNegatives">
 						<option value="no" selected>No</option>
@@ -451,27 +463,62 @@
 				</div>
 			</div>
 			<div class="group">
-				<div class="">
+				<div class="o">
 					<label for="biggestListVal1" class="">Randomizer biggest list size:</label>
 					<input id="biggestListVal1" type="number" name="" value=100 min=0 class="Btn"/>
 				</div>
-				<div class="">
+				<div class="o">
 					<label for="smallestListVal1" class="">Randomizer smallest list size:</label>
 					<input id="smallestListVal1" type="number" name="" value=1 min=0 class="Btn"/>
 				</div>
 			</div>
 			<div class="group">
-				<div class="">
+				<div class="o">
 					<label for="biggestVal1" class="">Randomizer biggest value:</label>
 					<input id="biggestVal1" type="number" name="" value=100 min=0 class="Btn"/>
 				</div>
-				<div class="">
+				<div class="o">
 					<label for="smallestVal1" class="">Randomizer smallest value:</label>
 					<input id="smallestVal1" type="number" name="" value=1 min=0 class="Btn"/>
 				</div>
 			</div>
+			<div class="group bar-colors">
+				<div class="o">
+					<label for="bar1">Bar 1:&nbsp</label>
+					<select name="bar1" class="bar1 drop-downs1" id="bar1">
+						<option value="blue" selected>Blue</option>
+						<option value="pink">Pink - coming soon</option>
+					</select>
+				</div>
+				<div class="o">
+					<label for="bar2">Bar 2:&nbsp</label>
+					<select name="bar2" class="bar2 drop-downs1" id="bar2">
+						<option value="green" selected>Green</option>
+						<option value="purple">Purple - Coming soon</option>
+					</select>
+				</div>
+			</div>
+			<div class="group bar-colors">
+				<div class="o">
+					<label for="bar3">Bar 3:&nbsp</label>
+					<select name="bar3" class="bar3 drop-downs1" id="bar3">
+						<option value="yellow" selected>Yellow</option>
+						<option value="white">White - Coming soon</option>
+					</select>
+				</div>
+				<div class="o">
+					<label for="bar4">Bar 4:&nbsp</label>
+					<select name="bar4" class="bar4 drop-downs1" id="bar4">
+						<option value="red" selected>Red</option>
+						<option value="skyBlue">Sky blue - Coming soon</option>
+					</select>
+				</div>
+			</div>
 			<div class="group">
-				<div class="">
+				<div class="o">
+					<button class="Btn">Coming soon</button>
+				</div>
+				<div class="o">
 					<button class="Btn">Coming soon</button>
 				</div>
 			</div>

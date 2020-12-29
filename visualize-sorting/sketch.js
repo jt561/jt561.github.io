@@ -47,6 +47,7 @@ moreStats['auxiliaryWrites'] = 0;
 moreStats['listSize'] = 0;
 moreStats['largestNumber'] = 0;
 moreStats['smallestNumber'] = 0;
+moreStats['timeElapsed'] = 0;
 
 // called once at start
 function setup() {
@@ -231,10 +232,11 @@ function updateTimer()
 		// set a 1milli dealay and increment count,
 		// uses recursion
 		setTimeout(() => {
-			let currentTime = $('#timer1 .v').text();
-			currentTime = parseInt(currentTime);
-			// add one to current time
-			$('#timer1 .v').text(currentTime +  2);
+			// I dont know why i picked this number, its arbituary
+			// add number to current time
+			moreStats['timeElapsed'] += 0.0005;
+			// display number, rounded to 5 decimal place
+			$('#timer1 .v').text(moreStats['timeElapsed'].toFixed(5));
 			updateTimer();
 		},0);
 	}
@@ -249,6 +251,7 @@ function resetExtraStats()
 	moreStats['listSize'] = 0;
 	moreStats['largestNumber'] = 0;
 	moreStats['smallestNumber'] = 0;
+	moreStats['timeElapsed'] = 0;
 }
 
 // updates the html tags with the values from the moreStats array
