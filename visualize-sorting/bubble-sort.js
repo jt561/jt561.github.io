@@ -33,7 +33,11 @@ var BubbleSort = function(arr)
 					arr[c] = arr[n];
 					arr[n] = temp;
 					this.swaps++;
+					// update the global swap count
+					moreStats['swaps']++;
 				}
+				// update the global comparisons count
+				moreStats['comparisons']++;
 				// move to next element
 				this.j++;
 			}

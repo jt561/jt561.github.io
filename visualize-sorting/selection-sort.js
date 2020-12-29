@@ -29,6 +29,8 @@ var SelectionSort = function(arr)
 					this.currentMinIndex = this.j;
 					this.currentMinValue = arr[this.j];
 				}
+				// update the global comparisons count
+				moreStats['comparisons']++;
 				// check how many items are already sorted whilst iterating
 				if (parseInt(arr[this.j]) <= parseInt(arr[this.j+1]))
 				{
@@ -47,6 +49,8 @@ var SelectionSort = function(arr)
 					let temp = arr[this.i];
 					arr[this.i] = this.currentMinValue;
 					arr[this.currentMinIndex] = temp;
+					// update the global swap count
+					moreStats['swaps']++;
 				}
 				// start of outer loop
 				this.i++;

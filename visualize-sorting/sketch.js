@@ -87,7 +87,7 @@ function draw() {
 	else
 	{
 		// set up the type of sort, create the right sort object to use
-		// should only run once
+		// should only run once before sorting starts
 		if (!ready)
 		{
 			switch (sortType)
@@ -108,12 +108,14 @@ function draw() {
 					sorter = new QuickSort(values);
 					break;
 			}
+			// reset all values in moreStats array to 0
+			resetExtraStats();
+			// set playback speed/framerate/sort Speed
+			frameRate(frameRates[playbackSpeed]);
 			// start using the sort object
 			ready = true;
 			// dont run on an empty array
 			if (values.length < 1) { $('#stopBtn').click(); }
-			// set playback speed/framerate/sort Speed
-			frameRate(frameRates[playbackSpeed]);
 		}
 		else
 		{
@@ -122,8 +124,10 @@ function draw() {
 			sorter.sort();
 		}
 	}
-	// display the raw values, in underneath the graph
+	// display the raw values, underneath the graph
 	showValuesAsText();
+	// display extra stats on screen
+	updateExtraStatsAsText()
 }
 
 // print array
@@ -234,5 +238,32 @@ function updateTimer()
 			updateTimer();
 		},0);
 	}
+}
+
+// resets extra stats values
+function resetExtraStats()
+{
+	moreStats['swaps'] = 0;
+	moreStats['comparisons'] = 0;
+	moreStats['auxiliaryWrites'] = 0;
+	moreStats['listSize'] = 0;
+	moreStats['largestNumber'] = 0;
+	moreStats['smallestNumber'] = 0;
+}
+
+// updates the html tags with the values from the moreStats array
+function updateExtraStatsAsText()
+{
+	// before showing text, get calculate necessary values
+	moreStats['listSize'] = values.length;
+	moreStats['largestNumber'] = Math.max(...values);
+	moreStats['smallestNumber'] = Math.min(...values);
+	// show as text
+	$('#swaps1 .v').text(moreStats['swaps']);
+	$('#comparisons1 .v').text(moreStats['comparisons']);
+	$('#auxiliaryWrites1 .v').text(moreStats['auxiliaryWrites']);
+	$('#listSize1 .v').text(moreStats['listSize']);
+	$('#largestNumber1 .v').text(moreStats['largestNumber']);
+	$('#smallestNumber1 .v').text(moreStats['smallestNumber']);
 }
 /* End of main board */

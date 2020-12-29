@@ -70,10 +70,14 @@ var MergeSort = function(arr)
     for (leftPtr = 0; leftPtr < leftArrSize; leftPtr++)
 		{
 			newLeftArr[leftPtr] = origArr[leftInd + leftPtr];
+			// update the global auxiliary writes count
+			moreStats['auxiliaryWrites']++;
 		}
     for (rightPtr = 0; rightPtr < rightArrSize; rightPtr++)
 		{
 			newRightArr[rightPtr] = origArr[midInd + 1 + rightPtr];
+			// update the global auxiliary writes count
+			moreStats['auxiliaryWrites']++;
 		}
 
     // put the merged version of left and right array back into original
@@ -85,15 +89,25 @@ var MergeSort = function(arr)
     {
         if (newLeftArr[leftPtr] <= newRightArr[rightPtr])
         {
+						// calculate the number of swaps based on the values that have changed
+						// update the global swap count - not sure if I should be counting this
+						if (newLeftArr[leftPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
+						// insert the smallest value at its correct index
             origArr[resultPtr] = newLeftArr[leftPtr];
             leftPtr++;
         }
         else
         {
+						// calculate the number of swaps based on the values that have changed
+						// update the global swap count - not sure if I should be counting this
+						if (newRightArr[rightPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
+						// insert the smallest value at its correct index
             origArr[resultPtr] = newRightArr[rightPtr];
             rightPtr++;
         }
         resultPtr++;
+				// update the global comparisons count
+				moreStats['comparisons']++;
     }
     // insert left over values from left array into original
     while (leftPtr < leftArrSize)

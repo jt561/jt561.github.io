@@ -27,6 +27,8 @@ var InsertionSort = function(arr)
 				arr[this.j] = arr[this.j+1];
 				arr[this.j+1] = temp;
 				this.j--
+				// update the global swap count
+				moreStats['swaps']++;
 			}
 			else
 			{
@@ -37,6 +39,8 @@ var InsertionSort = function(arr)
 				// start going down from the current index
 				this.j = this.i - 1;
 			}
+			// update the global comparisons count
+			moreStats['comparisons']++;
 		}
 		// end of outer loop
 		else
