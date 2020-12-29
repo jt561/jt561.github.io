@@ -21,13 +21,19 @@ var MergeSort = function(scl, arr)
 	{
 		// merge subarrays upawards. start from 1 to size 2, then merge subarrays
 		// of size 2 to create sorted subarrays of size 4....
+		// we are done when our sub array size is greater than our list size-1
 		if (this.subArrSize < arr.length)
 		{
+			// loop through each index based on [sorted sub]array size
 			if (this.subArrLeftInd < arr.length - 1)
 			{
 				let mid = Math.min(this.subArrLeftInd+this.subArrSize-1, arr.length-1);
 				let subArrRightInd = Math.min(this.subArrLeftInd+2*this.subArrSize-1, arr.length-1);
 				this.merge(arr, this.subArrLeftInd, mid, subArrRightInd);
+				// for visuals
+				this.j = mid;
+				this.i = subArrRightInd;
+				// after each sub array is evauated, each iteration in the inner loop
 				this.subArrLeftInd += 2 * this.subArrSize;
 			}
 			else
@@ -44,9 +50,10 @@ var MergeSort = function(scl, arr)
 		{
 				this.done = true;
 		}
-		printArrayAll(arr, this.j, this.j+1, this.j, this.done);
+		printArrayAll(arr, this.subArrLeftInd, this.i, this.j, this.done);
 	}
 
+	// merges 2 arrays, then alter the main array with the sorted values
 	this.merge = function(origArr, leftInd, midInd, rightInd)
 	{
     let leftPtr, rightPtr, resultPtr;

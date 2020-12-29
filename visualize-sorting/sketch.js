@@ -110,6 +110,7 @@ function draw() {
 		else
 		{
 			// call appropriate sort, start soring
+			// it sorts and prints array at each sort point
 			sorter.sort();
 		}
 	}
