@@ -88,12 +88,18 @@ $(document).ready(function() {
 		$('#stopBtn').click();
 		// clear array
 		values.splice(0, values.length);
-		// fill it up with new values between 0-100,
-		// with max array length also being between 0-100
-		let limit = Math.floor(Math.random() * 101);
-		for (let i = 0; i < limit; i++)
+		// fill it up with new values between 0-100(now, using given range),
+		// with max array length also being between 0-100(now using given range)
+		let biggestListSize = parseInt($('#biggestListVal1').val());
+		let smallestListSize = parseInt($('#smallestListVal1').val());
+		let minVal = parseInt($('#smallestVal1').val());
+		let maxVal = parseInt($('#biggestVal1').val());
+		// get random number between 0 and (max[+1]-min), round it down, add min offset
+		let maxArrSize = Math.floor(Math.random() * ((biggestListSize-smallestListSize)+1)) + smallestListSize;
+		for (let i = 0; i < maxArrSize; i++)
 		{
-			values.push(Math.floor(Math.random() * 101));
+			// get random number between 0 and (max[+1]-min), round it down, add min offset
+			values.push(Math.floor(Math.random() * (maxVal-minVal+1)) + minVal);
 		}
 		// store copy of new array
 		valuesCopy = [...values];
