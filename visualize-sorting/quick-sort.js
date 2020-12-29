@@ -4,9 +4,9 @@
 
 /* Global variables */
 
-var QuickSort = function(scl, arr)
+// constructor, takes refrence to original array
+var QuickSort = function(arr)
 {
-	this.scl = scl;
 	this.i = 0;
 	this.j = 0;
 	this.done = false;

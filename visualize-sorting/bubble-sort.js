@@ -4,9 +4,9 @@
 
 /* Global variables */
 
-var BubbleSort = function(scl, arr)
+// constructor, takes refrence to original array
+var BubbleSort = function(arr)
 {
-	this.scl = scl;
 	this.i = 0;
 	this.j = 0;
 	this.done = false;

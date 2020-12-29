@@ -4,9 +4,9 @@
 
 /* Global variables */
 
-var MergeSort = function(scl, arr)
+// constructor, takes refrence to original array
+var MergeSort = function(arr)
 {
-	this.scl = scl;
 	this.i = 0;
 	this.j = 0;
 	this.done = false;
@@ -27,8 +27,11 @@ var MergeSort = function(scl, arr)
 			// loop through each index based on [sorted sub]array size
 			if (this.subArrLeftInd < arr.length - 1)
 			{
+				// find midpoint of sub array
 				let mid = Math.min(this.subArrLeftInd+this.subArrSize-1, arr.length-1);
+				// find end of sub array
 				let subArrRightInd = Math.min(this.subArrLeftInd+2*this.subArrSize-1, arr.length-1);
+				// sort/merge the array from start index(subArrLeftInd) to end(subArrRightInd)
 				this.merge(arr, this.subArrLeftInd, mid, subArrRightInd);
 				// for visuals
 				this.j = mid;

@@ -4,9 +4,9 @@
 
 /* Global variables */
 
-var InsertionSort = function(scl, arr)
+// constructor, takes refrence to original array
+var InsertionSort = function(arr)
 {
-	this.scl = scl;
 	this.i = 1;
 	this.j = 0;
 	this.key = arr[this.i];

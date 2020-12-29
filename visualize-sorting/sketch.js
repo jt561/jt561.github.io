@@ -85,19 +85,19 @@ function draw() {
 			switch (sortType)
 			{
 				case "bubble":
-					sorter = new BubbleSort(scl, values);
+					sorter = new BubbleSort(values);
 					break;
 				case "selection":
-					sorter = new SelectionSort(scl, values);
+					sorter = new SelectionSort(values);
 					break;
 				case "insertion":
-					sorter = new InsertionSort(scl, values);
+					sorter = new InsertionSort(values);
 					break;
 				case "merge":
-					sorter = new MergeSort(scl, values);
+					sorter = new MergeSort(values);
 					break;
 				case "quick":
-					sorter = new QuickSort(scl, values);
+					sorter = new QuickSort(values);
 					break;
 			}
 			// start using the sort object

@@ -4,9 +4,9 @@
 
 /* Global variables */
 
-var SelectionSort = function(scl, arr)
+// constructor, takes refrence to original array
+var SelectionSort = function(arr)
 {
-	this.scl = scl;
 	this.i = 0;
 	this.j = 0;
 	this.currentMinIndex = this.i;
