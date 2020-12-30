@@ -41,12 +41,11 @@ var MergeSort = function(arr)
 			}
 			else
 			{
-				// end of inner loop, increase outer loop
+				// end of inner loop, increase outer loop by double the previous size
 				this.subArrSize = this.subArrSize * 2;
 				// reset inner loop
 				this.subArrLeftInd = 0;
 			}
-			console.log(this.subArrLeftInd, this.subArrSize);
 		}
 		// end of outer loop
 		else
