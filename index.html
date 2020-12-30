@@ -153,7 +153,7 @@
 			background: #0f0f0f;
 			padding: 50px 50px;
 			border-bottom: 2px solid black;
-			box-shadow: 0px 20px 20px 0.1px #202020;
+			box-shadow: 0px 10px 10px 0.5px #777;
 			position: relative;
 			z-index: 0;
 			border-radius: 10px;
@@ -509,7 +509,6 @@
 				width: 20%;
 				margin: 0 auto;
 				font-size: 14px;
-				transform: translateX(-50%);
 			}
 
 			.resume h2.title {
@@ -590,6 +589,10 @@
 			.section-header {
 				width: 20%;
 				font-size: 12px;
+			}
+
+			.section-header.projects {
+				transform: translateX(-50%);
 			}
 
 			.about-background-left {
@@ -1069,7 +1072,7 @@
 				</div>
       </div>
       <div id="projects" class="container projects section">
-				<div class="section-header">
+				<div class="section-header projects">
 					<div class="container-title">
 						<div class="title-icon-box"></div>
 						<h1 id="resumeTitle" class="title">Projects</h1>
@@ -1079,16 +1082,6 @@
 					<p class="projects-description">This page contains the various projects I have worked on or currently working on. This should provide an overview of the type of work I'm able to achieve and enjoy doing.</p>
 					<div class="all-projects">
 						<div class="projects-cards-wrapper">
-							<div class="project-card card one-sided">
-								<div class="random-projects">
-									<h3>Trivial work</h3>
-									<ul>
-										<li><a href="./play-snake" class="semi-important-link" target="_blank">Play Snake</a></li>
-										<li><a class="semi-important-link" target="_blank">Coming soon</a></li>
-										<li><a class="semi-important-link" target="_blank">Coming soon</a></li>
-									</ul>
-								</div>
-							</div>
 							<div class="project-card card">
 								<div class="project-card-left left">
 									<img src="./assets/pics/visualizer-screenshot.png" alt="Visualizer project screenshot"/>
@@ -1098,6 +1091,16 @@
 									 <p class="project-role"><a href="./visualize-sorting" class="semi-important-link" target="_blank">Click here to view</a></p>
 									 <p class="project-details">Visualization tool for sorting algorithms. This tool allows you to visualize various different sorting algorithms, and also gives you control of various aspects such as the values in the list, the visual speed, and also provides stats on the values being sorted</p>
 									 <p class="project-details">I decided to create this tool to apply my programming skills, and broaden my knowledge about sorting algorithms, JS, and the p5 library.</p>
+								</div>
+							</div>
+							<div class="project-card card one-sided">
+								<div class="random-projects">
+									<h3>Trivial work</h3>
+									<ul>
+										<li><a href="./play-snake" class="semi-important-link" target="_blank">Play Snake</a></li>
+										<li><a class="semi-important-link" target="_blank">Coming soon</a></li>
+										<li><a class="semi-important-link" target="_blank">Coming soon</a></li>
+									</ul>
 								</div>
 							</div>
 							<div class="project-card card">
