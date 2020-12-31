@@ -65,8 +65,21 @@ let canvColors = [];
 canvColors['stroke'] = "white";
 canvColors['background'] = "black";
 
+// stores sounds
+let canvSounds = [];
+
+// preload sound files
+function preload()
+{
+	canvSounds['swap'] = loadSound("Sounds/MP3/Woosh/Woosh-Light-02.mp3");
+	canvSounds['iterate'] = loadSound("Sounds/MP3/SciFi/SciFi-03.mp3");
+}
+
 // called once at start
 function setup() {
+	// sounds should be sustained and not restarted
+	canvSounds['swap'].playMode('sustain');
+	canvSounds['iterate'].playMode('sustain');
   // create board/canvas
 	// full width for mobile, less for tablet and desktop
   let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 40:320);
