@@ -46,6 +46,7 @@ var Snake = function(scl)
     }
 
     // get heads new position
+		// scale up the vector
     let scaledVector = createVector(this.vector.x*this.scl, this.vector.y*this.scl);
     this.position.add(scaledVector);
 

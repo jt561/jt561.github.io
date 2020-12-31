@@ -34,6 +34,19 @@ function draw() {
   // background color - black
   background(0,0,0);
 
+	// draw grid
+	let cols = width/scl;
+	let rows = height/scl;
+	for (let i = 0; i < cols; i++)
+	{
+		for (let j = 0; j < rows; j++)
+		{
+			// hide grid for now
+			stroke("black");
+			fill("black");
+			rect(i*scl, j*scl, scl, scl);
+		}
+	}
 
   // update and draw snake and food object
   snake.update();
