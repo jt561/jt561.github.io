@@ -65,15 +65,15 @@ var QuickSort = function(arr)
 		{
 			if (arr[i] <= pivotValue)
 			{
+				// calculate the number of swaps based on the values that have changed
+				// update the global swap count - not sure if I should be counting this
+				if (arr[i] != arr[pivotInd]) { moreStats['swaps']++; }
 				// swap
 				let temp = arr[pivotInd];
 				arr[pivotInd] = arr[i];
 				arr[i] = temp;
 				// move pivot index forward
 				pivotInd++;
-
-				// update the global swap count
-				moreStats['swaps']++;
 			}
 			// update the global comparisons count
 			moreStats['comparisons']++;
