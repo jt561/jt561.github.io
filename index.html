@@ -140,6 +140,20 @@
 			margin: 2px auto;
 		}
 
+		.theme-picker-container {
+			text-align: center;
+			align-items: center;
+			padding-top: 10px;
+		}
+
+		.theme-picker-container .theme-picker-wrapper {
+			display: none;
+		}
+
+		.theme-picker-container .show {
+			display: initial;
+		}
+
 		/* whole/actual page*/
 		.content {
 			max-width: 80%;
@@ -279,11 +293,11 @@
 			color: black;
 		}
 		@keyframes link-blink {
-			0% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 1px; }
-			25% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 1px; }
-			50% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 1px; }
-			75% { border: 2px solid black; background-color: #fff; color: #000; letter-spacing: 2px; }
-			100% { border: 2px solid black; background-color: #000; color: #fff; letter-spacing: 1px; }
+			0% { letter-spacing: 1px; }
+			25% { letter-spacing: 1px; }
+			50% { letter-spacing: 1px; }
+			75% { letter-spacing: 2px; }
+			100% { letter-spacing: 1px; }
 		}
 
 		.hello {
@@ -342,7 +356,7 @@
 		}
 
 		.card {
-			background-color: #dbdbdb;
+			background-color: #fafafa;
 			color: black;
 			margin-bottom: 13px;
 			padding: 13px;
@@ -406,11 +420,16 @@
 
 		/* footer */
 		.footer {
+			position: relative;
 			background-color: #363636;
 			min-height: 8vh;
 			display: flex;
 			justify-content: space-around;
 			align-items: center;
+		}
+
+		.contact-me a {
+			color: #000;
 		}
 
 		#backToTopButton {
@@ -814,6 +833,66 @@
         }, 1000);
 			});
 
+			// toggle select tag that is used to select themes hidden/inline-block
+			$('#changeThemeBtn1').click(function() {
+				$('.theme-picker-wrapper').toggleClass('show');
+			});
+
+			// change theme when user selects a new theme
+			$('#themePicker1').change(function() {
+				switch($(this).val())
+				{
+					case "theme1" :
+						applyTheme1();
+						break;
+					case "theme2" :
+						applyTheme2();
+						break;
+				}
+				// hide the select tag again
+				$('#changeThemeBtn1').click();
+			});
+			// applys specific css values to change theme;
+			function applyTheme1() {
+				// remove all applied themes(style tags), leaving default
+				$('.themes').remove();
+			}
+			// applys specific css values to change theme;
+			function applyTheme2() {
+				//$('body').css("background-color", "#e6dace");
+				$('.themes').remove();
+				var newStyle = $("<style class='themes'></style>");
+				$('head').append(newStyle);
+				let styleTextNode = "body { background-color: #e6dace; font-family: Arial, sans-serif; }"
+				styleTextNode += ".header { background-color: #fff; color: #000; }";
+				styleTextNode += "#my-name-svg { background-color: #000; padding: 5px; border-radius: 2px; }";
+				styleTextNode += "@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; } }";
+				styleTextNode += ".navigation-links a { background: transparent; color: #000; }";
+				styleTextNode += ".navigation-links a:hover, .navigation-links a:active { color: #00f; }";
+				styleTextNode += ".burger div { background-color: #00f; }";
+				styleTextNode += ".footer, .footer a, a { background-color: #fff; color: #000; }";
+				styleTextNode += "#about-me { background-color: #e6dace; color: #000; }";
+				styleTextNode += ".about-left { background-color: #f4ece6; color: #000; }";
+				styleTextNode += ".my-card-divider { background-color: #00f; }";
+				styleTextNode += "@media all and (max-width: 768px) {.about-right { color: #000; } }";
+				styleTextNode += ".section { background: transparent; color: #000; box-shadow: none; border-bottom: none; }";
+				styleTextNode += ".card { background-color: #fff; color: #000; }";
+				styleTextNode += ".education .card h3, .experience .card h3 { color: #00f; }";
+				styleTextNode += ".education .card .grades { color: #00f; }";
+				styleTextNode += ".internal-redirecter.one { background-color: #00f; color: #fff; border: 2px solid #00f; }";
+				styleTextNode += ".internal-redirecter.one:hover { background-color: #fff; color: #000; border: 2px solid #00f; }";
+				styleTextNode += ".internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #00f; }";
+				styleTextNode += ".internal-redirecter.two:hover { background-color: #00f; color: #fff; border: 2px solid #00f; }";
+				styleTextNode += ".title-icon-box { background-color: #00f; border: 2px solid #00f; }";
+				styleTextNode += ".skill-set-box-icon { background-color: #00f; border: none; }";
+				styleTextNode += "#backToTopButton { background-color: #00f; border: none; }";
+				styleTextNode += ".semi-important-link { background-color: #34a1eb; color: #fff; border: 2px solid #000; border-radius: 10px; }";
+				styleTextNode += ".btn { background-color: #34a1eb; color: #fff; border: 2px solid #000; }";
+				styleTextNode += ".skill p { display: inline-block; }";
+				styleTextNode += ".extracurricular-card-right ul { list-style-type: none; }";
+				$('.themes').append(styleTextNode);
+			}
+
 		});
 	</script>
 
@@ -857,6 +936,15 @@
 				 <div class="pixels-covered">
 			 	</div>
     </div>
+		<div class="container theme-picker-container">
+			<button id="changeThemeBtn1" class="btn">Change Theme</button>
+			<div class="theme-picker-wrapper">
+				<select class="theme-picker" name="theme-picker" id="themePicker1">
+					<option value="theme1" selected>Theme 1</option>
+					<option value="theme2">Theme 2</option>
+				</select>
+			</div>
+		</div>
     <div class="container content">
       <div id="about-me" class="container about-me section">
 				<div class="about-background-left">
@@ -871,7 +959,7 @@
 						<div class="about-left about-top">
 							<div class="my-card">
 								<div class="profile-picture">
-									<h1>I am</h1>
+									<h1>. . .</h1>
 								</div>
 								<div class="my-name-2">
 									<h1>Joshua Tetteh</h1>
@@ -928,7 +1016,7 @@
 								</div>
 								<div class="education-card-right right">
 									<p><b>Subject:</b> BSc Business Information Technology with a Year in Industry</p>
-									<p><b>Grade(Expected):</b> 2:1</p>
+									<p><b class="grades">Grade(Expected):</b> 2:1</p>
 									<p>This course focuses on computing and business modules, helping me understand the importance of information systems in businesses and equiped me with skills such as leadership and management skills, communication skills and programming skills.</p>
 								</div>
 							</div>
@@ -941,7 +1029,7 @@
 								</div>
 								<div class="education-card-right right">
 									<p><b>Subject:</b> BTEC Extended Diploma in Business</p>
-									<p><b>Grade(Achieved):</b> Distinction*, Distinction, Distinction</p>
+									<p><b class="grades">Grade(Achieved):</b> Distinction*, Distinction, Distinction</p>
 									<p>This course gave me indepth knowledge about business marketing, finance, recruitment, customer service, research, globolisation, management, training and development and finaly business law.</p>
 								</div>
 							</div>
@@ -954,7 +1042,7 @@
 								</div>
 								<div class="education-card-right right">
 									<p><b>Subjects:</b> (GCSE's) Maths, Science, Additional Science, ICT, English Language, English Literature, Art</p>
-									<p><b>Grades(Achieved):</b> A, B, B, B, C, C, C</p>
+									<p><b class="grades">Grades(Achieved):</b> A, B, B, B, C, C, C</p>
 									<p>I acquired a lot of fundemental and essential knowledge from my GCSE subjects which have made me the man I am today</p>
 								</div>
 							</div>
@@ -1098,12 +1186,12 @@
 									<h3>Trivial work</h3>
 									<ul>
 										<li><a href="./play-snake" class="semi-important-link" target="_blank">Play Snake</a></li>
-										<li><a class="semi-important-link" target="_blank">Coming soon</a></li>
-										<li><a class="semi-important-link" target="_blank">Coming soon</a></li>
+										<!--<li><a class="semi-important-link" target="_blank">Coming soon</a></li>-->
+										<!--<li><a class="semi-important-link" target="_blank">Coming soon</a></li>-->
 									</ul>
 								</div>
 							</div>
-							<div class="project-card card">
+							<!--<div class="project-card card">
 								<div class="project-card-left left">
 									<img src="#" alt="Coming soon"/>
 								</div>
@@ -1113,7 +1201,7 @@
 									 <p class="project-details">Coming soon</p>
 									 <p class="project-details">Coming soon</p>
 								</div>
-							</div>
+							</div>-->
 						</div>
 					</div>
 				</div>
@@ -1126,11 +1214,13 @@
 					</div>
 				</div>
 				<div class="section-content">
-        	<div>
-						<p>Email: <span class="email-note">joshua.tetteh113@gmail.com</span></p>
-					</div>
-					<div>
-						<p>Connect with me: <span><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/" target="_blank">on LinkedIn</a></span></p>
+					<div class="card one-sided">
+						<div>
+							<p>Email: <span class="email-note">joshua.tetteh113@gmail.com</span></p>
+						</div>
+						<div>
+							<p>Connect with me: <span><a href="https://www.linkedin.com/in/joshua-tetteh-3a04b91ba/" target="_blank">on LinkedIn</a></span></p>
+						</div>
 					</div>
 				</div>
       </div>
