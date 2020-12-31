@@ -147,6 +147,10 @@
 		  to {opacity:1 ;}
 		}
 
+		.small-input {
+			max-width: 80px;
+		}
+
 		#newValue {
 			outline: none;
 			border: none;
@@ -196,6 +200,8 @@
 			border-radius: 2px;
 			cursor: pointer;
 			border: 3px solid #ffffff;
+			min-width: 90px;
+			max-width: 130px;
 			transition: 0.5s ease;
 		}
 
@@ -374,7 +380,8 @@
 		<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
 		<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
 		<div>More sorts coming soon.</div>
-		<div>Click on this pop up or the question mark again to hide this pop-up.</div>
+		<div>A few other features will be added soon</div>
+		<div>Click the X button on the right to hide this pop-up.</div>
 	</div>
 	<div class="control-center">
 		<div class="values">
@@ -394,7 +401,7 @@
 			<button id="removeBtnF" type="button" name="remove-f" class="Btn extended-control-artifacts inline">Remove&nbsp<span class="extended-control-artifacts inline">from front</span></button>
 			<button id="insertBtnF" type="button" name="insert-f" class="Btn extended-control-artifacts inline">Insert&nbsp<span class="extended-control-artifacts inline">to front</span></button>
 			<button id="decreaseValBtn" type="button" name="decrease" class="Btn incAndDec"><</button>
-			<input id="newValue" type="number" name="value" value="1" min="0" max="100" required/>
+			<input id="newValue" type="number" name="value" value="1" min="0" max="100" class="small-input" required/>
 			<button id="increaseValBtn" type="button" name="increase" class="Btn incAndDec">></button>
 			<button id="insertBtn" type="button" name="insert" class="Btn">Insert&nbsp<span class="extended-control-artifacts inline">to end</span></button>
 			<button id="removeBtn" type="button" name="remove" class="Btn">Remove&nbsp<span class="extended-control-artifacts inline">from end</span></button>
@@ -441,8 +448,8 @@
 				<div class="o">
 					<label for="sortDirection">Sort Direction:&nbsp</label>
 					<select name="sort-direction" class="sort-direction drop-downs1" id="sortDirection">
-						<option value="forward" selected>Forwards</option>
-						<option value="reverse">Reversed - Coming soon</option>
+						<option value="ASC" selected>Ascending</option>
+						<option value="DESC">Descending - coming soon</option>
 					</select>
 				</div>
 			</div>
@@ -452,6 +459,7 @@
 					<select name="display-type" class="display-type drop-downs1" id="displayType">
 						<option value="bar" selected>Bar graph</option>
 						<option value="pie">Pie chart - Coming soon</option>
+						<option value="pyramid">Left Pyramid - Coming soon</option>
 					</select>
 				</div>
 				<div class="o">
@@ -465,21 +473,21 @@
 			<div class="group">
 				<div class="o">
 					<label for="biggestListVal1" class="">Randomizer biggest list size:</label>
-					<input id="biggestListVal1" type="number" name="" value=100 min=0 class="Btn"/>
+					<input id="biggestListVal1" type="number" name="" value=100 min=0 class="Btn small-input" required/>
 				</div>
 				<div class="o">
 					<label for="smallestListVal1" class="">Randomizer smallest list size:</label>
-					<input id="smallestListVal1" type="number" name="" value=1 min=0 class="Btn"/>
+					<input id="smallestListVal1" type="number" name="" value=1 min=0 class="Btn small-input" required/>
 				</div>
 			</div>
 			<div class="group">
 				<div class="o">
 					<label for="biggestVal1" class="">Randomizer biggest value:</label>
-					<input id="biggestVal1" type="number" name="" value=100 min=0 class="Btn"/>
+					<input id="biggestVal1" type="number" name="" value=100 min=0 class="Btn small-input" required/>
 				</div>
 				<div class="o">
 					<label for="smallestVal1" class="">Randomizer smallest value:</label>
-					<input id="smallestVal1" type="number" name="" value=1 min=0 class="Btn"/>
+					<input id="smallestVal1" type="number" name="" value=1 min=0 class="Btn small-input" required/>
 				</div>
 			</div>
 			<div class="group bar-colors">

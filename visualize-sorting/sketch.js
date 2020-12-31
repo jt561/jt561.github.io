@@ -48,6 +48,12 @@ moreStats['listSize'] = 0;
 moreStats['largestNumber'] = 0;
 moreStats['smallestNumber'] = 0;
 moreStats['timeElapsed'] = 0;
+// sort in ascending or descending (ASC/DESC)
+let sortDirection = "ASC";
+// type of display for values, (bar or pie or pyramid)
+let displayType = "bar";
+// should negatives be shown on the canvas(no/yes)
+let allowNegatives = "no";
 // colours for the bar graph
 let bar = [];
 bar['1'] = "blue";
