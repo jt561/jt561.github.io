@@ -48,6 +48,16 @@ moreStats['listSize'] = 0;
 moreStats['largestNumber'] = 0;
 moreStats['smallestNumber'] = 0;
 moreStats['timeElapsed'] = 0;
+// colours for the bar graph
+let bar = [];
+bar['1'] = "blue";
+bar['2'] = "green";
+bar['3'] = "yellow";
+bar['4'] = "red";
+// colors for the canvas
+let canvColors = [];
+canvColors['stroke'] = "white";
+canvColors['background'] = "black";
 
 // called once at start
 function setup() {
@@ -67,7 +77,7 @@ function setup() {
 // draw loop
 function draw() {
   // background color - black
-  background(0,0,0);
+  background(canvColors['background']);
 
 	// before sorting
 	if (paused)
@@ -134,7 +144,7 @@ function draw() {
 // print array
 function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 {
-	stroke(255, 255, 255);
+	stroke(canvColors['stroke']);
 	// for each value
 	for (let i = 0; i < arr.length; i++)
 	{
@@ -162,23 +172,23 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 			// highlight the current value being evaluated as blue
 			if (i == cIndex)
 			{
-				fill(0, 0, 255);
+				fill(bar['1']);
 			}
 			// highlight the value to be swapped as green
 			else if (i == toSwap)
 			{
-				fill(0, 255, 0);
+				fill(bar['2']);
 			}
 			// highlight the value that is about to be swapped with the first
 			// value that will be swapped, as yellow
 			else if (i == toSwap2)
 			{
-				fill(255, 255, 0);
+				fill(bar['3']);
 			}
 			// highlight all values as red
 			else
 			{
-				fill(255, 0, 0);
+				fill(bar['4']);
 			}
 		}
 		// draw/colour all values
@@ -197,8 +207,8 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 		textAlign(CENTER, CENTER);
 		text((timeTaken/1000)+" s", width/2, height/2);
 		// reset stroke and fill to white and green
-		stroke(255, 255, 255);
-		fill(0, 255, 0);
+		stroke(canvColors['stroke']);
+		fill(bar['2']);
 	}
 }
 

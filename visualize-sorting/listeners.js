@@ -240,4 +240,28 @@ $(document).ready(function() {
 		timerActive = false;
 	});
 
+	// add on change listener, so when a new option is selected,
+	// its value gets assigned to the global variable
+	// changes the colors of the bars on the page
+	$('#bar1').change(function() {
+		bar['1'] = $(this).val();
+	});
+	$('#bar2').change(function() {
+		bar['2'] = $(this).val();
+	});
+	$('#bar3').change(function() {
+		bar['3'] = $(this).val();
+	});
+	$('#bar4').change(function() {
+		bar['4'] = $(this).val();
+	});
+	// changes the colors of the stroke of the bars on the page
+	$('#stroke1').change(function() {
+		canvColors['stroke'] = $(this).val();
+	});
+	// changes the colors of the background on the page
+	$('#background1').change(function() {
+		canvColors['background'] = $(this).val();
+	});
+
 });
