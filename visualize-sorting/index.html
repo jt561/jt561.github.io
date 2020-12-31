@@ -225,6 +225,16 @@
 			padding-left: 50px;
 			padding-right: 50px;
 			border: 2px solid green;
+			transition: 1.0s ease-in;
+		}
+
+		@-webkit-keyframes animateStartBtn {
+			0% { background-image: linear-gradient(to right, green, black); }
+			50% { background-image: linear-gradient(to left, green, black); }
+		}
+		@keyframes animateStartBtn {
+			0% { background-image: linear-gradient(to right, green, black); }
+			50% { background-image: linear-gradient(to left, green, black); }
 		}
 
 		#stopBtn {

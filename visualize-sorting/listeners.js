@@ -213,6 +213,9 @@ $(document).ready(function() {
 		{
 			return;
 		}
+		// add gradient effect/sorting effecting
+		$(this).css("background-image","linear-gradient(to right, green , black)");
+		$(this).css("animation","animateStartBtn 2s ease-in-out 0s infinite alternate");
 		// store values for reset
 		valuesCopy = [...values];
 		// unpause
@@ -234,6 +237,9 @@ $(document).ready(function() {
 
 	// stops sorting and also, the timer
 	$('#stopBtn').on('click touchstart', function() {
+		// remove gradient from start button
+		$('#startBtn').css("background-image","");
+		$('#startBtn').css("animation","");
 		paused = true;
 		ready = false;
 		// stop timer
