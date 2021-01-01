@@ -13,6 +13,7 @@ var SelectionSort = function(arr)
 	this.currentMinValue = arr[this.i];
 	this.done = false;
 	this.alreadySorted = 0;
+	this.direction = sortDirection;
 
 	// actual sort
 	this.sort = function()
@@ -23,34 +24,70 @@ var SelectionSort = function(arr)
 			// if we havent reach the last value
 			if (this.j < arr.length)
 			{
-				// find the smallest value in the list after an iteration
-				if (parseInt(arr[this.j]) < this.currentMinValue)
+				if (this.direction == "DESC")
 				{
-					this.currentMinIndex = this.j;
-					this.currentMinValue = arr[this.j];
+					// find the largest value in the list after an iteration
+					if (parseInt(arr[this.j]) > this.currentMinValue)
+					{
+						this.currentMinIndex = this.j;
+						this.currentMinValue = arr[this.j];
+					}
+					// check how many items are already sorted whilst iterating
+					if (parseInt(arr[this.j]) >= parseInt(arr[this.j+1]))
+					{
+						this.alreadySorted++;
+					}
+				}
+				// ascending as default
+				else
+				{
+					// find the smallest value in the list after an iteration
+					if (parseInt(arr[this.j]) < this.currentMinValue)
+					{
+						this.currentMinIndex = this.j;
+						this.currentMinValue = arr[this.j];
+					}
+					// check how many items are already sorted whilst iterating
+					if (parseInt(arr[this.j]) <= parseInt(arr[this.j+1]))
+					{
+						this.alreadySorted++;
+					}
 				}
 				// update the global comparisons count
 				moreStats['comparisons']++;
-				// check how many items are already sorted whilst iterating
-				if (parseInt(arr[this.j]) <= parseInt(arr[this.j+1]))
-				{
-					this.alreadySorted++;
-				}
 				// next value
 				this.j++;
 			}
 			else
 			{
-				// if theres a value smaller than our current i, put it in place
-				// of current i
-				if (this.currentMinValue < parseInt(arr[this.i]))
+				if (this.direction == "DESC")
 				{
-					// swap
-					let temp = arr[this.i];
-					arr[this.i] = this.currentMinValue;
-					arr[this.currentMinIndex] = temp;
-					// update the global swap count
-					moreStats['swaps']++;
+					// if theres a value larger than our current i, put it in place
+					// of current i
+					if (this.currentMinValue > parseInt(arr[this.i]))
+					{
+						// swap
+						let temp = arr[this.i];
+						arr[this.i] = this.currentMinValue;
+						arr[this.currentMinIndex] = temp;
+						// update the global swap count
+						moreStats['swaps']++;
+					}
+				}
+				// ascending order is defaults
+				else
+				{
+					// if theres a value smaller than our current i, put it in place
+					// of current i
+					if (this.currentMinValue < parseInt(arr[this.i]))
+					{
+						// swap
+						let temp = arr[this.i];
+						arr[this.i] = this.currentMinValue;
+						arr[this.currentMinIndex] = temp;
+						// update the global swap count
+						moreStats['swaps']++;
+					}
 				}
 				// start of outer loop
 				this.i++;
@@ -60,6 +97,7 @@ var SelectionSort = function(arr)
 				this.currentMinValue = arr[this.i];
 				// exit if there were no swaps in an iteration
 				if (this.alreadySorted >= arr.length - this.i) this.i = arr.length;
+				// reset swap count for next iteration
 				this.alreadySorted = 0;
 			}
 		}

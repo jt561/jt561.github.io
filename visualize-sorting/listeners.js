@@ -246,6 +246,12 @@ $(document).ready(function() {
 		timerActive = false;
 	});
 
+	// onitors, select tag for sort direction(ascending/descending),
+	// sets its value to global
+	$('#sortDirection1').change(function() {
+		sortDirection = $(this).val();
+	});
+
 	// monitors, select tag for allow negatives, sets its value to global
 	// variable
 	$('#allowNegatives1').change(function() {

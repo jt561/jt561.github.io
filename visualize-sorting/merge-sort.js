@@ -10,6 +10,7 @@ var MergeSort = function(arr)
 	this.i = 0;
 	this.j = 0;
 	this.done = false;
+	this.direction = sortDirection;
 
 	// size of sub array
 	this.subArrSize = 1;

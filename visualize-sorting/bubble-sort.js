@@ -11,6 +11,7 @@ var BubbleSort = function(arr)
 	this.j = 0;
 	this.done = false;
 	this.swaps = 0;
+	this.direction = sortDirection;
 
 	// actual sort
 	this.sort = function()
@@ -20,21 +21,38 @@ var BubbleSort = function(arr)
 		{
 			if (this.j < arr.length - 1 - this.i)
 			{
-				// current element and next element
+				// current element index and next element index
 				let c = this.j;
 				let n = this.j+1;
 				let left = parseInt(arr[c]);
 				let right = parseInt(arr[n]);
 
-				if (left > right)
+				// move smallest to the left for descending order
+				if (this.direction == "DESC")
 				{
-					//swap
-					let temp = arr[c];
-					arr[c] = arr[n];
-					arr[n] = temp;
-					this.swaps++;
-					// update the global swap count
-					moreStats['swaps']++;
+					if (left < right)
+					{
+						//swap
+						let temp = arr[c];
+						arr[c] = arr[n];
+						arr[n] = temp;
+						this.swaps++;
+						// update the global swap count
+						moreStats['swaps']++;
+					}
+				}
+				// ascending order as default
+				else {
+					if (left > right)
+					{
+						//swap
+						let temp = arr[c];
+						arr[c] = arr[n];
+						arr[n] = temp;
+						this.swaps++;
+						// update the global swap count
+						moreStats['swaps']++;
+					}
 				}
 				// update the global comparisons count
 				moreStats['comparisons']++;

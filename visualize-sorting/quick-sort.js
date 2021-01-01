@@ -10,6 +10,7 @@ var QuickSort = function(arr)
 	this.i = 0;
 	this.j = 0;
 	this.done = false;
+	this.direction = sortDirection;
 	// start and end index, initialise with initial array
 	this.startInd = 0;
 	this.endInd = arr.length - 1;

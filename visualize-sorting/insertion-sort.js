@@ -11,6 +11,7 @@ var InsertionSort = function(arr)
 	this.j = 0;
 	this.key = arr[this.i];
 	this.done = false;
+	this.direction = sortDirection;
 
 	// actual sort
 	this.sort = function()
