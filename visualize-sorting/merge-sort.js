@@ -87,24 +87,49 @@ var MergeSort = function(arr)
     resultPtr = leftInd;
     while (leftPtr < leftArrSize && rightPtr < rightArrSize)
     {
-        if (newLeftArr[leftPtr] <= newRightArr[rightPtr])
-        {
-						// calculate the number of swaps based on the values that have changed
-						// update the global swap count - not sure if I should be counting this
-						if (newLeftArr[leftPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
-						// insert the smallest value at its correct index
-            origArr[resultPtr] = newLeftArr[leftPtr];
-            leftPtr++;
-        }
-        else
-        {
-						// calculate the number of swaps based on the values that have changed
-						// update the global swap count - not sure if I should be counting this
-						if (newRightArr[rightPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
-						// insert the smallest value at its correct index
-            origArr[resultPtr] = newRightArr[rightPtr];
-            rightPtr++;
-        }
+				if (this.direction == "DESC")
+				{
+					if (newLeftArr[leftPtr] >= newRightArr[rightPtr])
+	        {
+							// calculate the number of swaps based on the values that have changed
+							// update the global swap count - not sure if I should be counting this
+							if (newLeftArr[leftPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
+							// insert the smallest value at its correct index
+	            origArr[resultPtr] = newLeftArr[leftPtr];
+	            leftPtr++;
+	        }
+	        else
+	        {
+							// calculate the number of swaps based on the values that have changed
+							// update the global swap count - not sure if I should be counting this
+							if (newRightArr[rightPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
+							// insert the smallest value at its correct index
+	            origArr[resultPtr] = newRightArr[rightPtr];
+	            rightPtr++;
+	        }
+				}
+				// ascending as default
+				else
+				{
+					if (newLeftArr[leftPtr] <= newRightArr[rightPtr])
+	        {
+							// calculate the number of swaps based on the values that have changed
+							// update the global swap count - not sure if I should be counting this
+							if (newLeftArr[leftPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
+							// insert the smallest value at its correct index
+	            origArr[resultPtr] = newLeftArr[leftPtr];
+	            leftPtr++;
+	        }
+	        else
+	        {
+							// calculate the number of swaps based on the values that have changed
+							// update the global swap count - not sure if I should be counting this
+							if (newRightArr[rightPtr] != origArr[resultPtr]) { moreStats['swaps']++; }
+							// insert the smallest value at its correct index
+	            origArr[resultPtr] = newRightArr[rightPtr];
+	            rightPtr++;
+	        }
+				}
         resultPtr++;
 				// update the global comparisons count
 				moreStats['comparisons']++;
