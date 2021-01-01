@@ -19,26 +19,52 @@ var InsertionSort = function(arr)
 		// loop to end of list
 		if (this.i < arr.length)
 		{
-
-			// if current element needs to keep going down
-			if (this.j >= 0 && this.key < arr[this.j])
+			if (this.direction == "DESC")
 			{
-				// swap
-				let temp = arr[this.j];
-				arr[this.j] = arr[this.j+1];
-				arr[this.j+1] = temp;
-				this.j--
-				// update the global swap count
-				moreStats['swaps']++;
+				// if current element needs to keep going down
+				if (this.j >= 0 && this.key > arr[this.j])
+				{
+					// swap
+					let temp = arr[this.j];
+					arr[this.j] = arr[this.j+1];
+					arr[this.j+1] = temp;
+					this.j--
+					// update the global swap count
+					moreStats['swaps']++;
+				}
+				else
+				{
+					// next item
+					this.i++;
+					// key is current index value
+					this.key = arr[this.i];
+					// start going down from the current index
+					this.j = this.i - 1;
+				}
 			}
+			// ascending is defaults
 			else
 			{
-				// next item
-				this.i++;
-				// key is current index value
-				this.key = arr[this.i];
-				// start going down from the current index
-				this.j = this.i - 1;
+				// if current element needs to keep going down
+				if (this.j >= 0 && this.key < arr[this.j])
+				{
+					// swap
+					let temp = arr[this.j];
+					arr[this.j] = arr[this.j+1];
+					arr[this.j+1] = temp;
+					this.j--
+					// update the global swap count
+					moreStats['swaps']++;
+				}
+				else
+				{
+					// next item
+					this.i++;
+					// key is current index value
+					this.key = arr[this.i];
+					// start going down from the current index
+					this.j = this.i - 1;
+				}
 			}
 			// update the global comparisons count
 			moreStats['comparisons']++;
