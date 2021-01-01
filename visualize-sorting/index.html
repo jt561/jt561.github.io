@@ -54,7 +54,7 @@
 		}
 
 		.control-center .Btn, .control-center p {
-			margin: 5px 5px;
+			margin: 5px 8px;
 		}
 
 		.control-center > div {
@@ -286,8 +286,14 @@
 
 		.extended-control-center .group {
 			display: flex;
-			justify-content: space-evenly;
+			justify-content: center;
 			margin: 5px 0px;
+		}
+
+		div.option {
+			width: 40%;
+			text-align: right;
+			margin: 1% 10% 1% auto;
 		}
 		/* end of desktop devices */
   </style>
@@ -347,7 +353,14 @@
 				background: #fff;
 				color: black;
 			}
+
+			div.option {
+				width: 50%;
+				text-align: right;
+				margin: 5% 5% 5% auto;
+			}
     }
+		/* end of tablet devices */
   </style>
   <style>
     /* mobile devices */
@@ -391,7 +404,7 @@
 	<div class="popuptext" id="myPopup">
 		<button class="close-popup Btn">X</button>
 		<div>Note!</div>
-		<div>The red bar is an unsorted value, the green bar is a value being sorted, the yellow bar is the other value being evaluated against the green bar and the blue bar is the current index.</div>
+		<div>The red bar(bar4) is an unsorted value, the green bar(bar2) is a value being sorted, the yellow bar(bar3) is the other value being evaluated against the green bar and the blue bar(bar 1) is the current index.</div>
 		<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
 		<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
 		<div>More sorts coming soon.</div>
@@ -450,26 +463,26 @@
 		<div class="extended-control-center">
 			<p>More controls</p>
 			<div class="group">
-				<div class="o">
+				<div class="option left">
 					<label for="playback-speed">Playback speed:&nbsp</label>
 					<select name="playback-speed" class="playback-speed drop-downs1" id="playback-speed">
 						<option value="ultraLow">Ultra low speed</option>
 						<option value="low">Low speed</option>
-						<option value="medium" selected>Medium Speed</option>
-						<option value="high">High speed</option>
+						<option value="medium">Medium Speed</option>
+						<option value="high" selected>High speed</option>
 						<option value="ultraHigh">Ultra High speed</option>
 					</select>
 				</div>
-				<div class="o">
+				<div class="option right">
 					<label for="sortDirection">Sort Direction:&nbsp</label>
 					<select name="sort-direction" class="sort-direction drop-downs1" id="sortDirection1">
-						<option value="ASC" selected>Ascending</option>
-						<option value="DESC">Descending</option>
+						<option value="ASC">Ascending</option>
+						<option value="DESC" selected>Descending</option>
 					</select>
 				</div>
 			</div>
 			<div class="group">
-				<div class="o">
+				<div class="option">
 					<label for="displayType">Display Type:&nbsp</label>
 					<select name="display-type" class="display-type drop-downs1" id="displayType">
 						<option value="bar" selected>Bar graph</option>
@@ -477,43 +490,43 @@
 						<option value="pyramid">Left Pyramid - Coming soon</option>
 					</select>
 				</div>
-				<div class="o">
-					<label for="allowNegatives">Allow negatives:&nbsp</label>
+				<div class="option">
+					<label for="allowNegatives">Show negatives on graph:&nbsp</label>
 					<select name="allow-negatives" class="allow-negatives drop-downs1" id="allowNegatives1">
-						<option value="no" selected>No</option>
-						<option value="yes">Yes</option>
+						<option value="no">No</option>
+						<option value="yes" selected>Yes</option>
 					</select>
 				</div>
 			</div>
 			<div class="group">
-				<div class="o">
+				<div class="option">
 					<label for="biggestListVal1" class="">Randomizer biggest list size:</label>
-					<input id="biggestListVal1" type="number" name="" value=100 min=0 class="Btn small-input" required/>
+					<input id="biggestListVal1" type="number" name="" value=150 min=0 class="Btn small-input" required/>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="smallestListVal1" class="">Randomizer smallest list size:</label>
-					<input id="smallestListVal1" type="number" name="" value=1 min=0 class="Btn small-input" required/>
+					<input id="smallestListVal1" type="number" name="" value=50 min=0 class="Btn small-input" required/>
 				</div>
 			</div>
 			<div class="group">
-				<div class="o">
+				<div class="option">
 					<label for="biggestVal1" class="">Randomizer biggest value:</label>
-					<input id="biggestVal1" type="number" name="" value=100 class="Btn small-input" required/>
+					<input id="biggestVal1" type="number" name="" value=150 class="Btn small-input" required/>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="smallestVal1" class="">Randomizer smallest value:</label>
-					<input id="smallestVal1" type="number" name="" value=1 class="Btn small-input" required/>
+					<input id="smallestVal1" type="number" name="" value=-150 class="Btn small-input" required/>
 				</div>
 			</div>
 			<div class="group bar-colors">
-				<div class="o">
+				<div class="option">
 					<label for="bar1">Bar 1:&nbsp</label>
 					<select name="bar1" class="bar1 drop-downs1" id="bar1">
 						<option value="blue" selected>Blue</option>
 						<option value="darkRed">Dark Red</option>
 					</select>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="bar2">Bar 2:&nbsp</label>
 					<select name="bar2" class="bar2 drop-downs1" id="bar2">
 						<option value="green" selected>Green</option>
@@ -522,14 +535,14 @@
 				</div>
 			</div>
 			<div class="group bar-colors">
-				<div class="o">
+				<div class="option">
 					<label for="bar3">Bar 3:&nbsp</label>
 					<select name="bar3" class="bar3 drop-downs1" id="bar3">
 						<option value="yellow" selected>Yellow</option>
 						<option value="magenta">Magenta</option>
 					</select>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="bar4">Bar 4:&nbsp</label>
 					<select name="bar4" class="bar4 drop-downs1" id="bar4">
 						<option value="red" selected>Red</option>
@@ -538,14 +551,14 @@
 				</div>
 			</div>
 			<div class="group bar-colors">
-				<div class="o">
+				<div class="option">
 					<label for="stroke1">Stroke:&nbsp</label>
 					<select name="stroke1" class="stroke1 drop-downs1" id="stroke1">
 						<option value="white" selected>White</option>
 						<option value="black">Black</option>
 					</select>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="background1">Background colour:&nbsp</label>
 					<select name="background1" class="background1 drop-downs1" id="background1">
 						<option value="black" selected>Black</option>
@@ -554,14 +567,14 @@
 				</div>
 			</div>
 			<div class="group">
-				<div class="o">
+				<div class="option">
 					<label for="backgroundMusic1">Background Music:&nbsp</label>
 					<select name="background-music" class="background-music drop-downs1" id="backgroundMusic1">
 						<option value="no" selected>No</option>
 						<option value="yes">Yes - coming soon</option>
 					</select>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="swapSound1">Swap sound:&nbsp</label>
 					<select name="swap-sound" class="swap-sound drop-downs1" id="swapSound1">
 						<option value="no" selected>No</option>
@@ -570,14 +583,14 @@
 				</div>
 			</div>
 			<div class="group">
-				<div class="o">
+				<div class="option">
 					<label for="comparisonsSound1">Comparison sound:&nbsp</label>
 					<select name="comparison-sound-1" class="comparisons-sound drop-downs1" id="comparisonsSound1">
 						<option value="no" selected>No</option>
 						<option value="yes">Yes - coming soon</option>
 					</select>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="iterationSound1">Iteration sound:&nbsp</label>
 					<select name="iteration-sound-1" class="iteration-sound drop-downs1" id="iterationSound1">
 						<option value="no" selected>No</option>
@@ -586,10 +599,10 @@
 				</div>
 			</div>
 			<div class="group">
-				<div class="o">
+				<div class="option">
 					<button class="Btn">Coming soon</button>
 				</div>
-				<div class="o">
+				<div class="option">
 					<label for="pageTheme1">Page theme:&nbsp</label>
 					<select name="page-theme-1" class="page-theme drop-downs1" id="pageTheme1">
 						<option value="theme1" selected>Theme 1</option>

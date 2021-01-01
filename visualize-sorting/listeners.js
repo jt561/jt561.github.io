@@ -72,7 +72,7 @@ $(document).ready(function() {
 	 	}
 	});
 
-	// add event listeners to all buttons on the page
+	// add event listeners to empty array list
 	$('#clearBtn').on('click touchstart', function() {
 		// stop current sort
 		$('#stopBtn').click();
@@ -196,8 +196,10 @@ $(document).ready(function() {
 		valuesCopy = [...values];
 	});
 
-	// select bubble sort by default at start
-	$('#bubble').addClass('currentSort');
+	// randomize the list at start
+	$('#randomizeBtn').click();
+	// select/highlight insertion sort by default at start
+	$('#insertion').addClass('currentSort');
 	// add litenrs to all sorting method buttons
 	// so it can be highlighred and used
 	$('.radio1').on('click touchstart', function() {
@@ -220,6 +222,8 @@ $(document).ready(function() {
 		// add gradient effect/sorting effecting
 		$(this).css("background-image","linear-gradient(to right, green , black)");
 		$(this).css("animation","animateStartBtn 2s ease-in-out 0s infinite normal");
+		// change text from start to sorting, change it back from the stopbtn/listener
+		$(this).text("Sorting");
 		// store values for reset
 		valuesCopy = [...values];
 		// unpause
@@ -244,6 +248,8 @@ $(document).ready(function() {
 		// remove gradient from start button
 		$('#startBtn').css("background-image","");
 		$('#startBtn').css("animation","");
+		// change start btn text from 'sorting' to start
+		$('#startBtn').text("Start");
 		paused = true;
 		ready = false;
 		// stop timer

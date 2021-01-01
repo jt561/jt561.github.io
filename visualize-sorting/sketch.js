@@ -15,7 +15,7 @@ let valuesCopy = [...values];
 // sorting algorithm objects
 let sorter;
 // default sorting algorithm
-let sortType = "bubble";
+let sortType = "insertion";
 // whether it should be running a counter
 let timerActive = false;
 // start time, end time, and timeset which keeps track of whether time taken
@@ -36,7 +36,7 @@ frameRates["medium"] = 25;
 frameRates["high"] = 40;
 frameRates["ultraHigh"] = 60;
 // stores a value for playback which is used as the frame rate
-let playbackSpeed = "medium";
+let playbackSpeed = "high";
 // array has been unsorted
 let finished = false;
 // stores extra stats/details
@@ -49,11 +49,11 @@ moreStats['largestNumber'] = 0;
 moreStats['smallestNumber'] = 0;
 moreStats['timeElapsed'] = 0;
 // sort in ascending or descending (ASC/DESC)
-let sortDirection = "ASC";
+let sortDirection = "DESC";
 // type of display for values, (bar or pie or pyramid)
 let displayType = "bar";
 // should negatives be shown on the canvas(no/yes)
-let allowNegatives = "no";
+let allowNegatives = "yes";
 // colours for the bar graph
 let bar = [];
 bar['1'] = "blue";
@@ -252,6 +252,11 @@ function showValuesAsText()
 		{
 			$('.value').append('<button class=not-done>' + values[i] + '</button>');
 		}
+	}
+	if (values.length < 1)
+	{
+		// add text indicating empty list
+		$('.value').append('<button class=not-done> Empty list </button>');
 	}
 }
 
