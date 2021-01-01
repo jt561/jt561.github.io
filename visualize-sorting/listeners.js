@@ -56,6 +56,8 @@ $(document).ready(function() {
 			// toggle button text and border
 			$('#extendedControlCenterBtn').text('Open extended control panel');
 			$('#extendedControlCenterBtn').css("border","");
+			// reset height of start and stop to default
+			$('#startBtn, #stopBtn').css("height","");
 		}
 	  else
 		{
@@ -65,6 +67,8 @@ $(document).ready(function() {
 			$('.extended-control-artifacts.inline').css("display", "inline-block");
 			$('#extendedControlCenterBtn').text('Close extended control panel');
 			$('#extendedControlCenterBtn').css("border","2px dotted #fff");
+			// make start and stop button bigger
+			$('#startBtn, #stopBtn').css("height","80px");
 	 	}
 	});
 
@@ -215,7 +219,7 @@ $(document).ready(function() {
 		}
 		// add gradient effect/sorting effecting
 		$(this).css("background-image","linear-gradient(to right, green , black)");
-		$(this).css("animation","animateStartBtn 2s ease-in-out 0s infinite alternate");
+		$(this).css("animation","animateStartBtn 2s ease-in-out 0s infinite normal");
 		// store values for reset
 		valuesCopy = [...values];
 		// unpause
