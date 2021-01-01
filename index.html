@@ -110,7 +110,7 @@
 			color: white;
 			letter-spacing: 1px;
 			font-weight: bold;
-			transition: 0.3s ease;
+			transition: 0.1s ease;
 		}
 
 		.navigation-links a:hover {
@@ -852,6 +852,9 @@
 					case "theme2" :
 						applyTheme2();
 						break;
+					case "theme3" :
+						applyTheme3();
+						break;
 				}
 				// hide the select tag again
 				$('#changeThemeBtn1').click();
@@ -861,43 +864,92 @@
 				// remove all applied themes(style tags), leaving default
 				$('.themes').remove();
 			}
-			// applys specific css values to change theme;
+			// adds style tag with specific css values to change theme;
 			function applyTheme2() {
-				//$('body').css("background-color", "#e6dace");
+				// remove previous style tag for themes
 				$('.themes').remove();
+				// style tag
 				var newStyle = $("<style class='themes theme2'></style>");
 				$('head').append(newStyle);
-				let styleTextNode = "body { background-color: #e6dace; font-family: Arial, sans-serif; }"
-				styleTextNode += ".header { background-color: #fff; color: #000; }";
-				styleTextNode += "#my-name-svg { background-color: #000; padding: 5px; border-radius: 2px; }";
-				styleTextNode += "@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; } }";
-				styleTextNode += ".navigation-links a { background: transparent; color: #000; }";
-				styleTextNode += ".navigation-links a:hover, .navigation-links a:active { color: #00f; }";
-				styleTextNode += ".burger div { background-color: #00f; }";
-				styleTextNode += ".footer, .footer a, a { background-color: #fff; color: #000; }";
-				styleTextNode += "#about-me { background-color: #e6dace; color: #000; }";
-				styleTextNode += ".about-left { background-color: #f4ece6; color: #000; }";
-				styleTextNode += ".my-card-divider { background-color: #00f; }";
-				styleTextNode += "@media all and (max-width: 768px) {.about-right { color: #000; } }";
-				styleTextNode += ".section { background: transparent; color: #000; box-shadow: none; border-bottom: none; }";
-				styleTextNode += ".card { background-color: #fff; color: #000; }";
-				styleTextNode += ".education .card h3, .experience .card h3 { color: #00f; }";
-				styleTextNode += ".education .card .grades { color: #00f; }";
-				styleTextNode += ".internal-redirecter.one { background-color: #00f; color: #fff; border: 2px solid #00f; }";
-				styleTextNode += ".internal-redirecter.one:hover { background-color: #fff; color: #000; border: 2px solid #00f; }";
-				styleTextNode += ".internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #00f; }";
-				styleTextNode += ".internal-redirecter.two:hover { background-color: #00f; color: #fff; border: 2px solid #00f; }";
-				styleTextNode += ".title-icon-box { background-color: #00f; border: 2px solid #00f; }";
-				styleTextNode += ".skill-set-box-icon { background-color: #00f; border: none; }";
-				styleTextNode += "#backToTopButton { background-color: #00f; border: none; }";
-				styleTextNode += ".semi-important-link { background-color: #34a1eb; color: #fff; border: 2px solid #000; border-radius: 10px; }";
-				styleTextNode += ".btn { background-color: #34a1eb; color: #fff; border: 2px solid #000; }";
-				styleTextNode += ".skill p { display: inline-block; }";
-				styleTextNode += ".extracurricular-card-right ul { list-style-type: none; }";
-				styleTextNode += ".pixels-covered { background-color: #00f; }";
+				// css for style tag
+				let styleTextNode = `body { background-color: #e6dace; font-family: Arial, sans-serif; }
+				.header { background-color: #fff; color: #000; }
+				#my-name-svg { background-color: #00f; padding: 5px; border-radius: 2px; }
+				@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; } }
+				.navigation-links a { background: transparent; color: #000; transition: 0s; }
+				.navigation-links a:hover, .navigation-links a:active { color: #00f; }
+				.burger div { background-color: #00f; }
+				.footer, .footer a, a { background-color: #fff; color: #000; }
+				#about-me { background-color: #e6dace; color: #000; }
+				.about-left { background-color: #f4ece6; color: #000; }
+				.my-card-divider { background-color: #00f; }
+				@media all and (max-width: 768px) {.about-right { color: #000; } }
+				.section { background: transparent; color: #000; box-shadow: none; border-bottom: none; }
+				.card { background-color: #fff; color: #000; }
+				.education .card h3, .experience .card h3 { color: #00f; }
+				.education .card .grades { color: #00f; }
+				.internal-redirecter.one { background-color: #00f; color: #fff; border: 2px solid #00f; }
+				.internal-redirecter.one:hover { background-color: #fff; color: #000; border: 2px solid #00f; }
+				.internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #00f; }
+				.internal-redirecter.two:hover { background-color: #00f; color: #fff; border: 2px solid #00f; }
+				.title-icon-box { background-color: #00f; border: 2px solid #00f; }
+				.skill-set-box-icon { background-color: #00f; border: none; }
+				#backToTopButton { background-color: #00f; border: none; }
+				.semi-important-link { background-color: #34a1eb; color: #fff; border: 2px solid #000; border-radius: 10px; }
+				.btn { background-color: #34a1eb; color: #fff; border: 2px solid #000; }
+				.skill p { display: inline-block; }
+				.extracurricular-card-right ul { list-style-type: none; }
+				.pixels-covered { background-color: #00f; }`;
 				$('.themes').append(styleTextNode);
 			}
-
+			// adds style tag with specific css values to change theme;
+			function applyTheme3() {
+				// remove previous style tag for themes
+				$('.themes').remove();
+				// style tag
+				var newStyle = $("<style class='themes theme2'></style>");
+				$('head').append(newStyle);
+				// css for style tag
+				let styleTextNode = `body { background-color: #3b3c38; font-family: Helvetica, sans-serif; }
+				.header { background-color: #323330; color: #ff0; }
+				.header .title { color: #f5da55; }
+				#my-name-svg { background: transparent; padding: 5px; border-radius: 2px; }
+				.navigation-links a { background: transparent; color: #fff; transition: 0s; }
+				.navigation-links a:hover, .navigation-links a:active { color: #eeda7c; background: transparent; }
+				.burger div { background-color: #f5da55; }
+				.footer, .footer a, a { background-color: #20232a; color: #fff; }
+				.title { color: #fff; }
+				#about-me { background-color: #eeda7c; color: #000; }
+				.about-left { background-color: #f5da55; color: #000; }
+				.my-card-divider { background-color: #000; }
+				.section { background: transparent; color: #000; box-shadow: none; border-bottom: none; }
+				.card { background-color: #1d1f21; color: #fff; }
+				.education .card h3, .experience .card h3 { color: #eeda7c; }
+				.education .card .grades { color: #eeda7c; }
+				.internal-redirecter.one { background-color: #f5da55; color: #000; border: 2px solid #000; }
+				.internal-redirecter.one:hover { background-color: #fff; color: #000; border: 2px solid #000; }
+				.internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #000; }
+				.internal-redirecter.two:hover { background-color: #f5da55; color: #000; border: 2px solid #000; }
+				.title-icon-box { background-color: #eeda7c; border: 2px solid #eeda7c; }
+				.skill-set-box-icon { background-color: #eeda7c; border: none; }
+				#backToTopButton { background-color: #000; border: none; }
+				.semi-important-link { background-color: #eeda7c; color: #000; border: 1px solid #000; border-radius: 4px; }
+				.btn { background-color: #eeda7c; color: #000; border: 2px solid #000; }
+				.skill p { display: inline-block; }
+				.extracurricular-card-right ul { list-style-type: none; }
+				.pixels-covered { background-color: #eeda7c; }
+				.projects-description { color: #fff; }
+				.contact-me a { color: #fff; }
+				@media all and (max-width: 768px) {
+				.navigation-links { background-color: #323330; border-left: 2px solid #000; }
+				.about-right { color: #000; }
+				}`;
+				$('.themes').append(styleTextNode);
+			}
+			// automatically pick theme 3 when the user loads the page
+			$('#themePicker1 option[value=theme3]').prop("selected","selected").change();
+			// hide the select tag used to change themes,the changeThemeBtn toggles its display
+			$('#changeThemeBtn1').click();
 		});
 	</script>
 
@@ -947,6 +999,7 @@
 				<select class="theme-picker" name="theme-picker" id="themePicker1">
 					<option value="theme1" selected>Theme 1</option>
 					<option value="theme2">Theme 2</option>
+					<option value="theme3">Theme 3</option>
 				</select>
 			</div>
 		</div>
@@ -1021,7 +1074,7 @@
 								</div>
 								<div class="education-card-right right">
 									<p><b>Subject:</b> BSc Business Information Technology with a Year in Industry</p>
-									<p><b class="grades">Grade(Expected):</b> 2:1</p>
+									<p><b class="grades">Grade([Minimun] Expected):</b> 2:1</p>
 									<p>This course focuses on computing and business modules, helping me understand the importance of information systems in businesses and equiped me with skills such as leadership and management skills, communication skills and programming skills.</p>
 								</div>
 							</div>
