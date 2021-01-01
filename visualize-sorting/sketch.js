@@ -110,7 +110,11 @@ function draw() {
 		// we then get 1.05, and divide it by the final scale of 1,(we can also
 		// multiply the final scale 0.95), which we get
 		// from dividing the canvas height by the largest value in the array
-		heightscl = height/Math.max(...values)/1.05;
+		// this temp array stores a positive version of our array, incase
+		// there are negative numbers in original array
+		let tempValues = [];
+		values.forEach((item, index) => { tempValues[index] = Math.abs(item); });
+		heightscl = height/Math.max(...tempValues)/1.05;
 		// draw the bars for the values
 		printArrayAll(values, values.length, values.length, values.length, false);
 	}
@@ -212,7 +216,8 @@ function printArrayAll(arr, toSwap, cIndex, toSwap2, done)
 		}
 		// draw/colour all values
 		// invert the heigh as positive takes you down and negative takes you up.
-		rect(i*scl, height, scl, -arr[i]*heightscl);
+		// baseline should be half the height if negative values are allowed
+		rect(i*scl, ((allowNegatives == "yes") ? height/2 : height), scl, ((allowNegatives == "yes") ? -arr[i]*(heightscl/2) : -arr[i]*heightscl));
 	}
 
 	if (done)

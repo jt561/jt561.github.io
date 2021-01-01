@@ -147,7 +147,7 @@ $(document).ready(function() {
 		// stop current sort
 		$('#stopBtn').click();
 		// default and minimum to add is 0
-		if ($('#newValue').val() == "" || $('#newValue').val() < 0)
+		if ($('#newValue').val() == "")
 		{
 			if ($(this).attr('id') == 'insertBtnF')
 			{
@@ -244,6 +244,12 @@ $(document).ready(function() {
 		ready = false;
 		// stop timer
 		timerActive = false;
+	});
+
+	// monitors, select tag for allow negatives, sets its value to global
+	// variable
+	$('#allowNegatives1').change(function() {
+		allowNegatives = $(this).val();
 	});
 
 	// add on change listener, so when a new option is selected,
