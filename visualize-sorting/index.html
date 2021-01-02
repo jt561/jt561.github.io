@@ -408,8 +408,9 @@
 		<div>The red bar(bar4) is an unsorted value, the green bar(bar2) is a value being sorted, the yellow bar(bar3) is the other value being evaluated against the green bar and the blue bar(bar 1) is the current index.</div>
 		<div>This site should allow you to Visualize sorting algorithms with any list of your choice.Please note,the loop has been slowed down so the time shown is obviously not accurate/fast, also, the time it takes will be based on your computer speed and also the JS load from this site. Nothing is 100% accurate as this is just a fun visualization tool.</div>
 		<div>If you are on mobile, you might need to click every input twice for it to respond.</div>
+		<div>Visualization for merge sort and quick sort will be adjusted soon.</div>
 		<div>More sorts coming soon.</div>
-		<div>A few other features will be added soon</div>
+		<div>A few other features will be added soon.</div>
 		<div>Click the X button on the right to hide this pop-up.</div>
 	</div>
 	<div class="control-center">
@@ -446,7 +447,8 @@
 			<button type="button" class="radio1" id="heap" name="sortType" value="heap">Heap Sort</button>
 			<button type="button" class="radio1" id="cocktail" name="sortType" value="cocktail">Cocktail Sort</button>
 			<button type="button" class="radio1" id="counting" name="sortType" value="counting">Counting Sort</button>
-			<button type="button" class="radio1" id="radix" name="sortType" value="radix">Radix Sort</button>-->
+			<button type="button" class="radio1" id="radix" name="sortType" value="radix">Radix Sort</button>
+			<button type="button" class="radio1" id="bully" name="sortType" value="bully">Bully Sort</button>-->
 		</div>
 		<div class="start">
 			<p class="extended-control-artifacts">Start or stop sorting</p>
@@ -468,6 +470,22 @@
 		</div>
 		<div class="extended-control-center">
 			<p>More controls</p>
+			<div class="group">
+				<div class="option left">
+					<label for="iterationSpeed1">Iteration speed:&nbsp</label>
+					<select name="iteration-speed" class="iteration-speed drop-downs1" id="iterationSpeed1">
+						<option value="100" selected>100%</option>
+						<option value="60">60% - coming soon</option>
+						<option value="30">30% - coming soon</option>
+					</select>
+				</div>
+				<div class="option right">
+					<button type="button" name="iteration-control" class="Btn">Pause iteration - coming soon</button>
+					<button type="button" name="iteration-control" class="Btn">Continue iteration - coming soon</button>
+					<button type="button" name="iteration-control" class="Btn">Step - coming soon</button>
+					<button type="button" name="iteration-control" class="Btn">Unstep - coming soon</button>
+				</div>
+			</div>
 			<div class="group">
 				<div class="option left">
 					<label for="playback-speed">Playback speed:&nbsp</label>
@@ -606,7 +624,7 @@
 			</div>
 			<div class="group">
 				<div class="option">
-					<button class="Btn">Coming soon</button>
+					<button class="Btn">Go crazy - Coming soon</button>
 				</div>
 				<div class="option">
 					<label for="pageTheme1">Page theme:&nbsp</label>

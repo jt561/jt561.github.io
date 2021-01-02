@@ -82,7 +82,7 @@ function setup() {
 	canvSounds['iterate'].playMode('sustain');
   // create board/canvas
 	// full width for mobile, less for tablet and desktop
-  let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 40:340);
+  let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 40:380);
 	// half of the device height for all device types
 	let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 470:(window.matchMedia("(max-width: 1024px)").matches) ? 465:460);
 	// not using these for now
