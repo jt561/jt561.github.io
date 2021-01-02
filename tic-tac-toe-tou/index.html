@@ -54,19 +54,20 @@
 			let winner = "";
 
 			// stores all the possible win combination
+			// stores the row and column for cells
 			let winCombos = [
-				[0,1,2], // rows
-				[3,4,5],
-				[6,7,8],
-				[0,3,6], // cols
-				[1,4,7],
-				[2,5,8],
-				[0,4,8], // diagonals
-				[2,4,6]
+				["00","01","02"], // rows
+				["10","11","12"],
+				["20","21","22"],
+				["00","10","20"], // cols
+				["01","11","21"],
+				["02","12","22"],
+				["00","11","22"], // diagonals
+				["02","11","20"]
 			];
 
 			// 2D array, stores a "virtual" version of the html board
-			let boardArr = [[],[],[]];
+			let boardArr = [["","",""],["","",""],["","",""]];
 
 			/* start of document ready */
 			$(document).ready(function() {
@@ -77,18 +78,39 @@
 				// changes the current player
 				$('.col').click(function() {
 					// insert text only if cell is empty and there is no winner
-					if (cellIsEmpty($(this)) && !winner)
+					if (cellIsEmpty($(this)) && winner.length == 0)
 					{
 						// insert text into array "virtual baord"
 						// and insert text into html cell
 						insertIntoArray($(this))
 
-						// check for winner or tie
-						checkForWinner();
+						// check for winner
+						if (checkForWinner() == "X")
+						{
+							winner = "X";
+							return;
+						}
+						else if (checkForWinner() == "O")
+						{
+							winner = "0";
+							return;
+						}
+						// check for tie
+						if (checkForTie())
+						{
+							winner = "No one";
+							return;
+						}
 
 						// switch current player
 						changeCurrentPlayer();
 					}
+				});
+
+				// add event listener reset button
+				$('#resetBtn1.Btn').click(function() {
+					// calls reset function to reset board
+					resetBoard();
 				});
 
 				/* end of document ready */
@@ -124,9 +146,63 @@
 				boardArr[r][c] = currentPlayer;
 			}
 
-			// checks for a winner or tie and carries out appropriate actions
-			function checkForWinner() {
+			// checks for a winner and returns winner
+			function checkForWinner()
+			{
+				// loop through win combinations
+				for (let i = 0; i < winCombos.length; i++)
+				{
+					// for each combination, get the 3 cells that make a win
+					// split the string to get the row and column number for each cell
+					// map the string elements to int elements
+					let cell1 = winCombos[i][0].split("").map(n => +n);
+					let cell2 = winCombos[i][1].split("").map(n => +n);
+					let cell3 = winCombos[i][2].split("").map(n => +n);
+					let boardCombos = boardArr[cell1[0]][cell1[1]] + boardArr[cell2[0]][cell2[1]] + boardArr[cell3[0]][cell3[1]];
 
+					// if x matches any combo, return X, else return O and exit loop/function
+					if (boardCombos === "XXX")
+					{
+						return "X";
+					}
+					else if (boardCombos === "OOO")
+					{
+						return "O";
+					}
+				}
+				// if now match is found, return "No one"(not applicable)
+				return "No one";
+			}
+
+			// checks to see if board is full and there is no winner
+			function checkForTie()
+			{
+				// if there is no winner yet, check if board is full
+				if (checkForWinner() == "No one")
+				{
+					let lettersInBoard = "";
+					for (let i = 0; i < boardArr.length; i++)
+					{
+						for (let j = 0; j < boardArr[i].length; j++)
+						{
+							lettersInBoard += boardArr[i][j];
+						}
+					}
+					// if there are 9 letters on the board, board is full
+					return lettersInBoard.length == 9;
+				}
+			}
+
+			// resets board
+			function resetBoard()
+			{
+				// clear actual array
+				boardArr = [["","",""],["","",""],["","",""]];
+
+				// clear html board
+				$('.col').each(function() {
+					$(this).text("");
+				});
 			}
 		</script>
 	</head>
@@ -149,6 +225,9 @@
 					<div id="22" class="col"></div>
 				</div>
 			</div>
+		</div>
+		<div class="control-center">
+			<button id="resetBtn1" class="Btn" type="button" name="reset">Reset</button>
 		</div>
 	</body>
 </html>
