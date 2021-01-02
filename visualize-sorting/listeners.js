@@ -50,6 +50,9 @@ $(document).ready(function() {
 		// toggle extended control center off/on
 		if ($('.extended-control-center').css('display') == 'block')
 		{
+			// remove max height attribute for control center
+			$('.control-center').css("max-height","");
+			$('.control-center').css("overflow-y", "");
 			$('.extended-control-center').css("display", "none");
 			// hide extra details for extended control
 			$('.extended-control-artifacts').css("display", "none");
@@ -61,6 +64,10 @@ $(document).ready(function() {
 		}
 	  else
 		{
+			// set max height height of control center to around 50% and overflow should be scrolled
+			let maxHeight = window.screen.height * ((window.matchMedia("(max-width: 768px)").matches) ? (48/100):(window.matchMedia("(max-width: 1024px)").matches) ? (24/100):(42/100));
+			$('.control-center').css("max-height", maxHeight);
+			$('.control-center').css("overflow-y", "scroll");
 	 		$('.extended-control-center').css("display", "block");
 			$('.extended-control-artifacts').css("display", "block");
 			// special cases that need to be inline
