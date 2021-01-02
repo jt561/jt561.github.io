@@ -82,13 +82,13 @@ function setup() {
 	canvSounds['iterate'].playMode('sustain');
   // create board/canvas
 	// full width for mobile, less for tablet and desktop
-  let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 1:(window.matchMedia("(max-width: 1024px)").matches) ? 40:380);
-	// half of the device height for all device types
-	let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 470:(window.matchMedia("(max-width: 1024px)").matches) ? 465:460);
+	let canvasWidth = window.screen.width * ((window.matchMedia("(max-width: 768px)").matches) ? (100/100):(window.matchMedia("(max-width: 1024px)").matches) ? (100/100):(70/100));
+	// canvas height should be a specific percentage of the device height
+	let canvasHeight = window.screen.height * ((window.matchMedia("(max-width: 768px)").matches) ? (28/100):(window.matchMedia("(max-width: 1024px)").matches) ? (35/100):(40/100));
 	// not using these for now
-	let documentWidth = $(document).width() - 5;
-  let documentHeight = $(document).height() - 100;
-  createCanvas(deviceWidth, deviceHeight);
+	let mydocumentWidth = $(document).width() - 5;
+  let mydocumentHeight = $(document).height() - 100;
+  createCanvas(canvasWidth, canvasHeight);
   // set a framerate/loop speed
   frameRate(frameRates[playbackSpeed]);
 }
