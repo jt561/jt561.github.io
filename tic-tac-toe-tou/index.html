@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-GB" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tic-Tac-Toe-Tou</title>
+
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+				box-sizing: border-box;
+			}
+
+			.board-wrapper {
+				display: block;
+				width: 100vmin;
+				height: 50vmin;
+				margin: 0 auto;
+			}
+
+			.board {
+				width: 50%;
+				height: 100%;
+				margin: 0 auto;
+			}
+
+			.row {
+				display: flex;
+				height: 33.3%;
+				width: 100%;
+				display: table;
+			}
+
+			.col {
+				height: 100%;
+				width: 33.3%;
+				border: 1px solid black;
+				text-align: center;
+				display: table-cell;
+  			vertical-align: middle;
+				font-size: 10vmin;
+			}
+		</style>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			/* Global variables */
+
+			// current players text, defult is X
+			let currentPlayer = "X";
+
+			// current winner
+			let winner = "";
+
+			// stores all the possible win combination
+			let winCombos = [
+				[0,1,2], // rows
+				[3,4,5],
+				[6,7,8],
+				[0,3,6], // cols
+				[1,4,7],
+				[2,5,8],
+				[0,4,8], // diagonals
+				[2,4,6]
+			];
+
+			// 2D array, stores a "virtual" version of the html board
+			let boardArr = [[],[],[]];
+
+			/* start of document ready */
+			$(document).ready(function() {
+				/* start of document ready */
+
+				// insert values into cells
+				// checks the current state of cell
+				// changes the current player
+				$('.col').click(function() {
+					// insert text only if cell is empty and there is no winner
+					if (cellIsEmpty($(this)) && !winner)
+					{
+						// insert text into array "virtual baord"
+						// and insert text into html cell
+						insertIntoArray($(this))
+
+						// check for winner or tie
+						checkForWinner();
+
+						// switch current player
+						changeCurrentPlayer();
+					}
+				});
+
+				/* end of document ready */
+			});
+			/* end of document ready */
+
+			/* Global functions */
+
+			// returns true if a given element has no text in it
+			function cellIsEmpty(cell)
+			{
+				return (cell.text() === "");
+			}
+
+			// changes the current player
+			function changeCurrentPlayer()
+			{
+				currentPlayer = (currentPlayer === "O") ? "X" : "O";
+			}
+
+			// inserts current value into the 2D array "virtual baord"
+			// then inserts text onto board
+			function insertIntoArray(cell)
+			{
+				// display the current player in html
+				cell.text(currentPlayer);
+
+				// store the value in the array
+				// first get the cells row and column number
+				// the cells id stores this, eg id='12', meaning row 1, column 2
+				let r = parseInt(cell.attr('id').split("")[0]);
+				let c = parseInt(cell.attr('id').split("")[1]);
+				boardArr[r][c] = currentPlayer;
+			}
+
+			// checks for a winner or tie and carries out appropriate actions
+			function checkForWinner() {
+
+			}
+		</script>
+	</head>
+	<body>
+		<div class="board-wrapper">
+			<div class="board">
+				<div class="row">
+					<div id="00" class="col"></div>
+					<div id="01" class="col"></div>
+					<div id="02" class="col"></div>
+				</div>
+				<div class="row">
+					<div id="10" class="col"></div>
+					<div id="11" class="col"></div>
+					<div id="12" class="col"></div>
+				</div>
+				<div class="row">
+					<div id="20" class="col"></div>
+					<div id="21" class="col"></div>
+					<div id="22" class="col"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
