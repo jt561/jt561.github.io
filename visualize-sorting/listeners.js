@@ -235,12 +235,11 @@ $(document).ready(function() {
 		// so if we are not paused, but havent started sorting
 		if (!paused && !ready)
 		{
+			// timer is now called count
 			$('#timer1 .v').text(0);
 			timerActive = true;
 			updateTimer();
 		}
-		// set fps/playback speed
-		playbackSpeed = $('#playback-speed').val();
 	});
 
 	// stops sorting and also, the timer
@@ -256,7 +255,13 @@ $(document).ready(function() {
 		timerActive = false;
 	});
 
-	// onitors, select tag for sort direction(ascending/descending),
+	// monitors playback speed select tag
+	$('#playback-speed').change(function() {
+		// set fps/playback speed
+		playbackSpeed = $('#playback-speed').val();
+	});
+
+	// monitors, select tag for sort direction(ascending/descending),
 	// sets its value to global
 	$('#sortDirection1').change(function() {
 		sortDirection = $(this).val();

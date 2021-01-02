@@ -97,6 +97,8 @@ function setup() {
 function draw() {
   // background color - black
   background(canvColors['background']);
+	// set playback speed/framerate/sort Speed (live)
+	frameRate(frameRates[playbackSpeed]);
 
 	// before sorting
 	if (paused)
@@ -144,8 +146,7 @@ function draw() {
 			}
 			// reset all values in moreStats array to 0
 			resetExtraStats();
-			// set playback speed/framerate/sort Speed
-			frameRate(frameRates[playbackSpeed]);
+			// new sorting object has been created and is ready
 			// start using the sort object
 			ready = true;
 			// dont run on an empty array
