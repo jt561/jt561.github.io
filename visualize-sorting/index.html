@@ -6,16 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Visualize Sorting - JT</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="../libs/p5/lib/p5.js"></script>
-	<script src="../libs/p5/lib/addons/p5.sound.js"></script>
-	<script src="./listeners.js"></script>
-  <script src="./sketch.js"></script>
-	<script src="./bubble-sort.js"></script>
-	<script src="./selection-sort.js"></script>
-	<script src="./insertion-sort.js"></script>
-	<script src="./merge-sort.js"></script>
-	<script src="./quick-sort.js"></script>
+
   <style>
     /* desktop devices */
 		* {
@@ -268,6 +259,8 @@
 			width: 100%;
 			height: 100%;
 			background-color: #333;
+			max-height: 100%;
+			overflow-y: scroll;
 		}
 
 		.close-more-stats {
@@ -275,6 +268,16 @@
 			top: 0;
 			right: 0;
 			margin: 3px;
+		}
+
+		.sorting-info table {
+			margin: 0 auto;
+			border-collapse: collapse;
+		}
+
+		.sorting-info table th, .sorting-info table td {
+			padding: 5px;
+			border: 1px solid #000;
 		}
 
 		.extended-control-center {
@@ -391,6 +394,16 @@
 	<style>
     /* other defaults */
   </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="../libs/p5/lib/p5.js"></script>
+	<script src="../libs/p5/lib/addons/p5.sound.js"></script>
+	<script src="./listeners.js"></script>
+  <script src="./sketch.js"></script>
+	<script src="./bubble-sort.js"></script>
+	<script src="./selection-sort.js"></script>
+	<script src="./insertion-sort.js"></script>
+	<script src="./merge-sort.js"></script>
+	<script src="./quick-sort.js"></script>
 
 </head>
 
@@ -459,13 +472,54 @@
 			<button class="close-more-stats Btn">X</button>
 			<p>More sorting stats</p>
 			<div>
-				<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i>ms</button>
+				<button id="timer1" type="button" name="timer" class="Btn">Count:&nbsp<i class="v">0</i></button>
 				<button id="swaps1" type="button" name="swaps" class="Btn">Swaps:&nbsp<i class="v">0</i></button>
 				<button id="comparisons1" type="button" name="comparisons" class="Btn">Comparisons:&nbsp<i class="v">0</i></button>
 				<button id="auxiliaryWrites1" type="button" name="auxiliary-writes" class="Btn">Auxiliary array writes:&nbsp<i class="v">0</i></button>
 				<button id="listSize1" type="button" name="list-size" class="Btn">List Size:&nbsp<i class="v">0</i></button>
 				<button id="largestNumber1" type="button" name="largest-number" class="Btn">Largest number:&nbsp<i class="v">0</i></button>
 				<button id="smallestNumber1" type="button" name="smallest-number" class="Btn">Smallest number:&nbsp<i class="v">0</i></button>
+			</div>
+			<div class="sorting-info">
+				<p>Algorithms Info</p>
+				<table>
+					<tr>
+						<th>Name</th>
+						<th>Time complexity</th>
+						<th>Space complexity</th>
+						<th>Details</th>
+					</tr>
+					<tr>
+						<td>Bubble sort</td>
+						<td>Time complexity</td>
+						<td>O(1)</td>
+						<td>Details</td>
+					</tr>
+					<tr>
+						<td>Selection sort</td>
+						<td>Time complexity</td>
+						<td>O(n)</td>
+						<td>Details</td>
+					</tr>
+					<tr>
+						<td>Insertion sort</td>
+						<td>Time complexity</td>
+						<td>Space complexity</td>
+						<td>Details</td>
+					</tr>
+					<tr>
+						<td>Merge sort</td>
+						<td>Time complexity</td>
+						<td>O(n)</td>
+						<td>Details</td>
+					</tr>
+					<tr>
+						<td>Quick sort</td>
+						<td>Time complexity</td>
+						<td>Space complexity</td>
+						<td>Details</td>
+					</tr>
+				</table>
 			</div>
 		</div>
 		<div class="extended-control-center">
