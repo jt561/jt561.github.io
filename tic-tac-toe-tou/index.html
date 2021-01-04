@@ -3,26 +3,64 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Tic-Tac-Toe-Tou</title>
+		<title>Tic-Tac-Toe-Tou -JT</title>
 
 		<style>
+			/* desktop */
 			* {
 				padding: 0;
 				margin: 0;
 				box-sizing: border-box;
+				font-family: "Poppins", sans-serif;
+			}
+
+			body {
+				background-color: #00808077;
+				background-image: url(assets/beach1.jpg);
+				background-repeat:no-repeat;
+				background-size:cover;
+				-webkit-background-size: cover;
+			 	-moz-background-size: cover;
+			 	-o-background-size: cover;
+			}
+
+			.header {
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 
 			.board-wrapper {
 				display: block;
 				width: 100vmin;
 				height: 50vmin;
-				margin: 0 auto;
+				margin: 15px auto;
 			}
 
 			.board {
+				position: relative;
 				width: 50%;
 				height: 100%;
 				margin: 0 auto;
+			}
+
+			.winner-banner {
+				border-radius: 5px;
+				position: absolute;
+				height: 100%;
+				width: 100%;
+				top: 0;
+				left: 0;
+				background-color: #ff04;
+				box-shadow: 0px 0px 15px 15px #ff03;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.winner-text {
+				font-size: 9vmin;
+				color: #f00;
 			}
 
 			.row {
@@ -35,12 +73,75 @@
 			.col {
 				height: 100%;
 				width: 33.3%;
-				border: 1px solid black;
+				border: 2px solid teal;
+				box-shadow: 0px 0px 15px 15px #00808077;
 				text-align: center;
 				display: table-cell;
   			vertical-align: middle;
 				font-size: 10vmin;
 			}
+
+			.X-box {
+				color: pink;
+			}
+
+			.O-box {
+				color: aqua;
+			}
+
+			.winning-cell {
+				border: 2px solid #f00;
+			}
+
+			.control-center-wrapper {
+				border-radius: 0px;
+				width: 100%;
+			}
+
+			.control-center {
+				position: relative;
+				min-height: 10vmin;
+				max-width: 70%;
+				text-align: center;
+				margin: 10px auto;
+				border-radius: 15px;
+				padding: 10px;
+			}
+
+			.control-center:after {
+		    content: ' ';
+		    display: block;
+		    position: absolute;
+		    left: 0;
+		    top: 0;
+		    width: 100%;
+		    height: 100%;
+		    z-index: -1;
+		    opacity: 0.6;
+				background-color: #00808077;
+		    background-image: url(assets/cloud1.jpg);
+		    background-repeat: no-repeat;
+		    background-position: 50% 0;
+		    background-size: cover;
+				border-radius: 15px;
+			}
+
+			#resetBtn1 {
+				display: inline-block;
+				outline: none;
+				border: 2px solid #ffffff;
+				background-color: #008080;
+				color: #fff;
+				padding: 8px 10px;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: 0.05s ease;
+			}
+
+			.extended-control-center {
+				margin: 10px auto;
+			}
+			/* desktop end */
 		</style>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -82,17 +183,25 @@
 					{
 						// insert text into array "virtual baord"
 						// and insert text into html cell
+						// takes the html element and the function acts appropriately
 						insertIntoArray($(this))
 
 						// check for winner
-						if (checkForWinner() == "X")
+						// check for winner returns an array with the winner at its  firts element
+						// and latter elements are the corresponding cell
+						// retruns "No one" if there is no winner
+						if (checkForWinner()[0] == "X")
 						{
 							winner = "X";
+							// send this function the cells to highlight
+							addWinnerEffect(checkForWinner())
 							return;
 						}
-						else if (checkForWinner() == "O")
+						else if (checkForWinner()[0] == "O")
 						{
-							winner = "0";
+							winner = "O";
+							// send this function the cells to highlight
+							addWinnerEffect(checkForWinner())
 							return;
 						}
 						// check for tie
@@ -129,6 +238,7 @@
 			function changeCurrentPlayer()
 			{
 				currentPlayer = (currentPlayer === "O") ? "X" : "O";
+				$('.current-player-text .value').text(currentPlayer);
 			}
 
 			// inserts current value into the 2D array "virtual baord"
@@ -137,7 +247,9 @@
 			{
 				// display the current player in html
 				cell.text(currentPlayer);
-
+				// set/add cells class to current player so it can be styled
+				let player = (currentPlayer == "O") ? "O-box": "X-box";
+				cell.addClass(player);
 				// store the value in the array
 				// first get the cells row and column number
 				// the cells id stores this, eg id='12', meaning row 1, column 2
@@ -158,16 +270,18 @@
 					let cell1 = winCombos[i][0].split("").map(n => +n);
 					let cell2 = winCombos[i][1].split("").map(n => +n);
 					let cell3 = winCombos[i][2].split("").map(n => +n);
-					let boardCombos = boardArr[cell1[0]][cell1[1]] + boardArr[cell2[0]][cell2[1]] + boardArr[cell3[0]][cell3[1]];
+					// cell[0][1] means cell one is at row 0 and column 1.
+					let boardCombo = boardArr[cell1[0]][cell1[1]] + boardArr[cell2[0]][cell2[1]] + boardArr[cell3[0]][cell3[1]];
 
 					// if x matches any combo, return X, else return O and exit loop/function
-					if (boardCombos === "XXX")
+					// return an array with the winner and the 3 winning cells id's
+					if (boardCombo === "XXX")
 					{
-						return "X";
+						return ["X", cell1, cell2, cell3];
 					}
-					else if (boardCombos === "OOO")
+					else if (boardCombo === "OOO")
 					{
-						return "O";
+						return ["O", cell1, cell2, cell3];
 					}
 				}
 				// if now match is found, return "No one"(not applicable)
@@ -203,10 +317,38 @@
 				$('.col').each(function() {
 					$(this).text("");
 				});
+
+				// empty the winner variable
+				winner = "";
+				// remove all classes from cells, so stlying is removed
+				$('.col').removeClass('X-box O-box');
+				// remove any element that is meant to be removed when board resets
+				$('.resetable').remove();
+				// remove highlight from winning cells
+				$('.winning-cell').removeClass('winning-cell');
+			}
+
+			// applys the winning effect to the board
+			// takes an array that holds the location of cells(these locations are stored in another array)
+			function addWinnerEffect(cells)
+			{
+				// add a yellow banner to the baord
+				// used to display winner
+				$('.board').append('<div class="winner-banner resetable"></div>');
+				$('.winner-banner').append(`<p class="winner-text resetable">${winner} Won!!!</p>`);
+				// add class to winning cells to highlight them
+				for (let i = 1; i < cells.length; i++)
+				{
+					// loop though all 3 cells, and get their row and col number to use as id
+					$(`#${cells[i][0] + "" + cells[i][1]}`).addClass('winning-cell');
+				}
 			}
 		</script>
 	</head>
 	<body>
+		<div class="header">
+			<h1>Tic-Tac-Toe-Tou</h1>
+		</div>
 		<div class="board-wrapper">
 			<div class="board">
 				<div class="row">
@@ -226,8 +368,21 @@
 				</div>
 			</div>
 		</div>
-		<div class="control-center">
-			<button id="resetBtn1" class="Btn" type="button" name="reset">Reset</button>
+		<div class="control-center-wrapper">
+			<div class="control-center">
+				<div class="info-wrapper">
+
+				</div>
+				<button id="resetBtn1" class="Btn" type="button" name="reset">Reset</button>
+				<span class="current-player-text">Current Player: <span class="value">X</span></span>
+				<div class="extended-control-center">
+					<label for="playerMode1">Player mode:&nbsp</label>
+					<select class="drop-down-1" id="playerMode1" name="player-mode">
+						<option value="2-human-players" selected>2 players(Humans)</option>
+						<option value="2-human-players">1 player(vs AI) - Coming soon</option>
+					</select>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
