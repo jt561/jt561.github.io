@@ -91,7 +91,7 @@ $(document).ready(function() {
 	$('#resetBtn').on('click touchstart', function() {
 		// stop current sort
 		$('#stopBtn').click();
-		// keeps copy of array for resseting purposed
+		// restores main array with its old copy
 		values = [...valuesCopy];
 	});
 
@@ -114,8 +114,6 @@ $(document).ready(function() {
 			// get random number between 0 and (max[+1]-min), round it down, add min offset
 			values.push(Math.floor(Math.random() * (maxVal-minVal+1)) + minVal);
 		}
-		// store copy of new array
-		valuesCopy = [...values];
 	});
 
 	// button to increment and decrement value that will be inserted;
@@ -182,8 +180,6 @@ $(document).ready(function() {
 				values.push($('#newValue').val());
 			}
 		}
-		// store copy of new array for resseting purporses
-		valuesCopy = [...values];
 	});
 
 	// removes values from end/start of array
@@ -200,11 +196,12 @@ $(document).ready(function() {
 		{
 			values.pop();
 		}
-		valuesCopy = [...values];
 	});
 
 	// randomize the list at start
 	$('#randomizeBtn').click();
+	// store a copy of the new randomized list, when page first loads
+	valuesCopy = [...values];
 	// select/highlight insertion sort by default at start
 	$('#insertion').addClass('currentSort');
 	// add litenrs to all sorting method buttons
