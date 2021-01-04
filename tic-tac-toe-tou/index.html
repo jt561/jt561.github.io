@@ -51,8 +51,8 @@
 				width: 100%;
 				top: 0;
 				left: 0;
-				background-color: #ff04;
-				box-shadow: 0px 0px 15px 15px #ff03;
+				background-color: #ff02;
+				box-shadow: 0px 0px 8px 8px #ff01;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -138,8 +138,18 @@
 				transition: 0.05s ease;
 			}
 
+			.current-player-text {
+				font-size: 20px;
+				font-weight: bold;
+			}
+
+			.current-player-text .value {
+				font-size: 25px;
+			}
+
 			.extended-control-center {
 				margin: 10px auto;
+				font-weight: bold;
 			}
 			/* desktop end */
 		</style>
@@ -214,20 +224,21 @@
 						{
 							winner = "X";
 							// send this function the cells to highlight
-							addWinnerEffect(checkForWinner())
+							addWinnerEffect(checkForWinner());
 							return;
 						}
 						else if (checkForWinner()[0] == "O")
 						{
 							winner = "O";
 							// send this function the cells to highlight
-							addWinnerEffect(checkForWinner())
+							addWinnerEffect(checkForWinner());
 							return;
 						}
 						// check for tie
 						if (checkForTie())
 						{
 							winner = "No one";
+							addWinnerEffect();
 							return;
 						}
 
@@ -238,6 +249,8 @@
 
 				// add event listener reset button
 				$('#resetBtn1.Btn').click(function() {
+					// changes its border color
+					$(this).css("border","2px solid #fff");
 					// calls reset function to reset board
 					resetBoard();
 				});
@@ -327,7 +340,7 @@
 				}
 			}
 
-			// resets board
+			// resets board and effects
 			function resetBoard()
 			{
 				// clear actual array
@@ -352,11 +365,14 @@
 			// takes an array that holds the location of cells(these locations are stored in another array)
 			function addWinnerEffect(cells)
 			{
+				// make reset button border red
+				$('#resetBtn1.Btn').css("border","2px solid #f00");
 				// add a yellow banner to the baord
 				// used to display winner
 				$('.board').append('<div class="winner-banner resetable"></div>');
 				$('.winner-banner').append(`<p class="winner-text resetable">${winner} Won!!!</p>`);
 				// add class to winning cells to highlight them
+				// winning cells start from index one, index zero is the winner(x/o)
 				for (let i = 1; i < cells.length; i++)
 				{
 					// loop though all 3 cells, and get their row and col number to use as id
@@ -393,7 +409,7 @@
 				<div class="info-wrapper">
 
 				</div>
-				<button id="resetBtn1" class="Btn" type="button" name="reset">Reset</button>
+				<button id="resetBtn1" class="Btn" type="button" name="reset">Reset Board</button>
 				<span class="current-player-text">Current Player: <span class="value">X</span></span>
 				<div class="extended-control-center">
 					<label for="playerMode1">Player mode:&nbsp</label>
