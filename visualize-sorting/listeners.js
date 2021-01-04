@@ -1,18 +1,17 @@
+// specify if the event listener is passive for better scroll experience. got help from stackoverflow
+jQuery.event.special.touchstart = {
+	setup: function( _, ns, handle ) {
+			this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
+	}
+};
+jQuery.event.special.touchmove = {
+	setup: function( _, ns, handle ) {
+			this.addEventListener('touchmove', handle, { passive: !ns.includes('noPreventDefault') });
+	}
+};
+
 $(document).ready(function() {
-
-	// specify if the event listener is passive for better scroll experience. got help from stackoverflow
-	jQuery.event.special.touchstart = {
-	  setup: function( _, ns, handle ) {
-	      this.addEventListener("touchstart", handle, { passive: !ns.includes("noPreventDefault") });
-	  }
-	};
-	jQuery.event.special.touchmove = {
-    setup: function( _, ns, handle ) {
-        this.addEventListener('touchmove', handle, { passive: !ns.includes('noPreventDefault') });
-    }
-	};
-
-	// add listenr to first/page/? alert button
+	// add listener to first/page/? alert button
 	$('#pageAlertBtn').on('click touchstart', function() {
 		alert("Welcome to my sorting algorithms visualization tool.\nThis site should provide you with visuals for different sorting algorithms on any list of your choice. \nThis site was created by Joshua Tetteh.");
 	});
