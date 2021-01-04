@@ -19,6 +19,7 @@
 		body {
 			background-color: #000;
 			width: 100%;
+			overflow: hidden;
 		}
 
 		.start-card {
@@ -87,9 +88,9 @@
 			// hide jermain start text after 10 secs
 			setTimeout(function() {
 				// move it offscreen to the left
-				$('.start-card').css("transition", "transform ease-out 10s");
-				$('.start-card').css("transform", "translate(-500%, -5%)");
-				setTimeout(function() { $('.start-card').css("display", "none"); }, 5000);
+				$('.start-card').css("transition", "transform ease-in 3s");
+				$('.start-card').css("transform", "translate(-200%, -50%)");
+				setTimeout(function() { $('.start-card').css("display", "none"); }, 3000);
 			}, 20000);
 		});
 	</script>
@@ -112,6 +113,9 @@
 			<path d="M319.935 13.848C318.271 13.848 316.863 13.272 315.711 12.12C314.559 10.968 313.983 9.56 313.983 7.896C313.983 6.232 314.559 4.824 315.711 3.672C316.863 2.52 318.271 1.944 319.935 1.944C321.535 1.944 322.879 2.52 323.967 3.672C325.119 4.824 325.695 6.232 325.695 7.896C325.695 9.56 325.119 10.968 323.967 12.12C322.879 13.272 321.535 13.848 319.935 13.848ZM324.159 22.392V75H315.423V22.392H324.159Z" stroke="white" stroke-width="2" mask="url(#path-1-outside-1)"/>
 			<path d="M364.68 21.432C371.08 21.432 376.264 23.384 380.232 27.288C384.2 31.128 386.184 36.696 386.184 43.992V75H377.544V45.24C377.544 39.992 376.232 35.992 373.608 33.24C370.984 30.424 367.4 29.016 362.856 29.016C358.248 29.016 354.568 30.456 351.816 33.336C349.128 36.216 347.784 40.408 347.784 45.912V75H339.048V22.392H347.784V29.88C349.512 27.192 351.848 25.112 354.792 23.64C357.8 22.168 361.096 21.432 364.68 21.432Z" stroke="white" stroke-width="2" mask="url(#path-1-outside-1)"/>
 		</svg>
+	</div>
+	<div class="main-wrapper">
+	  <main></main>
 	</div>
 </body>
 
