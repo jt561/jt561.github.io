@@ -13,6 +13,12 @@ let botLoaded = false;
 // error message if bot couldnt be loaded
 let botLoadingError = "";
 
+// loading arcs
+let loadingArcs = [];
+
+// random counter
+let counter = 0;
+
 // loads extra soruces before setup function is called
 function preload()
 {
@@ -41,29 +47,48 @@ function setup()
 	bot.loadFile([
 	  "brain-core/jarmein-brain.rive"
 	]).then(loading_done).catch(loading_error);
+
+	// use degrees not radians
+	angleMode(DEGREES);
+	// create arcs in an array
+	for (let i = 0; i < 40; i++)
+	{
+		let dia = Math.min(width, height) - (i*40);
+		dia = constrain(dia, 0, 10000);
+		loadingArcs[i] = new LoadingArc(width/2, height/2, dia, dia, i);
+	}
 }
 
 // draw loop
 function draw()
 {
+	background("#000");
 	// whilst bot is being loaded
 	if(botLoading)
 	{
-		background("#000");
-		stroke("#fff");
-		fill("pink");
-		ellipse(width/2, height/2, 55, 55);
+		stroke("#ff0");
+		loadingArcs.forEach(arc => arc.draw());
+		noStroke();
+		fill(255, 255, 255);
+		textSize(30);
+		textFont('Georgia');
+		textAlign(CENTER, CENTER);
+		let dots = (counter >= 3000) ? "..." : (counter >= 2000) ? ".." : ".";
+		counter = (counter >= 4000) ? 0 : (counter+1);
+		text("Please wait whilst i load"+dots, width/2, height/2);
 	}
 	else
 	{
 		// once loading is done, check whether the bot was actualy loaded or not
 		if (!botLoaded)
 		{
-
+			stroke("#f00");
+			loadingArcs.forEach(arc => arc.draw());
 		}
 		else
 		{
-
+			stroke("#0f0");
+			loadingArcs.forEach(arc => arc.draw());
 		}
 	}
 }
@@ -87,7 +112,7 @@ function loading_done()
 {
 	// always sort replies!
   bot.sortReplies();
-  //botLoading = false; // remove comment after testing
+  //botLoading = false;
 	botLoaded = true;
 }
 
