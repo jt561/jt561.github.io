@@ -31,6 +31,7 @@
 			min-height: 100%;
 			margin: auto;
 			background-color: #000;
+			z-index: 999;
 		}
 
 		#jamein-text-svg {
@@ -39,6 +40,27 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 			height: 10em;
+		}
+
+		.main-wrapper {
+			min-width: 100%;
+			margin: 0 auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.control-center {
+			margin: 10px;
+			position: absolute;
+			bottom: 0%;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			text-align: center;
+			z-index: 0;
+			min-width: 100%;
+			min-height: 10vh;
+			background-color: #fff;
 		}
 		/* end of default/desktop */
   </style>
@@ -97,7 +119,6 @@
 	<script src="../libs/p5/lib/p5.min.js"></script>
 	<script src="../libs/p5/lib/addons/p5.sound.min.js"></script>
 	<script src="../libs/rivescript/rivescript.min.js"></script>
-	<script src="./jarmein-brain.rive"></script>
 	<script src="../libs/p5/lib/p5.speech.js"></script>
 	<script src="./sketch.js"></script>
 </head>
@@ -116,6 +137,11 @@
 	</div>
 	<div class="main-wrapper">
 	  <main></main>
+	</div>
+	<div class="control-center">
+		<input id="input1" type="text" name="" value="" />
+		<button id="btn1" type="button" name="button">Submit</button>
+		<p id="p1">Nothing here for now</p>
 	</div>
 </body>
 
