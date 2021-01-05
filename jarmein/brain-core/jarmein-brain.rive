@@ -9,7 +9,7 @@
 
 + (what do you understand|what can you do)
 - I can only introduce my name and ask for yours right now
-^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to respeat
+^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to reapeat
 
 // repeat what the player says
 + repeat after me *
