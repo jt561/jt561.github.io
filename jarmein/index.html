@@ -178,7 +178,7 @@
 				  styleObj.appendChild(document.createTextNode(css));
 				}
 				/* add animation to texts lines */
-				$(this).css("animation", `text-line-animate${index} 2s ease-out ${index*2}s infinite forwards`);
+				$(this).css("animation", `text-line-animate${index} 1s ease-out ${index+2}s infinite forwards`);
 			});
 			// hide jermain start text after 10 secs
 			setTimeout(function() {
@@ -186,7 +186,7 @@
 				$('.start-card').css("transition", "transform ease-in 3s");
 				$('.start-card').css("transform", "translate(-200%, 0%)");
 				setTimeout(function() { $('.start-card').css("display", "none"); }, 3000);
-			}, 1000);
+			}, 9000);
 		});
 	</script>
 	<script src="../libs/p5/lib/p5.min.js"></script>
