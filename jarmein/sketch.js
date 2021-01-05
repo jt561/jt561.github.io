@@ -19,10 +19,15 @@ let loadingArcs = [];
 // random counter
 let counter = 0;
 
+// bots voice
+let speech;
+
+/* end of global variables */
+
 // loads extra soruces before setup function is called
 function preload()
 {
-
+	// nothing for now
 }
 
 // called once at start
@@ -35,9 +40,10 @@ function setup()
 	let canvasHeight = window.screen.height *  (70/100);
 	createCanvas(canvasWidth, canvasHeight);
 
-	// sumbit button for text input form
-	$('#btn1').click(function() {
+	// listener for submit button
+	$('#subBtn1').click(function() {
 		var input = $('#input1').val();
+		$('#command1').text(input);
 		getResponse("User1", input);
 	});
 
@@ -57,6 +63,16 @@ function setup()
 		dia = constrain(dia, 0, 10000);
 		loadingArcs[i] = new LoadingArc(width/2, height/2, dia, dia, i);
 	}
+
+	// create the bots voice
+	speech = new p5.Speech();
+	speech.onLoad = () => {
+		speech.setVoice("Google UK English Male");
+		speech.setPitch(0.9);
+		speech.setRate(1.2);
+		speech.setLang("en-GB");
+		speech.setVolume(1);
+	}
 }
 
 // draw loop
@@ -66,29 +82,49 @@ function draw()
 	// whilst bot is being loaded
 	if(botLoading)
 	{
+		// draw loaidng arcs
 		stroke("#ff0");
 		loadingArcs.forEach(arc => arc.draw());
+		// add loading text
 		noStroke();
 		fill(255, 255, 255);
 		textSize(30);
 		textFont('Georgia');
 		textAlign(CENTER, CENTER);
-		let dots = (counter >= 3000) ? "..." : (counter >= 2000) ? ".." : ".";
-		counter = (counter >= 4000) ? 0 : (counter+1);
+		let dots = (counter <= 100) ? "." : (counter < 200) ? ".." : "...";
+		counter = (counter >= 300) ? 0 : (counter+1);
 		text("Please wait whilst i load"+dots, width/2, height/2);
 	}
 	else
 	{
-		// once loading is done, check whether the bot was actualy loaded or not
+		// once loading is done, check whether the bot was actually loaded or not
 		if (!botLoaded)
 		{
+			// draw loaidng arcs
 			stroke("#f00");
 			loadingArcs.forEach(arc => arc.draw());
+			// add loading failed text
+			noStroke();
+			fill(255, 255, 255);
+			textSize(30);
+			textFont('Georgia');
+			textAlign(CENTER, CENTER);
+			text("Sorry I was unable to load", width/2, height/2);
+			text("Please refresh the page", width/2, height/2 + 30);
 		}
 		else
 		{
+			// draw loaidng arcs
 			stroke("#0f0");
 			loadingArcs.forEach(arc => arc.draw());
+			// add loading success text
+			noStroke();
+			fill(255, 255, 255);
+			textSize(20);
+			textFont('Georgia');
+			textAlign(CENTER, CENTER);
+			// place it at 10% away from the bottom of the canvas
+			text("Say 'Jarmein', to speak to me", width/2, height-(height*(10/100)));
 		}
 	}
 }
@@ -99,7 +135,8 @@ function getResponse(username, input)
 	// API v2.0.0 returns a Promise.
 	bot.reply(username, input)
 	.then(function(reply) {
-		$('#p1').text(reply);
+		$('#response1').text(reply);
+		speech.speak(reply);
   })
 	.catch(function(error){
 		// to do, when promise is rejected
@@ -110,9 +147,9 @@ function getResponse(username, input)
 // when all rive files/brain is ready
 function loading_done()
 {
-	// always sort replies!
+	// always sort bots replies!
   bot.sortReplies();
-  //botLoading = false;
+  botLoading = false;
 	botLoaded = true;
 }
 

@@ -1,3 +1,14 @@
 // core brain
 
 ! version = 2.0
+
++ [hello] jarmein
+- Hello, I am Jarmein,
+^  Lets start of by setting up a profile for you,
+^  can you please tell me your name.
+
++ what do you understand
+- I can only introduce my name and ask for yours right now
+
++ *
+- Sorry I dont understand a lot of things right now

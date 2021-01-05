@@ -12,7 +12,7 @@ var LoadingArc = function(x, y, w, h, s)
 	this.y = y;
 	this.w = w;
 	this.h = h;
-	this.speed = s/2;
+	this.speed = s/4;
 	this.startDeg = 0;
 	this.deg = 0;
 
