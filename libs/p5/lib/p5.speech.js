@@ -92,7 +92,7 @@
 
         if(that.initvoice!=undefined) {
           that.setVoice(that.initvoice); // set a custom initial voice
-          console.log("p5.Speech: initial voice: " + that.initvoice);
+          //console.log("p5.Speech: initial voice: " + that.initvoice);
         }
 
         // fire custom onLoad() callback, if it exists:
