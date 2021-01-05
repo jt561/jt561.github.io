@@ -43,8 +43,15 @@ function setup()
 	// listener for submit button
 	$('#subBtn1').click(function() {
 		var input = $('#input1').val();
-		$('#command1').text(input);
+		if (input === "") { return; }
+		// get response from bot
 		getResponse("User1", input);
+		// display the command, remove any special phrases we use from it
+		input = input.replace("specialrepeat111", "");
+		input = input.replace("endspecialrepeat111", "");
+		$('#command1').text(input);
+		// clear input
+		$('#input1').val("");
 	});
 
 	// create bot
@@ -57,11 +64,11 @@ function setup()
 	// use degrees not radians
 	angleMode(DEGREES);
 	// create arcs in an array
-	for (let i = 0; i < 40; i++)
+	for (let i = 0; i < 30; i++)
 	{
 		let dia = Math.min(width, height) - (i*40);
-		dia = constrain(dia, 0, 10000);
-		loadingArcs[i] = new LoadingArc(width/2, height/2, dia, dia, i);
+		dia = constrain(dia, 0, height);
+		loadingArcs[i] = new LoadingArc(width/2, height/2, dia, dia, i+1);
 	}
 
 	// create the bots voice
@@ -135,6 +142,7 @@ function getResponse(username, input)
 	// API v2.0.0 returns a Promise.
 	bot.reply(username, input)
 	.then(function(reply) {
+		// display the respose and then speak it
 		$('#response1').text(reply);
 		speech.speak(reply);
   })

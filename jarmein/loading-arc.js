@@ -31,9 +31,9 @@ var LoadingArc = function(x, y, w, h, s)
 	this.update = function()
 	{
 		// increase end degree point by speed
-		this.deg = (this.deg >= 359) ? 0 : (this.deg+this.speed);
+		this.deg = (this.deg >= 359) ? 0 : (this.deg+this.speed+random(0, 1));
 		// increase starting degrees point by 25% of speed so it moves slower
-		this.startDeg = (this.startDeg >= 359) ? 0 : (this.startDeg + (this.speed/4)) ;
+		this.startDeg = (this.startDeg >= 359) ? 0 : (this.startDeg + (this.speed/random(3, 4))) ;
 	}
 }
 

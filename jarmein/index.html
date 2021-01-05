@@ -22,6 +22,15 @@
 			overflow: hidden;
 		}
 
+		.btn-style-1 {
+			outline: none;
+			padding: 3px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 14px;
+			transition: 0.05s ease;
+		}
+
 		.start-card {
 			position: absolute;
 			top: 0%;
@@ -29,7 +38,7 @@
 			min-width: 100%;
 			min-height: 100vh;
 			background-color: #000;
-			z-index: 999;
+			z-index: 998;
 		}
 
 		#jamein-text-svg {
@@ -38,6 +47,79 @@
 			left: 50%;
 			transform: translate(-50%, -50%);
 			height: 10em;
+		}
+
+		.note-button-wrapper {
+			position: absolute;
+			top: 5%;
+			left: -1%;
+			z-index: 999;
+			max-width: 10vmin;
+			max-height: 8vmin;
+		}
+
+		.note-button-wrapper button {
+			width: 10vmin;
+			height: 8vmin;
+			min-width: 40px;
+			min-height: 30px;
+			max-width: 10vmin;
+			max-height: 8vmin;
+			border: 2px solid #ffffff;
+			background-color: #008080;
+			color: #fff;
+		}
+
+		.note-popup {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50%;
+			height: 50%;
+			z-index: 997;
+			background-color: blue;
+			min-width: 30%;
+			max-width: 80%;
+			max-height: 70vh;
+			overflow-y: scroll;
+			display: none;
+			border: 2px solid #ffffff;
+			background-color: #008080;
+			color: #fff;
+		}
+
+		.show-popup {
+			display: block;
+		}
+
+		.note-popup .row {
+			margin: 2px;
+			padding: 2px;
+			display: block;
+			min-width: 95%;
+			max-width: 100%;
+			position: relative;
+			text-align: center;
+			border-bottom: 1px solid #fff5;
+			font-size: 100%;
+		}
+
+		.note-popup .row:first-child {
+			height: 10%;
+		}
+
+		.note-popup #closeHelpBtn1 {
+			display: block;
+			position: absolute;
+			top: -1px;
+			left: -1px;
+			border: 2px solid #ffffff;
+			background-color: #00808099;
+			color: #fff;
+			border-top: 0px;
+			border-left: 0px;
+			border-radius: 0;
 		}
 
 		.main-wrapper {
@@ -125,16 +207,9 @@
 		}
 
 		#subBtn1 {
-			display: inline-block;
-			outline: none;
 			border: 2px solid #ffffff;
 			background-color: #008080;
 			color: #fff;
-			padding: 3px 10px;
-			border-radius: 5px;
-			cursor: pointer;
-			transition: 0.05s ease;
-			font-size: 14px;
 		}
 		/* end of default/desktop */
   </style>
@@ -196,6 +271,12 @@
 				$('.start-card').css("transform", "translate(-200%, 0%)");
 				setTimeout(function() { $('.start-card').css("display", "none"); }, 3000);
 			}, 9000);
+
+			// listener on button to close and show help popup
+			$('#toggleHelpBtn1, #closeHelpBtn1').click(function() {
+				$('.note-popup').toggleClass('show-popup');
+			});
+
 		});
 	</script>
 	<script src="../libs/p5/lib/p5.min.js"></script>
@@ -223,6 +304,26 @@
 			<path d="M364.68 21.432C371.08 21.432 376.264 23.384 380.232 27.288C384.2 31.128 386.184 36.696 386.184 43.992V75H377.544V45.24C377.544 39.992 376.232 35.992 373.608 33.24C370.984 30.424 367.4 29.016 362.856 29.016C358.248 29.016 354.568 30.456 351.816 33.336C349.128 36.216 347.784 40.408 347.784 45.912V75H339.048V22.392H347.784V29.88C349.512 27.192 351.848 25.112 354.792 23.64C357.8 22.168 361.096 21.432 364.68 21.432Z" stroke="white" stroke-width="2" mask="url(#path-1-outside-1)"/>
 		</svg>
 	</div>
+	<div id="note1" class="note-button-wrapper">
+		<button id="toggleHelpBtn1" type="button" name="button" class="btn-style-1">?</button>
+	</div>
+	<div class="note-popup">
+		<div class="row">
+			<button id="closeHelpBtn1" type="button" name="button" class="btn-style-1">X</button>
+		</div>
+		<div class="row">
+			<p>This is meant to be a chat bot that uses voice recognition and speech synthesis.</p>
+		</div>
+		<div class="row">
+			<p>All features havent been implemented yet.</p>
+		</div>
+		<div class="row">
+			<p>Should be somewhat functional very soon.</p>
+		</div>
+		<div class="row">
+			<p>Created by JT.</p>
+		</div>
+	</div>
 	<div class="main-wrapper">
 	  <main></main>
 	</div>
@@ -239,7 +340,7 @@
 	<div class="control-center">
 		<label for="input1">Enter a command:&nbsp</label>
 		<input id="input1" type="text" name="" value="" />
-		<button id="subBtn1" type="button" name="button">Submit</button>
+		<button id="subBtn1" type="button" name="button" class="btn-style-1">Submit</button>
 	</div>
 </body>
 
