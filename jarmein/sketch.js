@@ -123,8 +123,8 @@ function draw()
 			textSize(20);
 			textFont('Georgia');
 			textAlign(CENTER, CENTER);
-			// place it at 10% away from the bottom of the canvas
-			text("Say 'Jarmein', to speak to me", width/2, height-(height*(10/100)));
+			// place it at 10% away from the top of the canvas
+			text("Say 'Jarmein', to speak to me", width/2, 0+(height*(10/100)));
 		}
 	}
 }
