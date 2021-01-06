@@ -73,6 +73,7 @@ function setup()
 
 	// create the bots voice
 	speech = new p5.Speech();
+	// callback
 	speech.onLoad = () => {
 		speech.setVoice("Google UK English Male");
 		speech.setPitch(0.9);
