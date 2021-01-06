@@ -136,8 +136,6 @@
 			bottom: 10vh;
 			left: 0%;
 			text-align: center;
-			min-width: 100%;
-			min-height: 5vh;
 			background-color: #0007;
 			color: #fff;
 			font-family: "Poppins", sans-serif;
@@ -150,6 +148,7 @@
 			max-width: 100%;
 			min-width: 100%;
 			max-height: 70vh;
+			min-height: 20vh;
 			overflow-y: scroll;
 		}
 
@@ -203,7 +202,7 @@
 			font-family: "Poppins", sans-serif;
 			border: 2px solid #008080;
 			padding: 20px;
-			box-shadow: 0px 0px 15px 15px #00808077;
+			box-shadow: 0px 0px 10px 10px #00808077;
 		}
 
 		#subBtn1 {
@@ -262,15 +261,15 @@
 				  styleObj.appendChild(document.createTextNode(css));
 				}
 				/* add animation to texts lines */
-				$(this).css("animation", `text-line-animate${index} 1s ease-out ${index+2}s infinite forwards`);
+				$(this).css("animation", `text-line-animate${index} 1s ease-out ${index}s infinite forwards`);
 			});
-			// hide jermain start text after 10 secs
+			// hide jermain start text after 6 secs
 			setTimeout(function() {
 				// move it offscreen to the left
 				$('.start-card').css("transition", "transform ease-in 3s");
 				$('.start-card').css("transform", "translate(-200%, 0%)");
 				setTimeout(function() { $('.start-card').css("display", "none"); }, 3000);
-			}, 9000);
+			}, 6000);
 
 			// listener on button to close and show help popup
 			$('#toggleHelpBtn1, #closeHelpBtn1').click(function() {
