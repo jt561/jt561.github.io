@@ -22,7 +22,8 @@ let ExtBrain = function()
 			// default weather location is london for now
 			let location = `london`;
 			// please dont abuse the api key
-			let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=b284f130b1df78a6656b23e11c867e2b`;
+			let apiKey = "";
+			let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
 			loadJSON(apiUrl, processData);
 			function processData(data)
 			{
