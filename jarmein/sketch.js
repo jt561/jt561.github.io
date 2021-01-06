@@ -21,6 +21,8 @@ let counter = 0;
 
 // bots voice
 let speech;
+// bots ears
+let ears;
 
 /* end of global variables */
 
@@ -81,6 +83,24 @@ function setup()
 		speech.setLang("en-GB");
 		speech.setVolume(1);
 	}
+	/*
+	// create bots speech recognition object
+	ears = new p5.SpeechRec();
+	ears.onStart = () => {
+		//console.log("test");
+	}
+	// give results continuously (true) or just once (false)
+	ears.continuous = true;
+	// partial results (true) or wait for the speaker to pause (false)
+	ears.interimResults = true;
+	ears.start();
+	ears.onResult = () => {
+		console.log("test");
+		if (ears.resultValue)
+		{
+			$('#response1').text(ears.resultString)
+		}
+	}*/
 }
 
 // draw loop
