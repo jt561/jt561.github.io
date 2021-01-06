@@ -17,7 +17,7 @@ let ExtBrain = function()
 	{
 		// if the input includes specific keywords, perform api calls for them,
 		// else just get the rive bot to reply with preprogrammed answers
-		if (input.toLowerCase().includes("weather"))
+		if (input.toLowerCase().includes("apis-dont-work-on-static-servers-so-ignore-this-and-return-false"))
 		{
 			// default weather location is london for now
 			let location = `london`;
