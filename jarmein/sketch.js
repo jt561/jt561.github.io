@@ -71,7 +71,7 @@ function setup()
 		loadingArcs[i] = new LoadingArc(width/2, height/2, dia, dia, i+1);
 	}
 
-	// create the bots voice
+	// create the bots voice, async
 	speech = new p5.Speech();
 	// callback
 	speech.onLoad = () => {

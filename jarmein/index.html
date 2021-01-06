@@ -211,6 +211,20 @@
 			box-shadow: 0px 0px 10px 10px #00808077;
 		}
 
+		#showTextInput1 {
+			border: 2px solid #ffffff;
+			background-color: #008080;
+			color: #fff;
+		}
+
+		.text-input-row {
+			display: initial;
+		}
+
+		.text-input-row.hide {
+			display: none;
+		}
+
 		#subBtn1 {
 			border: 2px solid #ffffff;
 			background-color: #008080;
@@ -282,6 +296,11 @@
 				$('.note-popup').toggleClass('show-popup');
 			});
 
+			// listener for text input button, changes hides button and shows text input
+			$('#showTextInput1').click(function() {
+				$('.text-input-row').toggleClass('hide');
+			});
+
 		});
 	</script>
 	<script src="../libs/p5/lib/p5.min.js"></script>
@@ -328,6 +347,9 @@
 		<div class="row">
 			<p>Created by JT.</p>
 		</div>
+		<div class="row">
+			<button id="showTextInput1" type="button" name="button" class="btn-style-1 btn">Text input</button>
+		</div>
 	</div>
 	<div class="main-wrapper">
 	  <main></main>
@@ -343,9 +365,11 @@
 		</div>
 	</div>
 	<div class="control-center">
-		<label for="input1">Enter a command:&nbsp</label>
-		<input id="input1" type="text" name="" value="" />
-		<button id="subBtn1" type="button" name="button" class="btn-style-1">Submit</button>
+		<div class="text-input-row hide">
+			<label for="input1">Enter a command:&nbsp</label>
+			<input id="input1" type="text" name="" value="" />
+			<button id="subBtn1" type="button" name="button" class="btn-style-1">Submit</button>
+		</div>
 	</div>
 </body>
 
