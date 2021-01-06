@@ -6,6 +6,8 @@
 
 // main rivescript bot
 let bot;
+// brain with api's
+let extBrain;
 // turns to false when rivescript object loads rivescript file
 let botLoading = true;
 // true once bot has been loaded
@@ -42,16 +44,15 @@ function setup()
 	let canvasHeight = window.screen.height *  (70/100);
 	createCanvas(canvasWidth, canvasHeight);
 
-	// listener for submit button
+	// listener for submit button, this is essentially what kicks the bot to work
 	$('#subBtn1').click(function() {
 		var input = $('#input1').val();
 		if (input === "") { return; }
-		// get response from bot
-		getResponse("User1", input);
-		// display the command, remove any special phrases we use from it
-		input = input.replace("specialrepeat111", "");
-		input = input.replace("endspecialrepeat111", "");
+		// display the command,
 		$('#command1').text(input);
+		// an interceptor brain will be hear to make api calls
+		// and provide the bot with a reponse to say
+		extBrain.intercept(input);
 		// clear input
 		$('#input1').val("");
 	});
@@ -101,6 +102,9 @@ function setup()
 			$('#response1').text(ears.resultString)
 		}
 	}*/
+
+	// create extended brain object for api calls
+	extBrain = new ExtBrain();
 }
 
 // draw loop
@@ -170,6 +174,13 @@ function getResponse(username, input)
 	.catch(function(error){
 		// to do, when promise is rejected
 	});
+}
+
+// removes any special words from the response before it is displayed
+function sanitizeSpecial(input)
+{
+	return input.replace("specialrepeat111", "")
+	.replace("endspecialrepeat111", "");
 }
 
 // on ready callback for ricescript object, loadFile function,
