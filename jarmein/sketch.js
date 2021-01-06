@@ -79,7 +79,7 @@ function setup()
 	// callback
 	speech.onLoad = () => {
 		speech.setVoice("Google UK English Male");
-		speech.setPitch(0.9);
+		speech.setPitch(0.75);
 		speech.setRate(1.2);
 		speech.setLang("en-GB");
 		speech.setVolume(1);
@@ -168,7 +168,7 @@ function getResponse(username, input)
 	bot.reply(username, input)
 	.then(function(reply) {
 		// display the respose and then speak it
-		$('#response1').text(reply);
+		$('#response1').text(sanitizeSpecial(reply));
 		speech.speak(reply);
   })
 	.catch(function(error){
@@ -180,7 +180,8 @@ function getResponse(username, input)
 function sanitizeSpecial(input)
 {
 	return input.replace("specialrepeat111", "")
-	.replace("endspecialrepeat111", "");
+	.replace("endspecialrepeat111", "")
+	.replace(" Point ", ".");
 }
 
 // on ready callback for ricescript object, loadFile function,
