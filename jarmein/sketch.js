@@ -169,7 +169,7 @@ function getResponse(username, input)
 	.then(function(reply) {
 		// display the respose and then speak it
 		$('#response1').text(sanitizeSpecial(reply));
-		speech.speak(reply);
+		speech.speak(sanitizeSpokenSpecial(reply));
   })
 	.catch(function(error){
 		// to do, when promise is rejected
@@ -179,9 +179,15 @@ function getResponse(username, input)
 // removes any special words from the response before it is displayed
 function sanitizeSpecial(input)
 {
-	return input.replace("specialrepeat111", "")
-	.replace("endspecialrepeat111", "")
-	.replace(" Point ", ".");
+	return  input.replace("specialrepeat111", "")
+		.replace("endspecialrepeat111", "")
+		.replace(" Point ", ".");
+}
+
+// removes any special words from the response before it is spoken
+function sanitizeSpokenSpecial(input)
+{
+	return input.replace(" Point ", ".");
 }
 
 // on ready callback for ricescript object, loadFile function,
