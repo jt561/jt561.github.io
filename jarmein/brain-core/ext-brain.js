@@ -50,3 +50,36 @@ let ExtBrain = function()
 }
 
 /* End of Extended brain class */
+
+/* helper functions */
+
+// returns bots response based on given input
+function getResponse(username, input)
+{
+	// API v2.0.0 returns a Promise.
+	bot.reply(username, input)
+	.then(function(reply) {
+		// display the respose and then speak it
+		$('#response1').text(sanitizeSpecial(reply));
+		speech.speak(sanitizeSpokenSpecial(reply));
+  })
+	.catch(function(error){
+		// to do, when promise is rejected
+	});
+}
+
+// removes any special words from the response before it is displayed
+function sanitizeSpecial(input)
+{
+	return  input.replace("specialrepeat111", "")
+		.replace("endspecialrepeat111", "")
+		.replace(" Point ", ".");
+}
+
+// removes any special words from the response before it is spoken
+function sanitizeSpokenSpecial(input)
+{
+	return input.replace(" Point ", ".");
+}
+
+/* end of helper functions */
