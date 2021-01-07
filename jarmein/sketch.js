@@ -193,6 +193,15 @@ function sanitizeSpokenSpecial(input)
 	return input.replace(" Point ", ".");
 }
 
+// keyboard listener
+function keyPressed() {
+    switch(keyCode)
+    {
+			// click the submit button, when enter is clicked
+      case ENTER: $('#subBtn1').click(); break;
+    }
+}
+
 // on ready callback for ricescript object, loadFile function,
 // when all rive files/brain is ready
 function loading_done()
