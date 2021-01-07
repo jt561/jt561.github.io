@@ -18,25 +18,30 @@ let ExtBrain = function()
 		// checks to see if the input string contains any of our api objects name
 		if (input.split(" ").some(word => { let r; this.apis.forEach(obj => { if (obj.name === word) { r = true; } } ); return r; }))
 		{
-			//console.log("test");
-		}
-		// if the input includes specific keywords, perform api calls for them,
-		// else just get the rive bot to reply with preprogrammed answers
-		// I am guessing apis-dont-work-on-static-servers-so-ignore-this-and-return-false
-		if (input.toLowerCase().includes("weather"))
-		{
-			// default weather location is london for now
-			let location = `london`;
-			// please dont abuse the api key
-			let apiKey = "6760c147ee8ca243ceefb10a4edc8b22";
-			let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
-			loadJSON(apiUrl, processData);
-			function processData(data)
+			// if the input includes specific keywords, perform api calls for them,
+			// else just get the rive bot to reply with preprogrammed answers
+			if (input.toLowerCase().includes("weather"))
 			{
-				let temp = data.main.temp;
-				// turn the decimal point into the actual word
-				temp = temp.toString().split(".").join(" Point ");
-				let output = `specialrepeat111 The weather in London is currently ${temp} degrees endspecialrepeat111`;
+				// default weather location is london for now
+				let location = `london`;
+				// please dont abuse the api key
+				let apiKey = "6760c147ee8ca243ceefb10a4edc8b22";
+				let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
+				loadJSON(apiUrl, processData);
+				function processData(data)
+				{
+					let temp = data.main.temp;
+					// turn the decimal point into the actual word
+					temp = temp.toString().split(".").join(" Point ");
+					let output = `specialrepeat111 The weather in London is currently ${temp} degrees endspecialrepeat111`;
+					getResponse("User1", output);
+				}
+			}
+
+			// tells the time
+			if (input.toLowerCase().includes("time"))
+			{
+				let output = `specialrepeat111 The time in London is ${hour()}specialrepliescolon${minute()}  endspecialrepeat111`;
 				getResponse("User1", output);
 			}
 		}
@@ -73,13 +78,15 @@ function sanitizeSpecial(input)
 {
 	return  input.replace("specialrepeat111", "")
 		.replace("endspecialrepeat111", "")
-		.replace(" Point ", ".");
+		.replace(" Point ", ".")
+		.replace("specialrepliescolon", ":");
 }
 
 // removes any special words from the response before it is spoken
 function sanitizeSpokenSpecial(input)
 {
-	return input.replace(" Point ", ".");
+	return input.replace(" Point ", ".")
+		.replace("specialrepliescolon", " ");
 }
 
 /* end of helper functions */
