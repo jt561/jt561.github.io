@@ -25,6 +25,8 @@ let counter = 0;
 let speech;
 // bots ears
 let ears;
+// speech recognition error
+let earsError = "";
 
 /* end of global variables */
 
@@ -87,24 +89,16 @@ function setup()
 		speech.setLang("en-GB");
 		speech.setVolume(1);
 	}
-	/*
+
 	// create bots speech recognition object
-	ears = new p5.SpeechRec();
-	ears.onStart = () => {
-		//console.log("test");
-	}
-	// give results continuously (true) or just once (false)
-	ears.continuous = true;
+	/*let lang = navigator.language || "en-GB";
+	ears = new p5.SpeechRec(lang, processSpeech);
+	// listen continuously (true) or just once (false)
+	let continous = true;
 	// partial results (true) or wait for the speaker to pause (false)
-	ears.interimResults = true;
-	ears.start();
-	ears.onResult = () => {
-		console.log("test");
-		if (ears.resultValue)
-		{
-			$('#response1').text(ears.resultString)
-		}
-	}*/
+	let interim = false;
+	ears.start(continous, interim);
+	ears.onError = (error) => { earsError = error; }*/
 
 	// create extended brain object for api calls
 	extBrain = new ExtBrain();
