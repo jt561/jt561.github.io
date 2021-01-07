@@ -7,6 +7,11 @@
 ^  Lets start of by setting up a profile for you,\s\n
 ^  can you please tell me your name.\s\n
 
++ hello
+- Hi,
+- What's up,
+- Hello,
+
 // repeat what the player says
 + repeat after me *
 - <formal>.\s\n
