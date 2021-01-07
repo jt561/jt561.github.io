@@ -1,0 +1,7 @@
+// specific and special expected replies
+
+! version = 2.0
+
+// put special repeat and end--, around a text for it to repeat the same text
++ specialrepeat111 * endspecialrepeat111
+- <formal>.\s\n

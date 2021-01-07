@@ -61,7 +61,10 @@ function setup()
 	bot = new RiveScript();
 	// Load a list of rive/brain files
 	bot.loadFile([
-	  "brain-core/jarmein-brain.rive"
+	  "brain-core/begin.rive",
+		"brain-core/jarmein-brain.rive",
+		"brain-core/specialreplies.rive",
+		"brain-core/star.rive"
 	]).then(loading_done).catch(loading_error);
 
 	// use degrees not radians

@@ -1,0 +1,11 @@
+// for generic responses and help
+
+! version = 2.0
+
++ (what do you understand|what can you do)
+- I can only introduce my name and ask for yours right now,\s\n
+^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to reapeat.\s\n
+^ I can also tell you the current weather in London.\s\n
+
++ *
+- Sorry I dont understand what you mean.\s\n

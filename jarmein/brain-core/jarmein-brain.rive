@@ -7,18 +7,6 @@
 ^  Lets start of by setting up a profile for you,\s\n
 ^  can you please tell me your name.\s\n
 
-+ (what do you understand|what can you do)
-- I can only introduce my name and ask for yours right now,\s\n
-^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to reapeat.\s\n
-^ I can also tell you the current weather in London.\s\n
-
 // repeat what the player says
 + repeat after me *
 - <formal>.\s\n
-
-// put special repeat and end--, around a text for it to repeat the same text
-+ specialrepeat111 * endspecialrepeat111
-- <formal>.\s\n
-
-+ *
-- Sorry I dont understand what you mean.\s\n
