@@ -48,11 +48,11 @@
 			color: white;
 			padding: 5px;
 			border-radius: 5px;
-			transition: 0.5s ease;
+			transition: 0.2s ease;
 		}
 
 		.btn:hover {
-			border: 3px solid #000000;
+			border: 2px solid #000000;
 			background-color: #ffffff;
 			color: black;
 		}
@@ -485,7 +485,7 @@
 
 		.semi-important-link:hover {
 			border: 2px solid black;
-			background-color: #000000;
+			background-color: #7776;
 			color: white;
 		}
 
@@ -874,7 +874,7 @@
 				var newStyle = $("<style class='themes theme2'></style>");
 				$('head').append(newStyle);
 				// css for style tag
-				let styleTextNode = `body { background-color: #e6dace; font-family: Arial, sans-serif; }
+				let styleTextNode = ` body { background-color: #e6dace; font-family: Arial, sans-serif; }
 				.header { background-color: #fff; color: #000; }
 				#my-name-svg { background-color: #00f7; padding: 5px; border-radius: 2px; box-shadow: 0px 5px 15px 10px #77f7; }
 				@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; } }
@@ -912,9 +912,10 @@
 				var newStyle = $("<style class='themes theme2'></style>");
 				$('head').append(newStyle);
 				// css for style tag
-				let styleTextNode = `body { background-color: #3b3c38; font-family: Helvetica, sans-serif; }
+				let styleTextNode = ` .header *, .card *, .footer * { margin-top: 4px; margin-bottom: 4px; }
+				body { background-color: #3b3c38; font-family: Helvetica, sans-serif; }
 				.header { background-color: #323330; color: #ff0; }
-				.header .title { color: #f5da55; }
+				.header .title { color: #f5da55; min-height: 11vh; }
 				#my-name-svg { background: transparent; padding: 5px; border-radius: 2px; }
 				.navigation-links a { background: transparent; color: #fff; transition: 0s; }
 				.navigation-links a:hover, .navigation-links a:active { color: #eeda7c; background: transparent; }
@@ -925,7 +926,7 @@
 				.about-left { background-color: #f5da55; color: #000; }
 				.my-card-divider { background-color: #000; }
 				.section { background: transparent; color: #000; box-shadow: none; border-bottom: none; }
-				.card { background-color: #1d1f21; color: #fff; }
+				.card { background-color: #1d1f21; color: #fff; box-shadow: none; }
 				.education .card h3, .experience .card h3 { color: #eeda7c; }
 				.education .card .grades { color: #eeda7c; }
 				.internal-redirecter.one { background-color: #f5da55; color: #000; border: 2px solid #000; }
@@ -943,8 +944,8 @@
 				.projects-description { color: #fff; }
 				.contact-me a { color: #fff; }
 				@media all and (max-width: 768px) {
-				.navigation-links { background-color: #323330; border-left: 2px solid #000; }
-				.about-right { color: #000; }
+					.navigation-links { background-color: #323330; border-left: 2px solid #0001; top: 11vh; height: 70vh; }
+					.about-right { color: #000; }
 				}`;
 				$('.themes').append(styleTextNode);
 			}
