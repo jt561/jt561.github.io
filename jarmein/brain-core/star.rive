@@ -2,10 +2,22 @@
 
 ! version = 2.0
 
+// what can the bot do - replies
 + (what do you understand|what can you do)
-- I can only introduce my name and ask for yours right now,\s\n
+- I can only introduce my self and and have short conversations for now,\s\n
 ^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to reapeat.\s\n
-^ I can also tell you the current weather in London.\s\n
+^ I can also tell you the current weather in London, just say "tell me the weather".
 
+// commands not understood - replies
 + *
-- Sorry I dont understand what you mean.\s\n
+- {random}Unfortunately|Sorry{/random} I dont {random}know|understand{/random} what you mean.\s\n
+^ To {random}find out|learn{/random} what I can do, say,\s
+^ "what can you do,"\s
+^ or,\s
+^ "what do you understand,"\s\n
+^ Would you like me to {random}inform you of|tell you{/random} what I can do now?
+
+// reply with what the bot can do, after the user replies yes to the previous questions - replies
++ yes [<bot name>|please]
+% (unfortunately|sorry) i dont (know|understand) what you mean to (find out|learn) what i can do say what can you do or what do you understand would you like me to (inform you of|tell you) what i can do now
+- {@ what can you do}
