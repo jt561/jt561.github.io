@@ -33,7 +33,7 @@ let ExtBrain = function()
 					let temp = data.main.temp;
 					// turn the decimal point into the actual word
 					temp = temp.toString().split(".").join(" Point ");
-					let output = `specialrepeat111 The weather in London is currently ${temp} degrees endspecialrepeat111`;
+					let output = `specialrepliesxxx The weather in London is currently ${temp} degrees xxxendspecialreplies`;
 					getResponse("User1", output);
 				}
 			}
@@ -41,7 +41,11 @@ let ExtBrain = function()
 			// tells the time
 			if (input.toLowerCase().includes("time"))
 			{
-				let output = `specialrepeat111 The time in London is ${hour()}specialrepliescolon${minute()}  endspecialrepeat111`;
+				let hr = (hour() > 12) ? hour()%12 : hour();
+				// always add 0 to the front of the current minute but only get the last 2 digits
+				let min = ("0" + minute()).slice(-2);
+				let middayRel = (hour() > 12) ? "pm" : "am";
+				let output = `specialrepliesxxx The time in London is ${hr}specialreplyxxxcolon${min}specialreplyxxxspace${middayRel} xxxendspecialreplies`;
 				getResponse("User1", output);
 			}
 		}
@@ -63,30 +67,32 @@ function getResponse(username, input)
 {
 	// API v2.0.0 returns a Promise.
 	bot.reply(username, input)
-	.then(function(reply) {
-		// display the respose and then speak it
-		$('#response1').text(sanitizeSpecial(reply));
-		speech.speak(sanitizeSpokenSpecial(reply));
-  })
-	.catch(function(error){
-		// to do, when promise is rejected
-	});
+		.then(function(reply) {
+			// display the respose and then speak it
+			$('#response1').text(sanitizeSpecial(reply));
+			speech.speak(sanitizeSpokenSpecial(reply));
+	  })
+		.catch(function(error){
+			// to do, when promise is rejected
+		});
 }
 
 // removes any special words from the response before it is displayed
 function sanitizeSpecial(input)
 {
-	return  input.replace("specialrepeat111", "")
-		.replace("endspecialrepeat111", "")
+	return  input.replace("specialrepliesxxx", "")
+		.replace("xxxendspecialreplies", "")
 		.replace(" Point ", ".")
-		.replace("specialrepliescolon", ":");
+		.replace("specialreplyxxxcolon", ":")
+		.replace("specialreplyxxxspace", "");
 }
 
 // removes any special words from the response before it is spoken
 function sanitizeSpokenSpecial(input)
 {
 	return input.replace(" Point ", ".")
-		.replace("specialrepliescolon", " ");
+		.replace("specialreplyxxxcolon", " ")
+		.replace("specialreplyxxxspace", " ");
 }
 
 /* end of helper functions */

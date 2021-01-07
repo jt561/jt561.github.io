@@ -12,9 +12,9 @@
 + *
 - {random}Unfortunately|Sorry{/random} I dont {random}know|understand{/random} what you mean.\s\n
 ^ To {random}find out|learn{/random} what I can do, say,\s
-^ "what can you do,"\s
+^ "what can you do",\s
 ^ or,\s
-^ "what do you understand,"\s\n
+^ "what do you understand",\s\n
 ^ Would you like me to {random}inform you of|tell you{/random} what I can do now?
 
 // reply with what the bot can do, after the user replies yes to the previous questions - replies
