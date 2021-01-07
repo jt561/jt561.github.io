@@ -744,7 +744,7 @@
 
 			// continous name animation
 			// infinite loop
-			$("#my-name-svg").css("animation", `text-fill-animate1 4s linear 15s infinite alternate`);
+			$("#my-name-svg").css("animation", `text-fill-animate1 10s linear 15s infinite alternate`);
 			$("#my-name-svg path").each(function(index) {
 				/* set max offset for svg */
 				$(this).css("stroke-dasharray", `${$(this).get(0).getTotalLength()}`);
@@ -754,7 +754,7 @@
 				var css = `@keyframes text-line-animate${index} { 0% {stroke-dashoffset: ${$(this).get(0).getTotalLength()}} 50% {stroke-dashoffset: 0} 100% {stroke-dashoffset: 0} }`,
 				head = document.head || document.getElementsByTagName('head')[0], /* get head tag  */
 				styleObj = document.querySelectorAll('style')[0];/* get first style tag  */
-				if (index === 1) css += ` @keyframes text-fill-animate1 { 0% {fill: transparent} 25% {fill: transparent} 50% {fill: white} 100% {fill: transparent} }`;
+				if (index === 1) css += ` @keyframes text-fill-animate1 { 0% {fill: transparent} 25% {fill: transparent} 50% {fill: white} 55% {fill: transparent} 100% {fill: transparent} }`;
 				/* append new css in style tag */
 				if (styleObj.styleSheet){
 				  // This is required for IE8 and below.
