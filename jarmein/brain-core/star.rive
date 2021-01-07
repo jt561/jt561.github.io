@@ -6,7 +6,8 @@
 + (what do you understand|what can you do)
 - I can only introduce my self and and have short conversations for now,\s\n
 ^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to reapeat.\s\n
-^ I can also tell you the current weather in London, just say "tell me the weather".
+^ I can also tell you the current weather in London, just say "tell me the weather in London".\s\n
+^ If you need the time, just say, what's the time?".
 
 // commands not understood - replies
 + *
