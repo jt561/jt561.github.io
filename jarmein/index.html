@@ -368,6 +368,15 @@
 				$('.note-popup').toggleClass('show-popup');
 			});
 
+			// keep search box open when input is in focus and undo when its out of focus
+			$('#input1').focus(function() {
+				$('.search-box').css("width", "80%");
+				$('#input1').css("width", "80%");
+			}).focusout(function() {
+				$('.search-box').css("width", "");
+				$('#input1').css("width", "");
+			});
+
 		});
 	</script>
 	<script src="../libs/p5/lib/p5.min.js"></script>
@@ -377,10 +386,6 @@
 	<script src="./loading-arc.js"></script>
 	<script src="./brain-core/ext-brain.js"></script>
 	<script src="./sketch.js"></script>
-
-	<script type="text/javascript">
-
-	</script>
 
 </head>
 
