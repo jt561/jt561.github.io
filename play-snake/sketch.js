@@ -13,10 +13,10 @@ var food;
 // called once
 function setup() {
   // create board/canvas
-	// full width of screen
-  let deviceWidth = window.screen.width;
+	// full width of screen - not anymore
+  let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 30:(window.matchMedia("(max-width: 1024px)").matches) ? 130:320);
 	// try to get only 50% of screen on mobile, but higher percentage on tablet and desktop
-  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 380:(window.matchMedia("(max-width: 1024px)").matches) ? 520:300);
+  let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 400:(window.matchMedia("(max-width: 1024px)").matches) ? 530:320);
 	// not using document size now
 	let documentWidth = $(document).width() - 5;
   let documentHeight = $(document).height() - 100;
