@@ -32,7 +32,7 @@ let ExtBrain = function()
 				{
 					let temp = data.main.temp;
 					// turn the decimal point into the actual word
-					temp = temp.toString().split(".").join(" Point ");
+					temp = temp.toString().split(".").join(" point ");
 					let output = `specialrepliesxxx The weather in London is currently ${temp} degrees xxxendspecialreplies`;
 					getResponse("User1", output);
 				}
@@ -98,9 +98,10 @@ function sanitizeSpecial(input)
 {
 	return  input.replace("specialrepliesxxx", "")
 		.replace("xxxendspecialreplies", "")
-		.replace(" Point ", ".")
+		.replace(" point ", ".")
 		.replace("specialreplyxxxcolon", ":")
-		.replace("specialreplyxxxspace", "");
+		.replace("specialreplyxxxspace", "")
+		.replace("specialreplyxxxspacenot", " ");
 }
 
 // removes any special words from the response before it is spoken
