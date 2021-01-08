@@ -101,7 +101,7 @@
 			justify-content: space-around;
 			width: 50vw;
 			display: flex;
-			border-bottom-left-radius: 125px;
+			border-bottom-left-radius: 0px;
 		}
 
 		.navigation-links li {
@@ -183,6 +183,10 @@
 			width: 30%;
 			margin: 0 auto;
 			text-align: center;
+		}
+
+		#changeThemeBtn1 {
+			border-radius: 0px;
 		}
 
 		.container-title {
@@ -278,6 +282,7 @@
 			background-color: #ffffff;
 			color: black;
 			margin-right: 3px;
+			border-radius: 0px;
 		}
 
 		.internal-redirecter.one:hover {
@@ -290,6 +295,7 @@
 			border: 2px solid black;
 			background-color: #000000;
 			color: white;
+			border-radius: 0px;
 			animation: link-blink 1s linear 0s infinite alternate;
 		}
 
@@ -455,7 +461,7 @@
 			font-weight: bold;
 			cursor: pointer;
 			padding: 10px;
-			border-radius: 10px;
+			border-radius: 0px;
 			font-size: 10px;
 			opacity: 0.8;
 			transition: 0.5s ease;
@@ -877,10 +883,11 @@
 				let styleTextNode = ` body { background-color: #e6dace; font-family: Arial, sans-serif; }
 				.header { background-color: #fff; color: #000; }
 				#my-name-svg { background-color: #00f7; padding: 5px; border-radius: 2px; box-shadow: 0px 5px 15px 10px #77f7; }
-				@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; } }
+				@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; border-bottom-left-radius: 255px; } }
 				.navigation-links a { background: transparent; color: #000; transition: 0s; }
 				.navigation-links a:hover, .navigation-links a:active { color: #00f; }
 				.burger div { background-color: #00f; }
+				#changeThemeBtn1 { border-radius: 15px; }
 				.footer, .footer a, a { background-color: #fff; color: #000; }
 				#about-me { background-color: #e6dace; color: #000; }
 				.about-left { background-color: #f4ece6; color: #000; }
@@ -890,13 +897,13 @@
 				.card { background-color: #fff; color: #000; }
 				.education .card h3, .experience .card h3 { color: #00f; }
 				.education .card .grades { color: #00f; }
-				.internal-redirecter.one { background-color: #00f; color: #fff; border: 2px solid #00f; }
+				.internal-redirecter.one { background-color: #00f; color: #fff; border: 2px solid #00f; border-radius: 15px; }
 				.internal-redirecter.one:hover { background-color: #fff; color: #000; border: 2px solid #00f; }
-				.internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #00f; }
+				.internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #00f; border-radius: 15px; }
 				.internal-redirecter.two:hover { background-color: #00f; color: #fff; border: 2px solid #00f; }
-				.title-icon-box { background-color: #00f; border: 2px solid #00f; }
-				.skill-set-box-icon { background-color: #00f; border: none; }
-				#backToTopButton { background-color: #00f; border: none; }
+				.title-icon-box { background-color: #00f; border: 2px solid #00f; border-radius: 8px; }
+				.skill-set-box-icon { background-color: #00f; border: none; border-radius: 10px; }
+				#backToTopButton { background-color: #00f; border: none; border-radius: 25px; }
 				.semi-important-link { background-color: #34a1eb; color: #fff; border: 2px solid #000; border-radius: 10px; }
 				.btn { background-color: #34a1eb; color: #fff; border: 2px solid #000; }
 				.skill p { display: inline-block; }
@@ -920,6 +927,7 @@
 				.navigation-links a { background: transparent; color: #fff; transition: 0s; }
 				.navigation-links a:hover, .navigation-links a:active { color: #eeda7c; background: transparent; }
 				.burger div { background-color: #f5da55; }
+				#changeThemeBtn1 { border-radius: 7px; }
 				.footer, .footer a, a { background-color: #20232a; color: #fff; }
 				.title { color: #fff; }
 				#about-me { background-color: #eeda7c; color: #000; }
@@ -929,13 +937,13 @@
 				.card { background-color: #1d1f21; color: #fff; box-shadow: none; }
 				.education .card h3, .experience .card h3 { color: #eeda7c; }
 				.education .card .grades { color: #eeda7c; }
-				.internal-redirecter.one { background-color: #f5da55; color: #000; border: 2px solid #000; }
+				.internal-redirecter.one { background-color: #f5da55; color: #000; border: 2px solid #000; border-radius: 7px; }
 				.internal-redirecter.one:hover { background-color: #fff; color: #000; border: 2px solid #000; }
-				.internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #000; }
+				.internal-redirecter.two { background-color: #fff; color: #000; border: 2px solid #000; border-radius: 7px; }
 				.internal-redirecter.two:hover { background-color: #f5da55; color: #000; border: 2px solid #000; }
-				.title-icon-box { background-color: #eeda7c; border: 2px solid #eeda7c; }
-				.skill-set-box-icon { background-color: #eeda7c; border: none; }
-				#backToTopButton { background-color: #000; border: none; }
+				.title-icon-box { background-color: #eeda7c; border: 2px solid #eeda7c; border-radius: 2px; }
+				.skill-set-box-icon { background-color: #eeda7c; border: none; border-radius: 2px; }
+				#backToTopButton { background-color: #000; border: none; border-radius: 8px; }
 				.semi-important-link { background-color: #eeda7c; color: #000; border: 1px solid #000; border-radius: 4px; }
 				.btn { background-color: #eeda7c; color: #000; border: 2px solid #000; }
 				.skill p { display: inline-block; }
@@ -944,7 +952,7 @@
 				.projects-description { color: #fff; }
 				.contact-me a { color: #fff; }
 				@media all and (max-width: 768px) {
-					.navigation-links { background-color: #323330; border-left: 2px solid #0001; top: 11vh; height: 70vh; }
+					.navigation-links { background-color: #323330; border-left: 2px solid #0001; top: 11vh; height: 70vh; border-bottom-left-radius: 50px; }
 					.about-right { color: #000; }
 				}`;
 				$('.themes').append(styleTextNode);
