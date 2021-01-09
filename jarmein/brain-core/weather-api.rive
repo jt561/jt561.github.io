@@ -1,0 +1,56 @@
+// weather api
+
+! version = 2.0
+
+// get user the weather
+// for local
++ [*] [what is] [the] weather
+* <get usersCity> == undefined => Sorry I dont know the city you are in, what city are you in?
+- Okay... the weather in <get usersCity> is currently <call>getWeatherTemp <get usersCity></call> degrees
+
+// ask the user where they are
++ *
+% (sorry i dont know the city you are in what city are you in|sorry what city are you in)
+- you are in {formal}<star1>{/formal}, is that correct?<set usersCity={formal}<star1>{/formal}>
+
+// if the user isnt in that city, go back to asking them what city you are in
++ no
+% you are in * is that correct
+- sorry, what city are you in?<set usersCity=undefined>
+
+// when the user confirm their city
++ yes
+% you are in * is that correct
+- Great, <get usersCity>, I'll remember that, and about the weather, {@ what is the weather in <get usersCity>}
+
+// weather for chosen city
++ [*] [what is] [the] weather [in] * [*]{weight=2}
+- The weather in {formal}<star1>{/formal} is currently <call>getWeatherTemp <star1></call>
+
+> object getWeatherTemp javascript
+		// args is passed from caller as an array of words
+    let words = args.join(" ");
+		if (args.length < 1) { args[0] = "unknown"; }
+    let location = args[0];
+    // please dont abuse the api key
+    let apiKey = "6760c147ee8ca243ceefb10a4edc8b22";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
+		try
+		{
+    	const response = await fetch(apiUrl);
+			let data = await response.json();
+			if (data.cod == 200)
+			{
+				let temperature = data.main.temp;
+				return temperature + " degrees";
+			}
+			else
+			{
+				throw new Error(data.message);
+			}
+		}
+		catch(err)
+		{
+			return "unknown to me";
+		}
+< object

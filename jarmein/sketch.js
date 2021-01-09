@@ -66,6 +66,8 @@ function setup()
 	  "brain-core/begin.rive",
 		"brain-core/jarmein-brain.rive",
 		"brain-core/specialreplies.rive",
+		"brain-core/weather-api.rive",
+		"brain-core/dateTime-api.rive",
 		"brain-core/star.rive"
 	]).then(loading_done).catch(loading_error);
 

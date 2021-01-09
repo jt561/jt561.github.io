@@ -1,0 +1,19 @@
+// date time api
+
+! version = 2.0
+
+// get user their local time
++ [*] [what is] [the] time
+- Okay... the time is <call>getLocalTime</call>
+
++ [*] [what is] [the] time [in] * [*]{weight=2}
+- Okay... the time is <call>getLocalTime</call>
+
+> object getLocalTime javascript
+    var words = args.join(" ");
+		let hr = (hour() > 12) ? hour()%12 : hour();
+		// always add 0 to the front of the current minute but only get the last 2 digits
+		let min = ("0" + minute()).slice(-2);
+		let middayRel = (hour() > 12) ? "pm" : "am";
+		return `${hr}:${min} ${middayRel}`;
+< object

@@ -3,33 +3,17 @@
 ! version = 2.0
 
 + [hello] jarmein
-- Hello, I am Jarmein,\s\n
-^  Lets start of by setting up a profile for you,\s\n
-^  can you please tell me your name.\s\n
+- Hello
+- Hi
+- What's up
+- Hello
 
-+ hello
-- Hi,
-- What's up,
-- Hello,
++ [hello] jarmein *
+- {@ <star1>}
+
++ [*] thanks [*]
+- You're welcome!
 
 // repeat what the player says
 + repeat after me *
 - <formal>.\s\n
-
-// refactor this later, this was a test
-+ reverse *
-- Okay... <call>reverse <star></call>
-
-> object reverse javascript
-    var words = args.join(" ");
-    // default weather location is london for now
-    let location = `london`;
-    // please dont abuse the api key
-    let apiKey = "6760c147ee8ca243ceefb10a4edc8b22";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${apiKey}`;
-    let result = await fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => data.main.temp);
-    return result;
-    //return words.split("").reverse().join("");
-< object

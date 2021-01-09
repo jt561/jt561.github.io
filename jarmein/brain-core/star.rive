@@ -2,16 +2,19 @@
 
 ! version = 2.0
 
+! array sadlysynonyms = sadly|unfortunately|sad to say|oh no|aww nah|sorry|oops|errr
+! array understandsynonyms = understand|know
+
 // what can the bot do - replies
 + (what do you understand|what can you do)
 - I can only introduce my self and and have short conversations for now,\s\n
 ^ I can also repeat things you say, just say "repeat after me" and then what you wish for me to repeat.\s\n
-^ I can also tell you the current weather in London, just say "tell me the weather in London".\s\n
-^ If you need the time, just say, what's the time?".
+^ I can also tell you the current weather in any city you want, for example, just say "tell me the weather in London".\s\n
+^ Also, If you need the time, just say, what's the time?".
 
 // commands not understood - replies
 + *
-- {random}Unfortunately|Sorry{/random} I dont {random}know|understand{/random} what you mean.\s\n
+- (@sadlysynonyms), I dont {random}know|understand{/random} what you mean.\s\n
 ^ To {random}find out|learn{/random} what I can do, say,\s
 ^ "what can you do",\s
 ^ or,\s
@@ -20,5 +23,10 @@
 
 // reply with what the bot can do, after the user replies yes to the previous questions - replies
 + yes [<bot name>|please]
-% (unfortunately|sorry) i dont (know|understand) what you mean to (find out|learn) what i can do say what can you do or what do you understand would you like me to (inform you of|tell you) what i can do now
+% (@sadlysynonyms) i dont (know|understand) what you mean to (find out|learn) what i can do say what can you do or what do you understand would you like me to (inform you of|tell you) what i can do now
 - {@ what can you do}
+
+// reply with what the bot can do, after the user replies yes to the previous questions - replies
++ no [<bot name>|please]
+% (@sadlysynonyms) i dont (know|understand) what you mean to (find out|learn) what i can do say what can you do or what do you understand would you like me to (inform you of|tell you) what i can do now
+- Okay <get name>
