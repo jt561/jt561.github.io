@@ -8,7 +8,8 @@ var Snake = function(scl)
   this.scl = scl;
   this.height = this.scl;
   this.width = this.scl;
-  this.position = createVector(width/2,height/2);
+	// random number between 0 and width/height to find number of cols/rows, then fround it down, then multiply it by scale
+  this.position = createVector(floor(random(width/this.scl))*this.scl, floor(random(height/this.scl))*this.scl);
   this.body.push(this.position); // first element in body is also head
   this.vector = createVector(1,0);
   this.size = 1;
@@ -18,7 +19,8 @@ var Snake = function(scl)
   this.draw = function()
   {
     fill(255,0,0);
-    stroke(255,0,0);
+		strokeWeight(0.5);
+    stroke(0, 0, 0);
     for (var i = 0; i < this.body.length; i++)
     {
       rect(this.body[i].x,this.body[i].y, this.width, this.height);
@@ -59,9 +61,9 @@ var Snake = function(scl)
     else if (this.vector.x === 1)
     {
       // if going right, reset to the left when it hits right edge
-      if(this.position.x > width) this.position.x = 0;
+      if(this.position.x > width-this.scl) this.position.x = 0;
     }
-    else if (this.vector.y === - 1)
+    if (this.vector.y === - 1)
     {
       // if going up, reset to the bottom when it hits up edge
       if(this.position.y < 0) this.position.y = height-this.scl;
@@ -69,7 +71,7 @@ var Snake = function(scl)
     else if (this.vector.y === 1)
     {
       // if going down, reset to the top when it hits bottom edge
-      if(this.position.y > height) this.position.y = 0;
+      if(this.position.y > height-this.scl) this.position.y = 0;
     }
 
     // set first element/head to the new postion found

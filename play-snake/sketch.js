@@ -9,25 +9,25 @@ var scl;
 var snake;
 // food object
 var food;
+// frame rate
+let sfps;
 
 // called once
 function setup() {
+	// set framerate to 10
+	sfps = 10;
+  frameRate(sfps);
+	// assign scale/size of a square
+  scl = (window.matchMedia("(max-width: 1024px)").matches) ? 10:20;
   // create board/canvas
 	// full width of screen - not anymore
   let deviceWidth = window.screen.width - ((window.matchMedia("(max-width: 768px)").matches) ? 30:(window.matchMedia("(max-width: 1024px)").matches) ? 130:320);
 	// try to get only 50% of screen on mobile, but higher percentage on tablet and desktop
   let deviceHeight = window.screen.height - ((window.matchMedia("(max-width: 768px)").matches) ? 400:(window.matchMedia("(max-width: 1024px)").matches) ? 530:320);
-	// not using document size now
-	let documentWidth = $(document).width() - 5;
-  let documentHeight = $(document).height() - 100;
-  createCanvas(deviceWidth, deviceHeight);
-  // assign scale/size of a square
-  scl = 10;
+  createCanvas(floor(deviceWidth)-floor(deviceWidth)%scl, floor(deviceHeight)-floor(deviceHeight)%scl);
   // assign/create new snake and food object with the same scale
   snake = new Snake(scl);
   food = new Food(scl);
-  // set framerate to 10
-  frameRate(12);
 }
 // draw loop
 function draw() {
@@ -35,16 +35,19 @@ function draw() {
   background(0,0,0);
 
 	// draw grid
-	let cols = width/scl;
-	let rows = height/scl;
+	let cols = floor(width)/scl;
+	let rows = floor(height)/scl;
 	for (let i = 0; i < cols; i++)
 	{
 		for (let j = 0; j < rows; j++)
 		{
 			// hide grid for now
-			stroke("black");
+			stroke("white");
 			fill("black");
+			push();
+			strokeWeight(0.1);
 			rect(i*scl, j*scl, scl, scl);
+			pop();
 		}
 	}
 
@@ -53,7 +56,7 @@ function draw() {
   // reset snake if it hits it self
   snake.resolveSelfCollision();
 	// if snake eats food
-  if (dist(snake.position.x,snake.position.y,food.position.x,food.position.y) < 20)
+  if (dist(snake.position.x,snake.position.y,food.position.x,food.position.y) < scl)
   {
     food.newPosition();
     snake.grow();
