@@ -386,7 +386,7 @@
 			});
 
 			// button in help page, stops the voice rec object from listening or vice versa
-			$('#stopListeningBtn1').click(function() {
+			$('#stopListeningBtn1').on("click touchstart", function() {
 				if (ears)
 				{
 					if (ears.isListening())
