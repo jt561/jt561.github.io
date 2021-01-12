@@ -93,17 +93,18 @@ function setup()
 	}
 
 	// create bots speech recognition object
-	/*let lang = navigator.language || "en-GB";
-	ears = new p5.SpeechRec(lang, processSpeech);
-	// listen continuously (true) or just once (false)
-	let continous = true;
-	// partial results (true) or wait for the speaker to pause (false)
-	let interim = false;
-	ears.start(continous, interim);
-	ears.onError = (error) => { earsError = error; }*/
-
-	// create extended brain object for api calls
-	extBrain = new ExtBrain();
+	// let lang = navigator.language || "en-GB";
+	// ears = new p5.SpeechRec(lang, processSpeech);
+	// ears.rec.onend = () => { console.log("rec ended"); ears.start(); }
+	// ears.rec.onstart = () => console.log("rec started");
+	// // listen continuously (true) or just once (false)
+	// let continous = true;
+	// // partial results (true) or wait for the speaker to pause (false)
+	// let interim = true;
+	// ears.start(continous, interim);
+	// ears.onError = (error) => { earsError = error; }
+	// // create extended brain object for api calls
+	// extBrain = new ExtBrain();
 }
 
 // draw loop
