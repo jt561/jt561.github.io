@@ -28,6 +28,9 @@ let ears;
 // speech recognition error
 let earsError = "";
 
+// is the voice rec currently listening
+let notListeneing = true;
+
 /* end of global variables */
 
 // loads extra soruces before setup function is called
@@ -45,19 +48,6 @@ function setup()
 	// canvas height should be 70% of the device height
 	let canvasHeight = window.screen.height *  (70/100);
 	createCanvas(canvasWidth, canvasHeight);
-
-	// listener for submit button, this is essentially what kicks the bot to work
-	$('#subBtn1').click(function() {
-		var input = $('#input1').val();
-		if (input === "") { return; }
-		// display the command,
-		$('#command1').text(input);
-		// an interceptor brain will be hear to make api calls
-		// and provide the bot with a reponse to say
-		extBrain.intercept(input);
-		// clear input
-		$('#input1').val("");
-	});
 
 	// create bot
 	bot = new RiveScript();
@@ -92,19 +82,29 @@ function setup()
 		speech.setVolume(1);
 	}
 
+	// js brain/worker
+	extBrain = new ExtBrain();
+
 	// create bots speech recognition object
-	// let lang = navigator.language || "en-GB";
-	// ears = new p5.SpeechRec(lang, processSpeech);
-	// ears.rec.onend = () => { console.log("rec ended"); ears.start(); }
-	// ears.rec.onstart = () => console.log("rec started");
-	// // listen continuously (true) or just once (false)
-	// let continous = true;
-	// // partial results (true) or wait for the speaker to pause (false)
-	// let interim = true;
-	// ears.start(continous, interim);
-	// ears.onError = (error) => { earsError = error; }
-	// // create extended brain object for api calls
-	// extBrain = new ExtBrain();
+	// annyang is a speech recognition object
+	// should be loaded in through external script
+	if (annyang)
+	{
+		ears = annyang;
+	  // create commands for annyang
+		// '*tag' means match any text and send it to the call back function "processSpeech"
+		// processSpeech can be found in an external file called ext-brain.js
+	  var commands = {
+	    '*tag': processSpeech
+	  };
+	  // Add our commands to annyang
+	  ears.addCommands(commands);
+	  // Start listening
+	  // only when user starts it, ears.start();
+	}
+
+	// activates listener for voice and text inputs
+	addInputListener();
 }
 
 // draw loop
@@ -156,7 +156,17 @@ function draw()
 			textFont('Georgia');
 			textAlign(CENTER, CENTER);
 			// place it at 10% away from the top of the canvas
-			text("Say 'Jarmein', to speak to me", width/2, 0+(height*(10/100)));
+			let word = "";
+			let pos = [width/2, 0+(height*(10/100))];
+			if (notListeneing)
+			{
+				word = "Currently not listening... clikc the '?' for more";
+			}
+			else
+			{
+				word = "Say 'Jarmein', to speak to me";
+			}
+			text(word, pos[0], pos[1]);
 		}
 	}
 }
@@ -187,6 +197,23 @@ function loading_error(error, filename, lineno)
 	botLoading = false;
 	botLoaded = false;
   botLoadingError = "Error when loading files: " + error + "Details: " + filename + ", " + lineno;
+}
+
+// adds event listener to sumbit button
+function addInputListener()
+{
+	// listener for submit button, this is essentially what kicks the bot to work
+	$('#subBtn1').click(function() {
+		var input = $('#input1').val();
+		if (input === "") { return; }
+		// display the command,
+		$('#command1').text(input);
+		// an interceptor brain will be hear to make api calls
+		// and provide the bot with a reponse to say
+		extBrain.intercept(input);
+		// clear input
+		$('#input1').val("");
+	});
 }
 
 /* End of main board */

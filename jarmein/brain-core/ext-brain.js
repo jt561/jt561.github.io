@@ -4,9 +4,13 @@
 
 /* Global variables */
 
+// brain/ears hasnt met users
+let met = false;
+
 // constructor
 let ExtBrain = function()
 {
+	this.met = false;
 
 	this.intercept = function(input)
 	{
@@ -37,20 +41,20 @@ function getResponse(username, input)
 // processes the speech received from the bots ears(speech object)
 function processSpeech(words)
 {
-	console.log(words);
-	//console.log(ears.resultString);
-	// speech recognised
-	// if (ears.resultValue)
+	// let nameAliases = ["Jarmein", "Jarmaine", "Jermaine", "Garmain", "Germain"];
+	// if (nameAliases.includes(words.split(" ")[0]))
 	// {
-	// 	console.log(ears.resultString);
-	// 	// speech starts with jarmein
-	// 	if (ears.resultString.startsWith("Jarmein"))
-	// 	{
-	// 		// put the string in the input text box and submit it(send it to the bot)
-	// 		$('#input1').val(ears.resultString);
-	// 		$('#subBtn1').click();
-	// 	}
+	// 	let commands = words.split(" ");
+	// 	commands.shift();
+	// 	commands = commands.join(" ");
+	// 	$('#input1').val(commands);
+	// 	$('#subBtn1').click();
 	// }
+	if(!met)
+	{
+		$('#input1').val(words);
+		$('#subBtn1').click();
+	}
 }
 
 /* end of helper functions */
