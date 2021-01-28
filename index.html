@@ -112,12 +112,12 @@
 			color: white;
 			letter-spacing: 1px;
 			font-weight: bold;
-			transition: 0.1s ease;
+			transition: letter-spacing 5s ease-out, 0.1s ease;
+			padding: 1px;
 		}
 
 		.navigation-links a:hover {
 			border-radius: 50px;
-			padding: 2px;
 			background-color: white;
 			color: black;
 			text-decoration: none;
@@ -125,7 +125,7 @@
 		}
 
 		.navigation-links a:active {
-			letter-spacing: 3px;
+			letter-spacing: 2px;
 		}
 
 		.focused-nav  {
@@ -702,7 +702,7 @@
 			}
 
 			.projects-description {
-				font-size: 12px;
+				font-size: 15px;
 			}
 
 			#backToTopButton {
@@ -884,7 +884,7 @@
 				.header { background-color: #fff; color: #000; }
 				#my-name-svg { background-color: #00f7; padding: 5px; border-radius: 2px; box-shadow: 0px 5px 15px 10px #77f7; }
 				@media all and (max-width: 768px) {.navigation-links { background-color: #e6dace; border-left: 2px solid #000; border-bottom-left-radius: 255px; } }
-				.navigation-links a { background: transparent; color: #000; transition: 0s; }
+				.navigation-links a { background: transparent; color: #000; }
 				.navigation-links a:hover, .navigation-links a:active { color: #00f; }
 				.burger div { background-color: #00f; }
 				#changeThemeBtn1 { border-radius: 15px; }
@@ -924,7 +924,7 @@
 				.header { background-color: #323330; color: #ff0; }
 				.header .title { color: #f5da55; min-height: 11vh; }
 				#my-name-svg { background: transparent; padding: 5px; border-radius: 2px; }
-				.navigation-links a { background: transparent; color: #fff; transition: 0s; }
+				.navigation-links a { background: transparent; color: #fff; }
 				.navigation-links a:hover, .navigation-links a:active { color: #eeda7c; background: transparent; }
 				.burger div { background-color: #f5da55; }
 				#changeThemeBtn1 { border-radius: 7px; }
